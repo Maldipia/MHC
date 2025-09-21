@@ -159,13 +159,25 @@
         .hero {
             background: linear-gradient(135deg, var(--emerald-50) 0%, var(--white) 100%);
             padding: 80px 0;
+            min-height: 500px;
+            position: relative;
+        }
+        
+        .hero-bg-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 40%, rgba(236,253,245,0.4) 70%);
         }
         
         .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: 1fr;
+            max-width: 550px;
+            position: relative;
+            z-index: 1;
         }
         
         .hero-text h1 {
@@ -226,25 +238,6 @@
         
         .btn-secondary:hover {
             background: var(--emerald-50);
-        }
-        
-        .hero-image {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-xl);
-            text-align: center;
-        }
-        
-        .featured-badge {
-            background: var(--emerald-100);
-            color: var(--emerald-700);
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 20px;
         }
         
         /* Features */
@@ -340,14 +333,12 @@
         
         .product-image {
             height: 200px;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: #f8f8f8;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            font-size: 48px;
+            color: var(--emerald-600);
         }
         
         .product-info {
@@ -709,7 +700,7 @@
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
-                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="order-btn">
+                        <a href="#" class="order-btn" onclick="alert('Order form would open here'); return false;">
                             Order Online
                         </a>
                     </li>
@@ -724,18 +715,18 @@
     </header>
     
     <!-- Hero Section -->
-    <section id="home" class="hero" style="background-image: url('eggsx12.JPG'); background-size: cover; background-position: center; background-repeat: no-repeat; position: relative;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to right, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 40%, transparent 70%);"></div>
-        <div class="container" style="position: relative; z-index: 1;">
-            <div class="hero-content" style="grid-template-columns: 1fr; max-width: 550px;">
+    <section id="home" class="hero">
+        <div class="hero-bg-gradient"></div>
+        <div class="container">
+            <div class="hero-content">
                 <div class="hero-text">
-                    <h1 style="text-shadow: 2px 2px 4px rgba(255,255,255,0.9);">Premium <span class="highlight">Fresh Food</span> Delivered Daily</h1>
-                    <p style="text-shadow: 1px 1px 3px rgba(255,255,255,0.9);">Experience the finest quality meats, fresh eggs, and ready-to-eat meals delivered straight to your doorstep in Amadeo, Cavite.</p>
+                    <h1>Premium <span class="highlight">Fresh Food</span> Delivered Daily</h1>
+                    <p>Experience the finest quality meats, fresh eggs, and ready-to-eat meals delivered straight to your doorstep in Amadeo, Cavite.</p>
                     <div class="hero-buttons">
-                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-primary">
+                        <a href="#" class="btn btn-primary" onclick="alert('Order form would open here'); return false;">
                             🛒 Order Online Now
                         </a>
-                        <a href="tel:09674000040" class="btn btn-secondary">
+                        <a href="#" class="btn btn-secondary" onclick="alert('Phone call would initiate here'); return false;">
                             📞 0967-400-0040
                         </a>
                     </div>
@@ -782,7 +773,7 @@
             
             <div class="products-grid">
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('MHCinasal.jpg'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🍗</div>
                     <div class="product-info">
                         <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">Chicken Inasal</h3>
@@ -795,7 +786,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('MHCPorkSamgyup.jpg'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🥓</div>
                     <div class="product-info">
                         <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">Pork Samgyup BBQ</h3>
@@ -808,7 +799,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('MHCspecialfriedrice.jpg'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🍚</div>
                     <div class="product-info">
                         <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">MHC Fried Rice</h3>
@@ -821,7 +812,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('eggsx12.JPG'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🥚</div>
                     <div class="product-info">
                         <div class="product-category">Fresh Daily</div>
                         <h3 class="product-name">Brown Eggs (Dozen)</h3>
@@ -834,7 +825,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('eggsx30.JPG'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🥚</div>
                     <div class="product-info">
                         <div class="product-category">Fresh Daily</div>
                         <h3 class="product-name">Brown Eggs (Tray)</h3>
@@ -847,7 +838,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('Fresh & Frozen whole Chicken.JPG'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🐔</div>
                     <div class="product-info">
                         <div class="product-category">Fresh & Frozen</div>
                         <h3 class="product-name">Whole Chicken</h3>
@@ -860,7 +851,7 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-image: url('MHCfreshCrabs.JPG'); background-size: cover; background-position: center;"></div>
+                    <div class="product-image">🦀</div>
                     <div class="product-info">
                         <div class="product-category">Premium</div>
                         <h3 class="product-name">Fresh Crabs</h3>
@@ -957,10 +948,10 @@
             <h2>Ready to Order?</h2>
             <p>Experience premium quality food delivered to your doorstep</p>
             <div class="cta-buttons">
-                <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-white">
+                <a href="#" class="btn btn-white" onclick="alert('Order form would open here'); return false;">
                     🛒 Order Online Now
                 </a>
-                <a href="tel:09674000040" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                <a href="#" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;" onclick="alert('Phone call would initiate here'); return false;">
                     📞 Call Us Now
                 </a>
             </div>
@@ -1012,13 +1003,13 @@
                     <h3>Start Your Order</h3>
                     <p>Choose your preferred ordering method below</p>
                     <div style="display: grid; gap: 12px;">
-                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                        <a href="#" class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Order form would open here'); return false;">
                             🛒 Order Online
                         </a>
-                        <a href="tel:09674000040" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                        <a href="#" class="btn btn-secondary" style="width: 100%; justify-content: center;" onclick="alert('Phone call would initiate here'); return false;">
                             📞 Call to Order
                         </a>
-                        <a href="https://www.facebook.com/musthavecorner" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                        <a href="#" class="btn btn-secondary" style="width: 100%; justify-content: center;" onclick="alert('Facebook page would open here'); return false;">
                             💬 Message on Facebook
                         </a>
                     </div>
@@ -1045,9 +1036,9 @@
                 </div>
                 <div class="footer-section">
                     <h4>Quick Links</h4>
-                    <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec">Order Online</a>
-                    <a href="tel:09674000040">Call Us</a>
-                    <a href="https://www.facebook.com/musthavecorner" target="_blank">Facebook</a>
+                    <a href="#" onclick="alert('Order form would open here'); return false;">Order Online</a>
+                    <a href="#" onclick="alert('Phone call would initiate here'); return false;">Call Us</a>
+                    <a href="#" onclick="alert('Facebook page would open here'); return false;">Facebook</a>
                 </div>
                 <div class="footer-section">
                     <h4>Business Hours</h4>
@@ -1063,7 +1054,7 @@
         </div>
     </footer>
     
-    <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="fab">
+    <a href="#" class="fab" onclick="alert('Order form would open here'); return false;">
         🛒
     </a>
     
