@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Must Have Corner - Fresh Food & Daily Essentials | Amadeo, Cavite</title>
-    <meta name="description" content="Must Have Corner - Your source for fresh brown eggs, chicken inasal, pork BBQ, and quality meats in Amadeo, Cavite. Free delivery for orders ₱1,299+">
+    <title>Must Have Corner - Premium Fresh Food Delivery | Amadeo, Cavite</title>
+    <meta name="description" content="Must Have Corner - Premium quality fresh food and daily essentials. Free delivery for orders ₱1,299+. Serving Amadeo, Cavite.">
     <style>
         * {
             margin: 0;
@@ -13,21 +13,35 @@
         }
         
         :root {
-            --primary-green: #48bb78;
-            --dark-green: #38a169;
-            --light-green: #68d391;
-            --text-dark: #1a202c;
-            --text-light: #718096;
-            --bg-light: #f7fafc;
+            --emerald-900: #064e3b;
+            --emerald-800: #065f46;
+            --emerald-700: #047857;
+            --emerald-600: #059669;
+            --emerald-500: #10b981;
+            --emerald-400: #34d399;
+            --emerald-300: #6ee7b7;
+            --emerald-200: #a7f3d0;
+            --emerald-100: #d1fae5;
+            --emerald-50: #ecfdf5;
+            
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #64748b;
             --white: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
+            color: var(--text-primary);
             background: var(--white);
         }
         
@@ -37,561 +51,598 @@
             padding: 0 20px;
         }
         
+        /* Top Bar */
+        .top-bar {
+            background: var(--emerald-900);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .top-bar-content span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
         /* Header */
         header {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
-            color: white;
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
+            background: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
         }
         
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 16px 0;
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: bold;
             display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--emerald-700);
+        }
+        
+        .logo-icon {
+            background: var(--emerald-50);
+            padding: 8px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 32px;
             align-items: center;
         }
         
-        .logo span {
-            background: white;
-            color: var(--primary-green);
-            padding: 5px 10px;
-            border-radius: 5px;
-            margin-left: 10px;
-            font-size: 14px;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: white;
+        .nav-menu a {
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: opacity 0.3s;
             font-weight: 500;
+            transition: color 0.2s;
+            font-size: 15px;
         }
         
-        .nav-links a:hover {
-            opacity: 0.8;
+        .nav-menu a:hover {
+            color: var(--emerald-600);
+        }
+        
+        .order-btn {
+            background: var(--emerald-600);
+            color: var(--white);
+            padding: 10px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            font-size: 15px;
+        }
+        
+        .order-btn:hover {
+            background: var(--emerald-700);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-lg);
         }
         
         .mobile-menu {
             display: none;
             flex-direction: column;
+            gap: 4px;
             cursor: pointer;
         }
         
         .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
+            width: 24px;
+            height: 2px;
+            background: var(--emerald-700);
             transition: 0.3s;
         }
         
         /* Hero Section */
         .hero {
-            margin-top: 70px;
-            background: linear-gradient(rgba(72, 187, 120, 0.9), rgba(72, 187, 120, 0.9)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            color: white;
+            background: linear-gradient(135deg, var(--emerald-50) 0%, var(--white) 100%);
             padding: 80px 0;
-            text-align: center;
         }
         
-        .hero h1 {
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
             font-size: 48px;
+            line-height: 1.2;
+            color: var(--text-primary);
             margin-bottom: 20px;
-            animation: fadeInUp 0.8s ease;
+            font-weight: 800;
         }
         
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease;
+        .hero-text .highlight {
+            color: var(--emerald-600);
         }
         
-        .cta-buttons {
+        .hero-text p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+        
+        .hero-buttons {
             display: flex;
-            gap: 20px;
-            justify-content: center;
-            animation: fadeInUp 1.2s ease;
+            gap: 16px;
+            align-items: center;
         }
         
         .btn {
-            padding: 15px 35px;
-            border: none;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 12px 28px;
+            border-radius: 6px;
+            font-weight: 600;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
         }
         
         .btn-primary {
-            background: white;
-            color: var(--primary-green);
+            background: var(--emerald-600);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background: var(--emerald-700);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
         }
         
         .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
+            background: var(--white);
+            color: var(--emerald-600);
+            border: 2px solid var(--emerald-600);
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+        .btn-secondary:hover {
+            background: var(--emerald-50);
+        }
+        
+        .hero-image {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            text-align: center;
+        }
+        
+        .featured-badge {
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
         }
         
         /* Features */
         .features {
             padding: 60px 0;
-            background: var(--bg-light);
+            background: var(--white);
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
         }
         
         .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
             text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            padding: 24px;
+            border-radius: 12px;
+            transition: all 0.3s;
         }
         
         .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            background: var(--emerald-50);
         }
         
         .feature-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin: 0 auto 16px;
         }
         
         .feature-card h3 {
-            color: var(--primary-green);
-            margin-bottom: 15px;
+            color: var(--text-primary);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
         }
         
         /* Products Section */
         .products {
-            padding: 60px 0;
+            padding: 80px 0;
+            background: var(--gray-50);
         }
         
-        .section-title {
+        .section-header {
             text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .section-header h2 {
             font-size: 36px;
-            color: var(--text-dark);
-            margin-bottom: 20px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 12px;
         }
         
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 40px;
-        }
-        
-        .product-categories {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .category-btn {
-            padding: 10px 25px;
-            border: 2px solid var(--primary-green);
-            background: white;
-            color: var(--primary-green);
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-        
-        .category-btn.active,
-        .category-btn:hover {
-            background: var(--primary-green);
-            color: white;
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
         }
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
         }
         
         .product-card {
-            background: white;
-            border-radius: 15px;
+            background: var(--white);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: all 0.3s;
+            border: 1px solid var(--gray-200);
         }
         
         .product-card:hover {
-            transform: scale(1.05);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
         }
         
         .product-image {
-            width: 100%;
             height: 200px;
-            background: linear-gradient(135deg, var(--light-green) 0%, var(--primary-green) 100%);
+            background: linear-gradient(135deg, var(--emerald-100) 0%, var(--emerald-200) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 72px;
-            color: white;
+            font-size: 64px;
         }
         
         .product-info {
-            padding: 20px;
+            padding: 24px;
+        }
+        
+        .product-category {
+            color: var(--emerald-600);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
         }
         
         .product-name {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: var(--text-dark);
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .product-description {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .product-price {
             font-size: 24px;
-            color: var(--primary-green);
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--emerald-600);
         }
         
-        .product-description {
-            color: var(--text-light);
-            margin-bottom: 15px;
-            font-size: 14px;
-        }
-        
-        .order-note {
-            background: #fff3cd;
-            color: #856404;
-            padding: 5px 10px;
-            border-radius: 5px;
+        .product-badge {
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            padding: 4px 12px;
+            border-radius: 6px;
             font-size: 12px;
-            display: inline-block;
+            font-weight: 600;
         }
         
-        /* Pricing Table */
-        .pricing-section {
-            padding: 60px 0;
-            background: var(--bg-light);
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 0;
+            background: var(--white);
         }
         
         .pricing-tables {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
         }
         
         .pricing-table {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: var(--shadow);
-        }
-        
-        .pricing-table h3 {
-            color: var(--primary-green);
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        
-        th {
-            background: var(--bg-light);
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        
-        .price-highlight {
-            color: var(--primary-green);
-            font-weight: bold;
-        }
-        
-        /* Bundles Section */
-        .bundles {
-            padding: 60px 0;
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--dark-green) 100%);
-            color: white;
-        }
-        
-        .bundles .section-title,
-        .bundles .section-subtitle {
-            color: white;
-        }
-        
-        .bundles-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .bundle-card {
-            background: white;
-            color: var(--text-dark);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            position: relative;
+            background: var(--white);
+            border: 2px solid var(--emerald-200);
+            border-radius: 12px;
             overflow: hidden;
         }
         
-        .bundle-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            background: #ff6b6b;
-            color: white;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 12px;
-            font-weight: bold;
+        .pricing-header {
+            background: var(--emerald-50);
+            padding: 24px;
+            text-align: center;
+            border-bottom: 2px solid var(--emerald-200);
         }
         
-        .bundle-name {
-            font-size: 24px;
-            color: var(--primary-green);
-            margin-bottom: 15px;
+        .pricing-header h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--emerald-700);
         }
         
-        .bundle-price {
+        .pricing-body {
+            padding: 24px;
+        }
+        
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .price-row:last-child {
+            border-bottom: none;
+        }
+        
+        .price-item {
+            color: var(--text-primary);
+            font-size: 14px;
+        }
+        
+        .price-value {
+            color: var(--emerald-600);
+            font-weight: 700;
+            font-size: 16px;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-900) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta h2 {
             font-size: 36px;
-            font-weight: bold;
-            color: var(--text-dark);
-            margin-bottom: 20px;
+            font-weight: 800;
+            margin-bottom: 16px;
         }
         
-        .bundle-items {
-            list-style: none;
-            margin-bottom: 20px;
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 32px;
+            opacity: 0.95;
         }
         
-        .bundle-items li {
-            padding: 8px 0;
-            border-bottom: 1px solid #e2e8f0;
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
         }
         
-        .bundle-savings {
-            background: #d4edda;
-            color: #155724;
-            padding: 10px;
-            border-radius: 5px;
-            font-weight: bold;
+        .btn-white {
+            background: var(--white);
+            color: var(--emerald-700);
+        }
+        
+        .btn-white:hover {
+            background: var(--emerald-50);
         }
         
         /* Contact Section */
         .contact {
-            padding: 60px 0;
+            padding: 80px 0;
+            background: var(--gray-50);
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 48px;
         }
         
         .contact-info {
-            background: var(--bg-light);
-            padding: 30px;
-            border-radius: 15px;
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 24px;
         }
         
         .contact-item {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
+            gap: 16px;
             margin-bottom: 20px;
         }
         
         .contact-icon {
-            font-size: 24px;
-            margin-right: 15px;
-            color: var(--primary-green);
-        }
-        
-        .order-form {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--text-dark);
-            font-weight: 600;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #e2e8f0;
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            width: 40px;
+            height: 40px;
             border-radius: 8px;
-            font-size: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
         
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
+        .contact-details h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .contact-details p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .order-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .order-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+        
+        .order-card p {
+            color: var(--text-secondary);
+            margin-bottom: 24px;
         }
         
         /* Footer */
         footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 40px 0;
-            text-align: center;
+            background: var(--emerald-900);
+            color: var(--white);
+            padding: 48px 0 24px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 32px;
         }
         
-        .footer-section h3 {
-            margin-bottom: 15px;
-            color: var(--primary-green);
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--emerald-300);
         }
         
         .footer-section a {
-            color: white;
+            color: var(--white);
             text-decoration: none;
+            font-size: 14px;
+            line-height: 2;
             display: block;
-            padding: 5px 0;
-            transition: color 0.3s;
+            opacity: 0.9;
+            transition: opacity 0.2s;
         }
         
         .footer-section a:hover {
-            color: var(--primary-green);
+            opacity: 1;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid var(--emerald-800);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.9;
         }
         
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: var(--primary-green);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: var(--dark-green);
-        }
-        
-        /* Floating Order Button */
-        .floating-order {
+        /* Floating Action Button */
+        .fab {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--primary-green);
-            color: white;
-            width: 60px;
-            height: 60px;
+            bottom: 32px;
+            right: 32px;
+            background: var(--emerald-600);
+            color: var(--white);
+            width: 64px;
+            height: 64px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 24px;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-xl);
             cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
             z-index: 999;
-            animation: pulse 2s infinite;
         }
         
-        .floating-order:hover {
+        .fab:hover {
             transform: scale(1.1);
-        }
-        
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(72, 187, 120, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 30px rgba(72, 187, 120, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(72, 187, 120, 0);
-            }
+            background: var(--emerald-700);
         }
         
         /* Responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            
+            .nav-menu {
                 display: none;
             }
             
@@ -599,67 +650,102 @@
                 display: flex;
             }
             
-            .hero h1 {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-text h1 {
                 font-size: 32px;
             }
             
-            .hero p {
-                font-size: 16px;
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                padding: 0 20px;
-            }
-            
-            .section-title {
-                font-size: 28px;
+            .products-grid {
+                grid-template-columns: 1fr;
             }
             
             .pricing-tables {
                 grid-template-columns: 1fr;
             }
             
-            .bundle-badge {
-                right: -35px;
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span>📍 Serving Amadeo, Cavite and nearby areas</span>
+                <span>🚚 FREE Delivery for orders ₱1,299 and above</span>
+            </div>
+        </div>
+    </div>
+    
     <!-- Header -->
     <header>
-        <nav class="container">
-            <div class="logo">
-                MHC <span>Must Have Corner</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#bundles">Bundles</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <div class="logo-icon">🛒</div>
+                    Must Have Corner
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="order-btn">
+                            Order Online
+                        </a>
+                    </li>
+                </ul>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
     </header>
-
+    
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>Fresh Food & Daily Essentials</h1>
-            <p>Quality products delivered to your doorstep in Amadeo, Cavite</p>
-            <div class="cta-buttons">
-                <a href="tel:09674000040" class="btn btn-primary">📞 Call Now: 0967-400-0040</a>
-                <a href="#products" class="btn btn-secondary">View Products</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Premium <span class="highlight">Fresh Food</span> Delivered Daily</h1>
+                    <p>Experience the finest quality meats, fresh eggs, and ready-to-eat meals delivered straight to your doorstep in Amadeo, Cavite.</p>
+                    <div class="hero-buttons">
+                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-primary">
+                            🛒 Order Online Now
+                        </a>
+                        <a href="tel:09674000040" class="btn btn-secondary">
+                            📞 0967-400-0040
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="featured-badge">BEST SELLER</div>
+                    <div style="font-size: 120px; margin: 20px 0;">🍗</div>
+                    <h3 style="color: var(--text-primary); margin-bottom: 8px;">Chicken Inasal</h3>
+                    <p style="color: var(--emerald-600); font-size: 28px; font-weight: 700;">₱390</p>
+                </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Features -->
     <section class="features">
         <div class="container">
@@ -667,417 +753,350 @@
                 <div class="feature-card">
                     <div class="feature-icon">🚚</div>
                     <h3>Free Delivery</h3>
-                    <p>FREE delivery for orders ₱1,299 and above!</p>
+                    <p>Orders ₱1,299+</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">✨</div>
                     <h3>Fresh Daily</h3>
-                    <p>Quality guaranteed fresh products every day</p>
+                    <p>Quality guaranteed</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">⏰</div>
                     <h3>Quick Service</h3>
-                    <p>3-4 hours advance order for cooked items</p>
+                    <p>3-4 hours advance</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">💰</div>
                     <h3>Best Prices</h3>
-                    <p>Competitive prices with bundle deals</p>
+                    <p>Competitive rates</p>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title">Our Products</h2>
-            <p class="section-subtitle">Fresh, Quality, Affordable</p>
-            
-            <div class="product-categories">
-                <button class="category-btn active">All Products</button>
-                <button class="category-btn">Ready to Eat</button>
-                <button class="category-btn">Fresh Eggs</button>
-                <button class="category-btn">Meat & Poultry</button>
-                <button class="category-btn">Seafood</button>
+            <div class="section-header">
+                <h2>Our Premium Products</h2>
+                <p>Carefully selected for quality and freshness</p>
             </div>
             
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">🍗</div>
                     <div class="product-info">
-                        <h3 class="product-name">Whole Chicken Inasal</h3>
-                        <div class="product-price">₱390</div>
-                        <p class="product-description">Perfectly grilled butterflied chicken with golden crispy skin, special inasal marinade</p>
-                        <span class="order-note">3-4 hrs advance order</span>
+                        <div class="product-category">Ready to Eat</div>
+                        <h3 class="product-name">Chicken Inasal</h3>
+                        <p class="product-description">Perfectly grilled butterflied chicken with our signature marinade</p>
+                        <div class="product-footer">
+                            <span class="product-price">₱390</span>
+                            <span class="product-badge">3-4 hrs advance</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
                     <div class="product-image">🍢</div>
                     <div class="product-info">
+                        <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">Pork Sangyup BBQ</h3>
-                        <div class="product-price">₱59/stick</div>
-                        <p class="product-description">Korean-style marinated pork BBQ. Minimum 3 sticks. Perfect with rice or as pulutan!</p>
-                        <span class="order-note">3-4 hrs advance order</span>
+                        <p class="product-description">Korean-style marinated pork BBQ. Minimum 3 sticks</p>
+                        <div class="product-footer">
+                            <span class="product-price">₱59/stick</span>
+                            <span class="product-badge">3-4 hrs advance</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
                     <div class="product-image">🍚</div>
                     <div class="product-info">
+                        <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">MHC Fried Rice</h3>
-                        <div class="product-price">₱149</div>
-                        <p class="product-description">Special fried rice good for 2 persons. Perfect side dish!</p>
-                        <span class="order-note">3-4 hrs advance order</span>
+                        <p class="product-description">Special fried rice good for 2 persons. Perfect companion meal</p>
+                        <div class="product-footer">
+                            <span class="product-price">₱149</span>
+                            <span class="product-badge">3-4 hrs advance</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
                     <div class="product-image">🥚</div>
                     <div class="product-info">
-                        <h3 class="product-name">Fresh Brown Eggs</h3>
-                        <div class="product-price">₱132-390</div>
-                        <p class="product-description">Daily fresh brown eggs. Available per dozen or tray. Various sizes.</p>
-                        <span class="order-note" style="background: #d4edda; color: #155724;">Always Available</span>
+                        <div class="product-category">Fresh Daily</div>
+                        <h3 class="product-name">Brown Eggs</h3>
+                        <p class="product-description">Farm-fresh brown eggs. Available per dozen or tray</p>
+                        <div class="product-footer">
+                            <span class="product-price">₱132-390</span>
+                            <span class="product-badge">Daily Stock</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
                     <div class="product-image">🐔</div>
                     <div class="product-info">
+                        <div class="product-category">Fresh Daily</div>
                         <h3 class="product-name">Whole Chicken</h3>
-                        <div class="product-price">₱179-199/kg</div>
-                        <p class="product-description">Fresh or Frozen available. Regular and Premium grades.</p>
-                        <span class="order-note" style="background: #d4edda; color: #155724;">Daily Stock</span>
+                        <p class="product-description">Premium quality fresh whole chicken</p>
+                        <div class="product-footer">
+                            <span class="product-price">₱199/kg</span>
+                            <span class="product-badge">Daily Stock</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="product-card">
                     <div class="product-image">🦀</div>
                     <div class="product-info">
-                        <h3 class="product-name">Premium Crabs</h3>
-                        <div class="product-price">₱1,200/kg</div>
-                        <p class="product-description">Fresh, high-quality crabs. Minimum order 0.5kg</p>
-                        <span class="order-note">Subject to availability</span>
+                        <div class="product-category">Premium</div>
+                        <h3 class="product-name">Fresh Crabs</h3>
+                        <p class="product-description">High-quality fresh crabs. Minimum order 0.5kg</p>
+                        <div class="product-footer">
+                            <span class="product-price">₱1,200/kg</span>
+                            <span class="product-badge">By Request</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Pricing Section -->
-    <section id="pricing" class="pricing-section">
+    <section id="pricing" class="pricing">
         <div class="container">
-            <h2 class="section-title">Detailed Pricing</h2>
-            <p class="section-subtitle">Transparent prices, no hidden charges</p>
+            <div class="section-header">
+                <h2>Transparent Pricing</h2>
+                <p>Clear prices with no hidden charges</p>
+            </div>
             
             <div class="pricing-tables">
                 <div class="pricing-table">
-                    <h3>🥚 Fresh Brown Eggs</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Quantity</th>
-                                <th>Weight</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>12 pcs (1 dozen)</td>
-                                <td>516g</td>
-                                <td class="price-highlight">₱132</td>
-                            </tr>
-                            <tr>
-                                <td>12 pcs (1 dozen)</td>
-                                <td>600g</td>
-                                <td class="price-highlight">₱144</td>
-                            </tr>
-                            <tr>
-                                <td>12 pcs (1 dozen)</td>
-                                <td>684g</td>
-                                <td class="price-highlight">₱156</td>
-                            </tr>
-                            <tr>
-                                <td>30 pcs (1 tray)</td>
-                                <td>1290g</td>
-                                <td class="price-highlight">₱270</td>
-                            </tr>
-                            <tr>
-                                <td>30 pcs (1 tray)</td>
-                                <td>1500g</td>
-                                <td class="price-highlight">₱300</td>
-                            </tr>
-                            <tr>
-                                <td>30 pcs (1 tray)</td>
-                                <td>2130g</td>
-                                <td class="price-highlight">₱390</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pricing-header">
+                        <h3>🥚 Fresh Brown Eggs</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-row">
+                            <span class="price-item">Dozen (516g)</span>
+                            <span class="price-value">₱132</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Dozen (600g)</span>
+                            <span class="price-value">₱144</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Dozen (684g)</span>
+                            <span class="price-value">₱156</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Tray (1290g)</span>
+                            <span class="price-value">₱270</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Tray (1500g)</span>
+                            <span class="price-value">₱300</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Tray (2130g)</span>
+                            <span class="price-value">₱390</span>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="pricing-table">
-                    <h3>🍖 Meat & Poultry</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Type</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Whole Chicken</td>
-                                <td>Fresh Regular</td>
-                                <td class="price-highlight">₱179/kg</td>
-                            </tr>
-                            <tr>
-                                <td>Whole Chicken</td>
-                                <td>Fresh Premium</td>
-                                <td class="price-highlight">₱199/kg</td>
-                            </tr>
-                            <tr>
-                                <td>Whole Chicken</td>
-                                <td>Frozen Regular</td>
-                                <td class="price-highlight">₱179/kg</td>
-                            </tr>
-                            <tr>
-                                <td>Whole Chicken</td>
-                                <td>Frozen Premium</td>
-                                <td class="price-highlight">₱199/kg</td>
-                            </tr>
-                            <tr>
-                                <td>Premium Crabs</td>
-                                <td>Fresh</td>
-                                <td class="price-highlight">₱1,200/kg</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="pricing-header">
+                        <h3>🍖 Meat & Poultry</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="price-row">
+                            <span class="price-item">Chicken Inasal</span>
+                            <span class="price-value">₱390</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Pork BBQ (per stick)</span>
+                            <span class="price-value">₱59</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">MHC Fried Rice</span>
+                            <span class="price-value">₱149</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Fresh Chicken</span>
+                            <span class="price-value">₱199/kg</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Frozen Chicken</span>
+                            <span class="price-value">₱179/kg</span>
+                        </div>
+                        <div class="price-row">
+                            <span class="price-item">Premium Crabs</span>
+                            <span class="price-value">₱1,200/kg</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Bundles Section -->
-    <section id="bundles" class="bundles">
+    
+    <!-- CTA Section -->
+    <section class="cta">
         <div class="container">
-            <h2 class="section-title">Special Bundle Deals</h2>
-            <p class="section-subtitle">Save more when you buy in bundles!</p>
-            
-            <div class="bundles-grid">
-                <div class="bundle-card">
-                    <span class="bundle-badge">SAVE ₱40</span>
-                    <h3 class="bundle-name">Inasal Fiesta</h3>
-                    <div class="bundle-price">₱599</div>
-                    <ul class="bundle-items">
-                        <li>✓ 1 Whole Chicken Inasal</li>
-                        <li>✓ 1 MHC Fried Rice</li>
-                        <li>✓ FREE 1.5L Soft Drink</li>
-                    </ul>
-                    <div class="bundle-savings">You save ₱40!</div>
-                </div>
-                
-                <div class="bundle-card">
-                    <span class="bundle-badge">SAVE ₱90</span>
-                    <h3 class="bundle-name">BBQ Party Pack</h3>
-                    <div class="bundle-price">₱499</div>
-                    <ul class="bundle-items">
-                        <li>✓ 10 sticks Sangyup BBQ</li>
-                        <li>✓ 1 MHC Fried Rice</li>
-                        <li>✓ Perfect for groups!</li>
-                    </ul>
-                    <div class="bundle-savings">You save ₱90!</div>
-                </div>
-                
-                <div class="bundle-card">
-                    <span class="bundle-badge">FREE DELIVERY</span>
-                    <h3 class="bundle-name">Family Stock-Up</h3>
-                    <div class="bundle-price">₱1,299</div>
-                    <ul class="bundle-items">
-                        <li>✓ 5kg Chicken</li>
-                        <li>✓ 1 tray Brown Eggs</li>
-                        <li>✓ FREE Delivery!</li>
-                    </ul>
-                    <div class="bundle-savings">Hit FREE delivery minimum!</div>
-                </div>
+            <h2>Ready to Order?</h2>
+            <p>Experience premium quality food delivered to your doorstep</p>
+            <div class="cta-buttons">
+                <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-white">
+                    🛒 Order Online Now
+                </a>
+                <a href="tel:09674000040" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
+                    📞 Call Us Now
+                </a>
             </div>
         </div>
     </section>
-
+    
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Order Now</h2>
-            <p class="section-subtitle">Multiple ways to reach us!</p>
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Multiple ways to reach us for your convenience</p>
+            </div>
             
             <div class="contact-grid">
                 <div class="contact-info">
                     <h3>Contact Information</h3>
                     <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <strong>Location:</strong><br>
-                            Daang Luma, Brgy. Loma<br>
-                            Amadeo, Cavite
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>Daang Luma, Brgy. Loma<br>Amadeo, Cavite</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-icon">📞</span>
-                        <div>
-                            <strong>Phone:</strong><br>
-                            0967-400-0040
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Phone</h4>
+                            <p>0967-400-0040</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-icon">✉️</span>
-                        <div>
-                            <strong>Email:</strong><br>
-                            musthavecornerofficial@gmail.com
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p>musthavecornerofficial@gmail.com</p>
                         </div>
                     </div>
                     <div class="contact-item">
-                        <span class="contact-icon">⏰</span>
-                        <div>
-                            <strong>Business Hours:</strong><br>
-                            Mon-Sat: 7:00 AM - 8:00 PM<br>
-                            Sunday: 8:00 AM - 6:00 PM
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <span class="contact-icon">🚚</span>
-                        <div>
-                            <strong>Delivery:</strong><br>
-                            FREE for orders ₱1,299+<br>
-                            Regular fee: ₱50-150
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-details">
+                            <h4>Delivery Hours</h4>
+                            <p>8:00 AM - 8:00 PM Daily</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="order-form">
-                    <h3>Quick Order Form</h3>
-                    <form action="mailto:musthavecornerofficial@gmail.com" method="post" enctype="text/plain">
-                        <div class="form-group">
-                            <label>Your Name</label>
-                            <input type="text" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Contact Number</label>
-                            <input type="tel" name="phone" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Delivery Address</label>
-                            <input type="text" name="address" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Select Products</label>
-                            <select name="product" required>
-                                <option value="">Choose a product...</option>
-                                <option value="Chicken Inasal">Chicken Inasal - ₱390</option>
-                                <option value="Pork BBQ">Pork Sangyup BBQ - ₱59/stick</option>
-                                <option value="Fried Rice">MHC Fried Rice - ₱149</option>
-                                <option value="Brown Eggs">Fresh Brown Eggs</option>
-                                <option value="Whole Chicken">Whole Chicken</option>
-                                <option value="Crabs">Premium Crabs - ₱1,200/kg</option>
-                                <option value="Bundle">Bundle Deals</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Order Details</label>
-                            <textarea name="details" placeholder="Specify quantities, sizes, or any special requests..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Order</button>
-                    </form>
+                <div class="order-card">
+                    <h3>Start Your Order</h3>
+                    <p>Choose your preferred ordering method below</p>
+                    <div style="display: grid; gap: 12px;">
+                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-primary" style="width: 100%; justify-content: center;">
+                            🛒 Order Online
+                        </a>
+                        <a href="tel:09674000040" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                            📞 Call to Order
+                        </a>
+                        <a href="https://www.facebook.com/musthavecorner" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+                            💬 Message on Facebook
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Quick Links</h3>
+                    <h4>About Us</h4>
+                    <a href="#home">Our Story</a>
                     <a href="#products">Products</a>
                     <a href="#pricing">Pricing</a>
-                    <a href="#bundles">Bundles</a>
-                    <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-section">
-                    <h3>Products</h3>
-                    <a href="#products">Chicken Inasal</a>
-                    <a href="#products">Pork BBQ</a>
-                    <a href="#products">Fresh Eggs</a>
-                    <a href="#products">Whole Chicken</a>
+                    <h4>Customer Service</h4>
+                    <a href="#contact">Contact Us</a>
+                    <a href="#contact">Delivery Info</a>
+                    <a href="#pricing">Payment Methods</a>
                 </div>
                 <div class="footer-section">
-                    <h3>Connect With Us</h3>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/musthavecorner" target="_blank">f</a>
-                        <a href="tel:09674000040">📞</a>
-                        <a href="mailto:musthavecornerofficial@gmail.com">✉</a>
-                    </div>
+                    <h4>Quick Links</h4>
+                    <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec">Order Online</a>
+                    <a href="tel:09674000040">Call Us</a>
+                    <a href="https://www.facebook.com/musthavecorner" target="_blank">Facebook</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Business Hours</h4>
+                    <a>Monday - Saturday</a>
+                    <a>8:00 AM - 8:00 PM</a>
+                    <a>Sunday</a>
+                    <a>8:00 AM - 6:00 PM</a>
                 </div>
             </div>
-            <p>&copy; 2025 Must Have Corner. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Must Have Corner. All rights reserved. Premium Fresh Food Delivery in Amadeo, Cavite.</p>
+            </div>
         </div>
     </footer>
-
-    <!-- Floating Order Button -->
-    <div class="floating-order" onclick="window.location.href='tel:09674000040'">
-        📞
-    </div>
-
+    
+    <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="fab">
+        🛒
+    </a>
+    
     <script>
-        // Smooth scrolling for navigation links
+        // Update with your actual order form URL
+        const ORDER_FORM_URL = 'https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec';
+        
+        // Update all order links on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderLinks = document.querySelectorAll('a[href*="YOUR_DEPLOYMENT_ID"]');
+            orderLinks.forEach(link => {
+                link.href = ORDER_FORM_URL;
+            });
+        });
+        
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Category filter functionality
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                // Add filtering logic here if needed
-            });
-        });
-
-        // Mobile menu toggle
-        const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenu.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '60px';
-            navLinks.style.right = '20px';
-            navLinks.style.background = 'var(--primary-green)';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.padding = '20px';
-            navLinks.style.borderRadius = '10px';
-        });
-
-        // Add animation on scroll
-        window.addEventListener('scroll', function() {
-            const elements = document.querySelectorAll('.product-card, .feature-card, .bundle-card');
-            elements.forEach(element => {
-                const position = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.3;
-                
-                if(position < screenPosition) {
-                    element.style.animation = 'fadeInUp 0.5s ease';
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
                 }
             });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenu.addEventListener('click', function() {
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+            navMenu.style.position = 'absolute';
+            navMenu.style.top = '70px';
+            navMenu.style.right = '20px';
+            navMenu.style.background = 'var(--white)';
+            navMenu.style.flexDirection = 'column';
+            navMenu.style.padding = '20px';
+            navMenu.style.borderRadius = '8px';
+            navMenu.style.boxShadow = 'var(--shadow-xl)';
+            navMenu.style.border = '1px solid var(--emerald-200)';
         });
     </script>
 </body>
