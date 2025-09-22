@@ -1377,23 +1377,68 @@
     </section>
     
     <!-- Payment Methods Section -->
-    <section id="payment" class="payment-methods">
-        <div class="container">
-            <div class="section-header">
-                <h2>Payment Options</h2>
-                <p>Multiple convenient ways to pay</p>
+<section id="payment" class="payment-methods">
+    <div class="container">
+        <div class="section-header">
+            <h2>Payment Options</h2>
+            <p>Multiple convenient ways to pay</p>
+        </div>
+        
+        <div class="payment-image-container" style="text-align: center; margin-top: 40px;">
+            <!-- Option 1: Try the direct image link -->
+            <img src="https://drive.usercontent.google.com/download?id=1BJhRabv0fe2D_W_wL9WWgLJFWHWKA_Md&authuser=0" 
+                 alt="Payment Methods" 
+                 style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: var(--shadow-lg);"
+                 onerror="this.style.display='none'; document.getElementById('payment-backup').style.display='block';">
+            
+            <!-- Option 2: Backup display if image fails -->
+            <div id="payment-backup" style="display: none; max-width: 600px; margin: 0 auto; padding: 40px; background: var(--gray-50); border-radius: 12px;">
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+                    <div style="background: var(--white); padding: 24px; border-radius: 8px; text-align: center; border: 2px solid var(--emerald-200);">
+                        <div style="font-size: 48px; margin-bottom: 12px;">💵</div>
+                        <h4 style="color: var(--text-primary); font-weight: 600;">Cash on Delivery</h4>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">Pay when you receive</p>
+                    </div>
+                    <div style="background: var(--white); padding: 24px; border-radius: 8px; text-align: center; border: 2px solid var(--emerald-200);">
+                        <div style="font-size: 48px; margin-bottom: 12px;">📱</div>
+                        <h4 style="color: var(--text-primary); font-weight: 600;">GCash</h4>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">Digital payment</p>
+                    </div>
+                    <div style="background: var(--white); padding: 24px; border-radius: 8px; text-align: center; border: 2px solid var(--emerald-200);">
+                        <div style="font-size: 48px; margin-bottom: 12px;">💳</div>
+                        <h4 style="color: var(--text-primary); font-weight: 600;">PayMaya</h4>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">E-wallet payment</p>
+                    </div>
+                    <div style="background: var(--white); padding: 24px; border-radius: 8px; text-align: center; border: 2px solid var(--emerald-200);">
+                        <div style="font-size: 48px; margin-bottom: 12px;">🏦</div>
+                        <h4 style="color: var(--text-primary); font-weight: 600;">Bank Transfer</h4>
+                        <p style="color: var(--text-secondary); font-size: 14px; margin-top: 8px;">BPI Bank</p>
+                    </div>
+                </div>
             </div>
-            <div class="payment-image-container">
-                <img src="https://drive.usercontent.google.com/download?id=1BJhRabv0fe2D_W_wL9WWgLJFWHWKA_Md&authuser=0" 
-                     alt="Payment Methods" 
-                     class="payment-image">
-                <p style="margin-top: 20px; color: var(--text-secondary); font-size: 16px;">
-                    <strong>Available Payment Methods:</strong><br>
-                    Cash on Delivery • GCash • PayMaya • Bank Transfer (BPI)
+            
+            <p style="margin-top: 24px; color: var(--text-primary); font-size: 18px; font-weight: 600;">
+                Available Payment Methods:
+            </p>
+            <p style="margin-top: 8px; color: var(--text-secondary); font-size: 16px;">
+                Cash on Delivery • GCash • PayMaya • Bank Transfer (BPI)
+            </p>
+            
+            <!-- Add a call-to-action -->
+            <div style="margin-top: 32px;">
+                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 16px;">
+                    Payment details will be provided in your order confirmation email
                 </p>
+                <a href="https://script.google.com/macros/s/AKfycbz7BAjqOYBVEdyMR7jUpKbrr1pK7JJDojHCwGsgHaNU9XXzGKKBTL1Zltnf1941ZxIShQ/exec" 
+                   class="btn btn-primary" 
+                   target="_blank"
+                   style="padding: 12px 32px; font-size: 16px; display: inline-block; text-decoration: none;">
+                    Order Now →
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
     
     <!-- CTA Section -->
     <section class="cta">
