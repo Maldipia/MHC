@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base target="_top">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Must Have Corner - Order Form</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .free-delivery-banner {
+            background: #fbbf24;
+            color: #78350f;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .form-section {
+            padding: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        
+        .section-title {
+            color: #38a169;
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #48bb78;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #1a202c;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #48bb78;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(72, 187, 120, 0.1);
+        }
+        
+        .required {
+            color: #ef4444;
+        }
+        
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .product-category {
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+        
+        .category-title {
+            color: #166534;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .product-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .product-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #d4edda;
+            transition: all 0.3s;
+        }
+        
+        .product-item:hover {
+            border-color: #48bb78;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(72, 187, 120, 0.1);
+        }
+        
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-name {
+            font-weight: 600;
+            color: #1a202c;
+            font-size: 16px;
+        }
+        
+        .product-desc {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .product-price {
+            color: #38a169;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .quantity-label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
+        .time-slot-info {
+            background: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            font-size: 13px;
+            color: #92400e;
+        }
+        
+        .order-summary {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .summary-row:last-child {
+            border-bottom: none;
+            font-size: 20px;
+            font-weight: bold;
+            color: #38a169;
+            padding-top: 15px;
+        }
+        
+        .submit-section {
+            padding: 30px;
+            background: #f9fafb;
+            text-align: center;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+            color: white;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(72, 187, 120, 0.3);
+        }
+        
+        .submit-btn:disabled {
+            background: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .contact-info {
+            text-align: center;
+            color: #6b7280;
+            margin-top: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>MUST HAVE CORNER</h1>
+            <p>Fresh Food & Daily Essentials - Amadeo, Cavite</p>
+            <p style="margin-top: 10px;">0967-400-0040</p>
+        </div>
+        
+        <div class="free-delivery-banner">
+            FREE DELIVERY for orders ₱1,299 and above!
+        </div>
+        
+        <form id="orderForm" onsubmit="handleSubmit(event)">
+            <!-- STEP 1: Customer Information -->
+            <div class="form-section">
+                <h2 class="section-title">STEP 1: Customer Information</h2>
+                
+                <div class="form-group">
+                    <label for="fullName">Full Name <span class="required">*</span></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                </div>
+                
+                <div class="two-columns">
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number <span class="required">*</span></label>
+                        <input type="tel" id="contactNumber" name="contactNumber" placeholder="09XX-XXX-XXXX" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address (for receipt)</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 2: Delivery Information -->
+            <div class="form-section">
+                <h2 class="section-title">STEP 2: Delivery Information</h2>
+                
+                <div class="form-group">
+                    <label for="completeAddress">Complete Address <span class="required">*</span></label>
+                    <textarea id="completeAddress" name="completeAddress" rows="2" placeholder="House/Unit Number, Street, Landmarks..." required></textarea>
+                </div>
+                
+                <div class="two-columns">
+                    <div class="form-group">
+                        <label for="barangay">Barangay <span class="required">*</span></label>
+                        <input type="text" id="barangay" name="barangay" placeholder="e.g. Loma" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">City/Municipality <span class="required">*</span></label>
+                        <select id="city" name="city" required>
+                            <option value="">Select City</option>
+                            <option value="Amadeo">Amadeo</option>
+                            <option value="Tagaytay City">Tagaytay City</option>
+                            <option value="Mendez">Mendez</option>
+                            <option value="Indang">Indang</option>
+                            <option value="Alfonso">Alfonso</option>
+                            <option value="General Aguinaldo">General Aguinaldo</option>
+                            <option value="Silang">Silang</option>
+                            <option value="Cavite City">Cavite City</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="landmark">Landmark (Optional)</label>
+                    <input type="text" id="landmark" name="landmark" placeholder="Near... (church, school, store, etc.)">
+                </div>
+                
+                <div class="two-columns">
+                    <div class="form-group">
+                        <label for="deliveryDate">Preferred Delivery Date <span class="required">*</span></label>
+                        <input type="date" id="deliveryDate" name="deliveryDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="deliveryTimeSlot">Preferred Delivery Time <span class="required">*</span></label>
+                        <select id="deliveryTimeSlot" name="deliveryTimeSlot" required>
+                            <option value="">Select Time Slot</option>
+                            <option value="8:00 AM - 10:00 AM">8:00 AM - 10:00 AM</option>
+                            <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+                            <option value="12:00 PM - 2:00 PM">12:00 PM - 2:00 PM</option>
+                            <option value="2:00 PM - 4:00 PM">2:00 PM - 4:00 PM</option>
+                            <option value="4:00 PM - 6:00 PM">4:00 PM - 6:00 PM</option>
+                            <option value="6:00 PM - 8:00 PM">6:00 PM - 8:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="time-slot-info">
+                    <strong>Important Notes:</strong>
+                    <ul style="margin-left: 20px; margin-top: 8px;">
+                        <li><strong>Cooked items</strong> (Inasal, BBQ, Fried Rice) require <strong>3-4 hours</strong> advance order</li>
+                        <li><strong>Fresh eggs & chicken</strong> are available daily</li>
+                        <li><strong>Crabs</strong> are subject to availability</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- STEP 3: Products Section -->
+            <div class="form-section">
+                <h2 class="section-title">STEP 3: Select Your Products</h2>
+                
+                <!-- Ready to Eat -->
+                <div class="product-category">
+                    <h3 class="category-title">Ready to Eat (3-4 hrs advance order)</h3>
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Whole Chicken Inasal</div>
+                                    <div class="product-desc">Butterflied grilled chicken with special marinade</div>
+                                </div>
+                                <div class="product-price">₱390</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Quantity:</label>
+                                <input type="number" name="inasalQty" min="0" max="10" value="0">
+                                <input type="hidden" name="inasalPrice" value="390">
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Pork Sangyup BBQ</div>
+                                    <div class="product-desc">Korean-style BBQ (min. 3 sticks)</div>
+                                </div>
+                                <div class="product-price">₱59/stick</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Sticks:</label>
+                                <input type="number" name="bbqQty" min="0" max="50" value="0" step="1">
+                                <input type="hidden" name="bbqPrice" value="59">
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">MHC Fried Rice</div>
+                                    <div class="product-desc">Special fried rice (good for 2)</div>
+                                </div>
+                                <div class="product-price">₱149</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Orders:</label>
+                                <input type="number" name="friedRiceQty" min="0" max="10" value="0">
+                                <input type="hidden" name="friedRicePrice" value="149">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Fresh Eggs -->
+                <div class="product-category">
+                    <h3 class="category-title">Fresh Brown Eggs (Daily Stock)</h3>
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Brown Eggs - Dozen</div>
+                                    <div class="product-desc">12 pcs fresh eggs</div>
+                                </div>
+                                <div class="product-price">₱132-156</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Price:</label>
+                                <select name="eggsDozenPrice" style="width: 150px;">
+                                    <option value="0">Select...</option>
+                                    <option value="132">₱132 (516g)</option>
+                                    <option value="144">₱144 (600g)</option>
+                                    <option value="156">₱156 (684g)</option>
+                                </select>
+                                <label class="quantity-label" style="margin-left: 10px;">Qty:</label>
+                                <input type="number" name="eggsDozenQty" min="0" max="20" value="0" style="width: 60px;">
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Brown Eggs - Tray</div>
+                                    <div class="product-desc">30 pcs fresh eggs</div>
+                                </div>
+                                <div class="product-price">₱270-390</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Price:</label>
+                                <select name="eggsTrayPrice" style="width: 150px;">
+                                    <option value="0">Select...</option>
+                                    <option value="270">₱270 (1290g)</option>
+                                    <option value="300">₱300 (1500g)</option>
+                                    <option value="390">₱390 (2130g)</option>
+                                </select>
+                                <label class="quantity-label" style="margin-left: 10px;">Qty:</label>
+                                <input type="number" name="eggsTrayQty" min="0" max="10" value="0" style="width: 60px;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Meat & Poultry -->
+                <div class="product-category">
+                    <h3 class="category-title">Whole Chicken</h3>
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Fresh Chicken</div>
+                                    <div class="product-desc">Daily fresh whole chicken</div>
+                                </div>
+                                <div class="product-price">₱199/kg</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Kilograms:</label>
+                                <input type="number" name="freshChickenKg" min="0" max="20" value="0" step="0.5" style="width: 100px;">
+                                <input type="hidden" name="freshChickenPrice" value="199">
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Frozen Chicken</div>
+                                    <div class="product-desc">Quality frozen whole chicken</div>
+                                </div>
+                                <div class="product-price">₱179/kg</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Kilograms:</label>
+                                <input type="number" name="frozenChickenKg" min="0" max="20" value="0" step="0.5" style="width: 100px;">
+                                <input type="hidden" name="frozenChickenPrice" value="179">
+                            </div>
+                        </div>
+                        
+                        <div class="product-item">
+                            <div class="product-header">
+                                <div class="product-info">
+                                    <div class="product-name">Fresh Crabs</div>
+                                    <div class="product-desc">High-quality fresh crabs (min. 0.5kg)</div>
+                                </div>
+                                <div class="product-price">₱1,200/kg</div>
+                            </div>
+                            <div class="quantity-control">
+                                <label class="quantity-label">Kilograms:</label>
+                                <input type="number" name="crabsKg" min="0" max="5" value="0" step="0.5">
+                                <input type="hidden" name="crabsPrice" value="1200">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Items -->
+                <div class="product-category">
+                    <h3 class="category-title">Other Items</h3>
+                    <div class="product-grid">
+                        <div class="product-item">
+                            <div class="form-group">
+                                <label>Other Items (Please specify)</label>
+                                <textarea name="otherItems" rows="2" placeholder="e.g. 2kg pork, 1L cooking oil, etc."></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Estimated Price for Other Items</label>
+                                <input type="number" name="otherPrice" min="0" value="0" placeholder="₱0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <h3 style="color: #38a169; margin-bottom: 15px;">Order Summary</h3>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">₱0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery Fee:</span>
+                        <span id="deliveryFee">₱0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>TOTAL:</span>
+                        <span id="total">₱0.00</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- STEP 4: Payment Method -->
+            <div class="form-section">
+                <h2 class="section-title">STEP 4: Payment Method & Notes</h2>
+                
+                <div class="form-group">
+                    <label for="paymentMethod">Select Payment Method <span class="required">*</span></label>
+                    <select id="paymentMethod" name="paymentMethod" required>
+                        <option value="">Choose Payment Method</option>
+                        <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+                        <option value="GCash">GCash</option>
+                        <option value="Bank Transfer (BDO)">Bank Transfer (BDO)</option>
+                        <option value="Bank Transfer (BPI)">Bank Transfer (BPI)</option>
+                        <option value="PayMaya">PayMaya</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="specialRequest">Special Requests (Optional)</label>
+                    <textarea id="specialRequest" name="specialRequest" rows="3" placeholder="Any special cooking instructions or delivery notes..."></textarea>
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <div class="submit-section">
+                <button type="submit" class="submit-btn">Place Order</button>
+                <div class="contact-info">
+                    <p>Questions? Call us at <strong>0967-400-0040</strong></p>
+                    <p>or email <strong>musthavecornerofficial@gmail.com</strong></p>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        // Set minimum date to today
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const dateInput = document.getElementById('deliveryDate');
+            
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const todayFormatted = `${year}-${month}-${day}`;
+            
+            dateInput.min = todayFormatted;
+            dateInput.value = todayFormatted;
+            
+            // Calculate order total for display only
+            document.querySelectorAll('input[type="number"], select').forEach(input => {
+                input.addEventListener('change', calculateTotal);
+            });
+        });
+        
+        function calculateTotal() {
+            let subtotal = 0;
+            
+            // Ready to Eat
+            const inasalQty = document.querySelector('[name="inasalQty"]').value || 0;
+            const bbqQty = document.querySelector('[name="bbqQty"]').value || 0;
+            const friedRiceQty = document.querySelector('[name="friedRiceQty"]').value || 0;
+            
+            subtotal += inasalQty * 390;
+            subtotal += bbqQty * 59;
+            subtotal += friedRiceQty * 149;
+            
+            // Eggs
+            const dozenPrice = document.querySelector('[name="eggsDozenPrice"]').value || 0;
+            const dozenQty = document.querySelector('[name="eggsDozenQty"]').value || 0;
+            subtotal += dozenQty * parseInt(dozenPrice);
+            
+            const trayPrice = document.querySelector('[name="eggsTrayPrice"]').value || 0;
+            const trayQty = document.querySelector('[name="eggsTrayQty"]').value || 0;
+            subtotal += trayQty * parseInt(trayPrice);
+            
+            // Chicken
+            const freshKg = document.querySelector('[name="freshChickenKg"]').value || 0;
+            subtotal += freshKg * 199;
+            
+            const frozenKg = document.querySelector('[name="frozenChickenKg"]').value || 0;
+            subtotal += frozenKg * 179;
+            
+            // Crabs
+            const crabsKg = document.querySelector('[name="crabsKg"]').value || 0;
+            subtotal += crabsKg * 1200;
+            
+            // Other items
+            const otherPrice = document.querySelector('[name="otherPrice"]').value || 0;
+            subtotal += parseInt(otherPrice);
+            
+            // Calculate delivery fee for display only
+            let deliveryFee = 0;
+            if (subtotal > 0 && subtotal < 1299) {
+                deliveryFee = 100;
+            }
+            
+            // Update display only - these values are NOT sent to spreadsheet
+            document.getElementById('subtotal').textContent = '₱' + subtotal.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('deliveryFee').textContent = deliveryFee > 0 ? '₱' + deliveryFee.toFixed(2) : 'FREE';
+            document.getElementById('total').textContent = '₱' + (subtotal + deliveryFee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+        
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const orderData = {};
+            
+            // Only collect form field data - NO calculated values
+            for (let [key, value] of formData.entries()) {
+                orderData[key] = value;
+            }
+            
+            // Add delivery date/time
+            const deliveryDate = document.getElementById('deliveryDate').value;
+            const deliveryTimeSlot = document.getElementById('deliveryTimeSlot').value;
+            orderData.deliveryDateTime = `${deliveryDate} ${deliveryTimeSlot}`;
+            
+            // DO NOT send any calculated totals - spreadsheet columns AC/AF will be empty
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Processing Order...';
+            
+            google.script.run
+                .withSuccessHandler(onSuccess)
+                .withFailureHandler(onFailure)
+                .processOrder(orderData);
+        }
+        
+        function onSuccess(result) {
+            if (result.success) {
+                const message = `Order placed successfully!\n\n` +
+                               `Order Number: ${result.orderNumber}\n\n` +
+                               `We will contact you soon to confirm your order.\n` +
+                               `Final pricing will be confirmed before delivery.`;
+                
+                alert(message);
+                
+                document.getElementById('orderForm').reset();
+                calculateTotal();
+            } else {
+                alert('Error placing order: ' + result.error);
+            }
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Place Order';
+        }
+        
+        function onFailure(error) {
+            alert('Error placing order: ' + error.message);
+            
+            const submitBtn = document.querySelector('.submit-btn');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Place Order';
+        }
+    </script>
+</body>
+</html>
