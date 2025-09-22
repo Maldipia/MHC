@@ -4,7 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Must Have Corner - Premium Fresh Food Delivery | Amadeo, Cavite</title>
-    <meta name="description" content="Must Have Corner - Premium quality fresh food and daily essentials. Free delivery for orders ₱1,299+. Serving Amadeo, Cavite.">
+    <meta name="description" content="Must Have Corner - Premium quality fresh food and daily essentials. Free delivery for orders ₱1,299+. Chicken Inasal, Fresh Eggs, BBQ, and more!">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Must Have Corner - Premium Fresh Food Delivery | Amadeo, Cavite">
+    <meta property="og:description" content="Premium quality fresh food and daily essentials. Free delivery for orders ₱1,299+. Chicken Inasal, Fresh Eggs, BBQ, and more!">
+    <meta property="og:image" content="https://www.musthavecorner.com/MHCinasal.jpg">
+    <meta property="og:url" content="https://www.musthavecorner.com">
+    <meta property="og:type" content="website">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="keywords" content="Must Have Corner, Amadeo Cavite, food delivery, chicken inasal, fresh eggs, BBQ, fried rice, fresh chicken">
+    <meta name="author" content="Must Have Corner">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
     <style>
         * {
             margin: 0;
@@ -296,10 +309,41 @@
             line-height: 1.5;
         }
         
-        /* Products Section - FIXED PORTRAIT LAYOUT */
+        /* How to Order Section */
+        .how-to-order {
+            padding: 60px 0;
+            background: var(--gray-50);
+        }
+        
+        .order-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
+        .step-card {
+            text-align: center;
+        }
+        
+        .step-number {
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0 auto 16px;
+        }
+        
+        /* Products Section */
         .products {
             padding: 80px 0;
-            background: var(--gray-50);
+            background: var(--white);
         }
         
         .section-header {
@@ -420,7 +464,7 @@
         /* Pricing Section */
         .pricing {
             padding: 80px 0;
-            background: var(--white);
+            background: var(--gray-50);
         }
         
         .pricing-tables {
@@ -473,6 +517,24 @@
             color: var(--emerald-600);
             font-weight: 700;
             font-size: 16px;
+        }
+        
+        /* Payment Methods Section */
+        .payment-methods {
+            padding: 60px 0;
+            background: var(--white);
+        }
+        
+        .payment-image-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .payment-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
         }
         
         /* CTA Section */
@@ -724,7 +786,7 @@
             transform: none;
         }
         
-        /* Enhanced Footer */
+        /* Footer */
         footer {
             background: var(--emerald-900);
             color: var(--white);
@@ -763,6 +825,34 @@
         .footer-logo p {
             font-size: 14px;
             opacity: 0.9;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 32px;
+        }
+        
+        .footer-section h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            color: var(--emerald-300);
+        }
+        
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 2;
+            display: block;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+        
+        .footer-section a:hover {
+            opacity: 1;
         }
         
         .business-hours {
@@ -860,11 +950,11 @@
                 font-size: 32px;
             }
             
-            .features-grid {
+            .features-grid,
+            .order-steps {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            /* Mobile: Still maintain 2 columns but adjust image height */
             .products-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 16px;
@@ -913,7 +1003,11 @@
         }
         
         @media (max-width: 480px) {
-            /* Very small screens: Maintain 2 columns but smaller text */
+            .features-grid,
+            .order-steps {
+                grid-template-columns: 1fr;
+            }
+            
             .product-image {
                 height: 200px;
             }
@@ -978,9 +1072,10 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#products">Products</a></li>
                     <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#payment">Payment</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li>
-                        <a href="https://www.musthavecorner.com/order.html" class="order-btn">
+                        <a href="https://script.google.com/macros/s/AKfycbwJ8gCRSHbdBjCVXkhRc5MYXPK2qBt-Cku2Cv1_iSuIZD6WUZ-mStpTf5AiyVA1fYb-bg/exec" class="order-btn" target="_blank">
                             Order Online
                         </a>
                     </li>
@@ -1003,7 +1098,7 @@
                     <h1 style="text-shadow: 2px 2px 4px rgba(255,255,255,0.9);">Premium <span class="highlight">Fresh Food</span> Delivered Daily</h1>
                     <p style="text-shadow: 1px 1px 3px rgba(255,255,255,0.9);">Experience the finest quality meats, fresh eggs, and ready-to-eat meals delivered straight to your doorstep in Amadeo, Cavite.</p>
                     <div class="hero-buttons">
-                        <a href="https://www.musthavecorner.com/order.html" class="btn btn-primary">
+                        <a href="https://script.google.com/macros/s/AKfycbwJ8gCRSHbdBjCVXkhRc5MYXPK2qBt-Cku2Cv1_iSuIZD6WUZ-mStpTf5AiyVA1fYb-bg/exec" class="btn btn-primary" target="_blank">
                             🛒 Order Online Now
                         </a>
                         <a href="tel:09674000040" class="btn btn-secondary">
@@ -1043,7 +1138,36 @@
         </div>
     </section>
     
-    <!-- Products Section with Fixed Portrait Layout -->
+    <!-- How to Order Section -->
+    <section class="how-to-order">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; font-weight: 800; color: var(--text-primary);">How to Order</h2>
+            <div class="order-steps">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Choose Products</h4>
+                    <p style="font-size: 14px; color: var(--text-secondary);">Select from our fresh products</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Place Order</h4>
+                    <p style="font-size: 14px; color: var(--text-secondary);">3-4 hours advance for cooked items</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Receive Confirmation</h4>
+                    <p style="font-size: 14px; color: var(--text-secondary);">Get invoice via email</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Delivery</h4>
+                    <p style="font-size: 14px; color: var(--text-secondary);">Fresh to your doorstep</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
             <div class="section-header">
@@ -1252,13 +1376,32 @@
         </div>
     </section>
     
+    <!-- Payment Methods Section -->
+    <section id="payment" class="payment-methods">
+        <div class="container">
+            <div class="section-header">
+                <h2>Payment Options</h2>
+                <p>Multiple convenient ways to pay</p>
+            </div>
+            <div class="payment-image-container">
+                <img src="https://drive.usercontent.google.com/download?id=1BJhRabv0fe2D_W_wL9WWgLJFWHWKA_Md&authuser=0" 
+                     alt="Payment Methods" 
+                     class="payment-image">
+                <p style="margin-top: 20px; color: var(--text-secondary); font-size: 16px;">
+                    <strong>Available Payment Methods:</strong><br>
+                    Cash on Delivery • GCash • PayMaya • Bank Transfer (BPI)
+                </p>
+            </div>
+        </div>
+    </section>
+    
     <!-- CTA Section -->
     <section class="cta">
         <div class="container">
             <h2>Ready to Order?</h2>
             <p>Experience premium quality food delivered to your doorstep</p>
             <div class="cta-buttons">
-                <a href="https://www.musthavecorner.com/order.html" class="btn btn-white">
+                <a href="https://script.google.com/macros/s/AKfycbwJ8gCRSHbdBjCVXkhRc5MYXPK2qBt-Cku2Cv1_iSuIZD6WUZ-mStpTf5AiyVA1fYb-bg/exec" class="btn btn-white" target="_blank">
                     🛒 Order Online Now
                 </a>
                 <a href="tel:09674000040" class="btn btn-secondary" style="background: transparent; color: white; border: 2px solid white;">
@@ -1313,7 +1456,7 @@
                     <h3>Start Your Order</h3>
                     <p>Experience premium fresh food delivered to your doorstep</p>
                     <div style="display: grid; gap: 12px;">
-                        <a href="https://www.musthavecorner.com/order.html" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px 32px; font-size: 18px;">
+                        <a href="https://script.google.com/macros/s/AKfycbwJ8gCRSHbdBjCVXkhRc5MYXPK2qBt-Cku2Cv1_iSuIZD6WUZ-mStpTf5AiyVA1fYb-bg/exec" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px 32px; font-size: 18px;" target="_blank">
                             🛒 ORDER NOW
                         </a>
                     </div>
@@ -1322,7 +1465,7 @@
         </div>
     </section>
     
-    <!-- Our Business Network Section -->
+    <!-- Business Network Section -->
     <section class="business-network">
         <div class="container">
             <div class="network-header">
@@ -1331,7 +1474,6 @@
             </div>
             
             <div class="business-grid">
-                <!-- TYG Services -->
                 <div class="business-card">
                     <div class="business-icon">🔧</div>
                     <h3>TYG Services</h3>
@@ -1342,7 +1484,6 @@
                     </a>
                 </div>
                 
-                <!-- Luntian -->
                 <div class="business-card">
                     <div class="business-icon">🏡</div>
                     <h3>Luntian</h3>
@@ -1353,7 +1494,6 @@
                     </a>
                 </div>
                 
-                <!-- Sole Blessing -->
                 <div class="business-card">
                     <div class="business-icon">👟</div>
                     <h3>Sole Blessing</h3>
@@ -1364,7 +1504,6 @@
                     </a>
                 </div>
                 
-                <!-- The Gold Blessing -->
                 <div class="business-card">
                     <div class="business-icon">💎</div>
                     <h3>The Gold Blessing</h3>
@@ -1375,7 +1514,6 @@
                     </a>
                 </div>
                 
-                <!-- Must Have Corner (Current) -->
                 <div class="business-card current-business">
                     <div class="business-icon">🛒</div>
                     <h3>Must Have Corner</h3>
@@ -1386,7 +1524,6 @@
                     </a>
                 </div>
                 
-                <!-- Aster -->
                 <div class="business-card">
                     <div class="business-icon">👗</div>
                     <h3>Aster</h3>
@@ -1400,7 +1537,7 @@
         </div>
     </section>
 
-    <!-- Enhanced Footer with Cross-Links -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-top">
@@ -1415,51 +1552,46 @@
                 </div>
             </div>
             
-            <div class="footer-content" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 48px; margin-bottom: 32px;">
-                <!-- Column 1: Must Have Corner -->
+            <div class="footer-content">
                 <div class="footer-section">
-                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--emerald-300);">Must Have Corner</h4>
-                    <a href="#home" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">About Us</a>
-                    <a href="#products" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Our Products</a>
-                    <a href="#pricing" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Pricing</a>
-                    <a href="#contact" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Contact</a>
-                    <a href="https://www.musthavecorner.com/order.html" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Order Online</a>
+                    <h4>Must Have Corner</h4>
+                    <a href="#home">About Us</a>
+                    <a href="#products">Our Products</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#payment">Payment Methods</a>
+                    <a href="#contact">Contact</a>
+                    <a href="https://script.google.com/macros/s/AKfycbwJ8gCRSHbdBjCVXkhRc5MYXPK2qBt-Cku2Cv1_iSuIZD6WUZ-mStpTf5AiyVA1fYb-bg/exec" target="_blank">Order Online</a>
                 </div>
                 
-                <!-- Column 2: OUR OTHER VENTURES (CROSS-LINKS) -->
                 <div class="footer-section">
-                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--emerald-300);">Our Other Ventures</h4>
-                    <a href="https://tyg-services.com" target="_blank" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">TYG Services - Automation</a>
-                    <a href="https://luntian.net" target="_blank" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Luntian - Accommodation</a>
-                    <a href="https://soleblessing.com" target="_blank" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Sole Blessing - Sneakers</a>
-                    <a href="#" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">The Gold Blessing - Jewelry</a>
-                    <a href="#" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Aster - Premium Apparels</a>
+                    <h4>Our Other Ventures</h4>
+                    <a href="https://tyg-services.com" target="_blank">TYG Services - Automation</a>
+                    <a href="https://luntian.net" target="_blank">Luntian - Accommodation</a>
+                    <a href="https://soleblessing.com" target="_blank">Sole Blessing - Sneakers</a>
+                    <a href="#">The Gold Blessing - Jewelry</a>
+                    <a href="#">Aster - Premium Apparels</a>
                 </div>
                 
-                <!-- Column 3: Customer Service -->
                 <div class="footer-section">
-                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--emerald-300);">Customer Service</h4>
-                    <a href="#contact" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Contact Information</a>
-                    <a href="#contact" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Delivery Areas</a>
-                    <a href="#pricing" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Payment Methods</a>
-                    <a href="tel:09674000040" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">📞 0967-400-0040</a>
-                    <a href="mailto:musthavecornerofficial@gmail.com" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">✉️ Email Us</a>
+                    <h4>Customer Service</h4>
+                    <a href="#contact">Contact Information</a>
+                    <a href="#contact">Delivery Areas</a>
+                    <a href="#payment">Payment Methods</a>
+                    <a href="tel:09674000040">📞 0967-400-0040</a>
+                    <a href="mailto:musthavecornerofficial@gmail.com">✉️ Email Us</a>
                 </div>
                 
-                <!-- Column 4: Connect With Us -->
                 <div class="footer-section">
-                    <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 16px; color: var(--emerald-300);">Connect With Us</h4>
-                    <a href="https://www.facebook.com/musthavecorner" target="_blank" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Facebook - MHC</a>
-                    <a href="#" style="color: var(--white); text-decoration: none; font-size: 14px; line-height: 2; display: block; opacity: 0.9;">Instagram - Coming Soon</a>
+                    <h4>Connect With Us</h4>
+                    <a href="https://www.facebook.com/musthavecorner" target="_blank">Facebook - MHC</a>
+                    <a href="#">Instagram - Coming Soon</a>
                     <div class="business-hours">
-                        <p style="font-size: 14px; line-height: 1.8; margin: 0;"><strong style="color: var(--emerald-300);">Delivery Hours:</strong></p>
-                        <p style="font-size: 14px; line-height: 1.8; margin: 0;">Mon-Sat: 8:00 AM - 8:00 PM</p>
-                        <p style="font-size: 14px; line-height: 1.8; margin: 0;">Sunday: 8:00 AM - 6:00 PM</p>
+                        <p><strong>Delivery Hours:</strong></p>
+                        <p>Monday-Sunday: 8:00 AM - 8:00 PM</p>
                     </div>
                 </div>
             </div>
             
-            <!-- Footer Bottom with Quick Links -->
             <div class="footer-bottom">
                 <p>&copy; 2025 Must Have Corner | Part of Our Business Network | Premium Fresh Food Delivery in Amadeo, Cavite</p>
                 <div class="footer-links">
@@ -1473,7 +1605,7 @@
         </div>
     </footer>
     
-    <a href="https://www.musthavecorner.com/order.html" class="fab">
+    <a href="https://script.google.com/macros/s/AKfycbwJ8gCRSHbdBjCVXkhRc5MYXPK2qBt-Cku2Cv1_iSuIZD6WUZ-mStpTf5AiyVA1fYb-bg/exec" class="fab" target="_blank">
         🛒
     </a>
     
@@ -1497,16 +1629,22 @@
         const navMenu = document.querySelector('.nav-menu');
         
         mobileMenu.addEventListener('click', function() {
-            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-            navMenu.style.position = 'absolute';
-            navMenu.style.top = '70px';
-            navMenu.style.right = '20px';
-            navMenu.style.background = 'var(--white)';
-            navMenu.style.flexDirection = 'column';
-            navMenu.style.padding = '20px';
-            navMenu.style.borderRadius = '8px';
-            navMenu.style.boxShadow = 'var(--shadow-xl)';
-            navMenu.style.border = '1px solid var(--emerald-200)';
+            if (navMenu.style.display === 'flex') {
+                navMenu.style.display = 'none';
+            } else {
+                navMenu.style.display = 'flex';
+                navMenu.style.position = 'fixed';
+                navMenu.style.top = '70px';
+                navMenu.style.right = '20px';
+                navMenu.style.left = '20px';
+                navMenu.style.background = 'var(--white)';
+                navMenu.style.flexDirection = 'column';
+                navMenu.style.padding = '20px';
+                navMenu.style.borderRadius = '8px';
+                navMenu.style.boxShadow = 'var(--shadow-xl)';
+                navMenu.style.border = '1px solid var(--emerald-200)';
+                navMenu.style.zIndex = '1001';
+            }
         });
     </script>
 </body>
