@@ -296,7 +296,7 @@
             line-height: 1.5;
         }
         
-        /* Products Section */
+        /* Products Section - FIXED PORTRAIT LAYOUT */
         .products {
             padding: 80px 0;
             background: var(--gray-50);
@@ -322,7 +322,7 @@
         .products-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
+            gap: 32px;
         }
         
         .product-card {
@@ -331,6 +331,8 @@
             overflow: hidden;
             transition: all 0.3s;
             border: 1px solid var(--gray-200);
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
@@ -339,8 +341,9 @@
         }
         
         .product-image {
-            height: 200px;
-            background-size: contain;
+            height: 320px;
+            width: 100%;
+            background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-color: #f8f8f8;
@@ -348,10 +351,23 @@
             align-items: center;
             justify-content: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            width: auto;
+            height: auto;
         }
         
         .product-info {
             padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-category {
@@ -364,27 +380,30 @@
         }
         
         .product-name {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         
         .product-description {
             color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.5;
-            margin-bottom: 16px;
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            flex: 1;
         }
         
         .product-footer {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--gray-100);
         }
         
         .product-price {
-            font-size: 24px;
+            font-size: 26px;
             font-weight: 700;
             color: var(--emerald-600);
         }
@@ -392,7 +411,7 @@
         .product-badge {
             background: var(--emerald-100);
             color: var(--emerald-700);
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
@@ -666,8 +685,30 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
+            /* Mobile: Still maintain 2 columns but adjust image height */
             .products-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            
+            .product-image {
+                height: 240px;
+            }
+            
+            .product-info {
+                padding: 16px;
+            }
+            
+            .product-name {
+                font-size: 16px;
+            }
+            
+            .product-description {
+                font-size: 13px;
+            }
+            
+            .product-price {
+                font-size: 20px;
             }
             
             .pricing-tables {
@@ -680,6 +721,31 @@
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Very small screens: Maintain 2 columns but smaller text */
+            .product-image {
+                height: 200px;
+            }
+            
+            .product-name {
+                font-size: 14px;
+            }
+            
+            .product-description {
+                font-size: 12px;
+                margin-bottom: 12px;
+            }
+            
+            .product-price {
+                font-size: 18px;
+            }
+            
+            .product-badge {
+                font-size: 10px;
+                padding: 4px 8px;
             }
         }
     </style>
@@ -772,7 +838,7 @@
         </div>
     </section>
     
-    <!-- Products Section -->
+    <!-- Products Section with Fixed Portrait Layout -->
     <section id="products" class="products">
         <div class="container">
             <div class="section-header">
@@ -786,7 +852,7 @@
                     <div class="product-info">
                         <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">Chicken Inasal</h3>
-                        <p class="product-description">Perfectly grilled butterflied chicken</p>
+                        <p class="product-description">Perfectly grilled butterflied chicken marinated in traditional Filipino spices</p>
                         <div class="product-footer">
                             <span class="product-price">₱390</span>
                             <span class="product-badge">3-4 hrs advance</span>
@@ -799,7 +865,7 @@
                     <div class="product-info">
                         <div class="product-category">Ready to Eat</div>
                         <h3 class="product-name">Pork Samgyup BBQ</h3>
-                        <p class="product-description">Korean-style BBQ. Min. 3 sticks</p>
+                        <p class="product-description">Korean-style BBQ grilled to perfection. Minimum order: 3 sticks</p>
                         <div class="product-footer">
                             <span class="product-price">₱59/stick</span>
                             <span class="product-badge">3-4 hrs advance</span>
@@ -811,8 +877,8 @@
                     <div class="product-image" style="background-image: url('MHCspecialfriedrice.jpg'); background-size: cover; background-position: center;"></div>
                     <div class="product-info">
                         <div class="product-category">Ready to Eat</div>
-                        <h3 class="product-name">MHC Fried Rice</h3>
-                        <p class="product-description">Special fried rice for 2</p>
+                        <h3 class="product-name">MHC Special Fried Rice</h3>
+                        <p class="product-description">Savory fried rice with premium ingredients. Good for 2 persons</p>
                         <div class="product-footer">
                             <span class="product-price">₱149</span>
                             <span class="product-badge">3-4 hrs advance</span>
@@ -821,13 +887,11 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; padding: 20px;">
-                        <img src="eggsx12.JPG" style="max-width: 80%; max-height: 160px; object-fit: contain;">
-                    </div>
+                    <div class="product-image" style="background-image: url('eggsx12.JPG'); background-size: cover; background-position: center;"></div>
                     <div class="product-info">
                         <div class="product-category">Fresh Daily</div>
                         <h3 class="product-name">Brown Eggs (Dozen)</h3>
-                        <p class="product-description">Farm-fresh, 12 pieces</p>
+                        <p class="product-description">Farm-fresh brown eggs, 12 pieces per pack. Multiple size options available</p>
                         <div class="product-footer">
                             <span class="product-price">₱132-156</span>
                             <span class="product-badge">Daily Stock</span>
@@ -836,13 +900,11 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; padding: 20px;">
-                        <img src="eggsx30.JPG" style="max-width: 80%; max-height: 160px; object-fit: contain;">
-                    </div>
+                    <div class="product-image" style="background-image: url('eggsx30.JPG'); background-size: cover; background-position: center;"></div>
                     <div class="product-info">
                         <div class="product-category">Fresh Daily</div>
                         <h3 class="product-name">Brown Eggs (Tray)</h3>
-                        <p class="product-description">Farm-fresh, 30 pieces</p>
+                        <p class="product-description">Farm-fresh brown eggs, 30 pieces per tray. Perfect for families</p>
                         <div class="product-footer">
                             <span class="product-price">₱270-390</span>
                             <span class="product-badge">Daily Stock</span>
@@ -851,13 +913,11 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; padding: 20px;">
-                        <img src="Fresh & Frozen whole Chicken.JPG" style="max-width: 80%; max-height: 160px; object-fit: contain;">
-                    </div>
+                    <div class="product-image" style="background-image: url('Fresh & Frozen whole Chicken.JPG'); background-size: cover; background-position: center;"></div>
                     <div class="product-info">
                         <div class="product-category">Fresh & Frozen</div>
                         <h3 class="product-name">Whole Chicken</h3>
-                        <p class="product-description">Fresh ₱199/kg | Frozen ₱179/kg</p>
+                        <p class="product-description">Available fresh (₱199/kg) or frozen (₱179/kg). Premium quality guaranteed</p>
                         <div class="product-footer">
                             <span class="product-price">₱179-199/kg</span>
                             <span class="product-badge">Daily Stock</span>
@@ -866,16 +926,32 @@
                 </div>
                 
                 <div class="product-card">
-                    <div class="product-image" style="background-color: #f8f8f8; display: flex; align-items: center; justify-content: center; padding: 20px;">
-                        <img src="MHCfreshCrabs.JPG" style="max-width: 80%; max-height: 160px; object-fit: contain;">
-                    </div>
+                    <div class="product-image" style="background-image: url('MHCfreshCrabs.JPG'); background-size: cover; background-position: center;"></div>
                     <div class="product-info">
-                        <div class="product-category">Premium</div>
+                        <div class="product-category">Premium Seafood</div>
                         <h3 class="product-name">Fresh Crabs</h3>
-                        <p class="product-description">Min. order 0.5kg</p>
+                        <p class="product-description">Premium quality fresh crabs. Minimum order: 0.5kg</p>
                         <div class="product-footer">
                             <span class="product-price">₱1,200/kg</span>
                             <span class="product-badge">By Request</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image" style="background-color: #f8f8f8; display: flex; align-items: center; justify-content: center;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 48px; margin-bottom: 10px;">📦</div>
+                            <p style="color: var(--text-secondary); font-size: 14px;">More Products Coming Soon!</p>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Coming Soon</div>
+                        <h3 class="product-name">More Premium Items</h3>
+                        <p class="product-description">We're constantly adding new products to serve you better. Stay tuned!</p>
+                        <div class="product-footer">
+                            <span class="product-price">Contact Us</span>
+                            <span class="product-badge">Updates Soon</span>
                         </div>
                     </div>
                 </div>
