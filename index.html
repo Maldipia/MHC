@@ -587,47 +587,226 @@
             margin-bottom: 24px;
         }
         
-        /* Footer */
+        /* Business Network Section */
+        .business-network {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--white) 100%);
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .network-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .network-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+        
+        .network-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+        
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        
+        .business-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--emerald-600);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        
+        .business-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--emerald-200);
+        }
+        
+        .business-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .current-business {
+            background: var(--emerald-50);
+            border-color: var(--emerald-300);
+        }
+        
+        .business-icon {
+            font-size: 36px;
+            margin-bottom: 16px;
+            display: inline-block;
+            background: var(--emerald-100);
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        
+        .current-business .business-icon {
+            background: var(--emerald-600);
+            color: var(--white);
+        }
+        
+        .business-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        
+        .business-card p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        
+        .business-tag {
+            display: inline-block;
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .business-link {
+            color: var(--emerald-600);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .business-link:hover {
+            color: var(--emerald-700);
+            transform: translateX(2px);
+        }
+        
+        .business-link.coming-soon {
+            color: var(--text-light);
+            font-style: italic;
+            cursor: default;
+        }
+        
+        .business-link.coming-soon:hover {
+            transform: none;
+        }
+        
+        /* Enhanced Footer */
         footer {
             background: var(--emerald-900);
             color: var(--white);
-            padding: 48px 0 24px;
+            padding: 64px 0 24px;
         }
         
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 48px;
-            margin-bottom: 32px;
+        .footer-top {
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--emerald-800);
+            margin-bottom: 48px;
         }
         
-        .footer-section h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 16px;
+        .footer-brand {
+            text-align: center;
+        }
+        
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+        }
+        
+        .footer-logo .logo-icon {
+            background: var(--emerald-700);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 24px;
+        }
+        
+        .footer-logo h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        
+        .footer-logo p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .business-hours {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--emerald-800);
+        }
+        
+        .business-hours p {
+            font-size: 14px;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .business-hours strong {
             color: var(--emerald-300);
         }
         
-        .footer-section a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 14px;
-            line-height: 2;
-            display: block;
-            opacity: 0.9;
-            transition: opacity 0.2s;
-        }
-        
-        .footer-section a:hover {
-            opacity: 1;
-        }
-        
         .footer-bottom {
-            padding-top: 24px;
+            padding-top: 32px;
             border-top: 1px solid var(--emerald-800);
             text-align: center;
+        }
+        
+        .footer-bottom p {
             font-size: 14px;
             opacity: 0.9;
+            margin-bottom: 12px;
+        }
+        
+        .footer-links {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+        
+        .footer-links a {
+            color: var(--emerald-300);
+            text-decoration: none;
+            transition: color 0.2s;
+            padding: 0 4px;
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
         }
         
         /* Floating Action Button */
@@ -719,8 +898,17 @@
                 grid-template-columns: 1fr;
             }
             
+            .business-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-logo {
+                flex-direction: column;
+                text-align: center;
             }
         }
         
@@ -746,6 +934,23 @@
             .product-badge {
                 font-size: 10px;
                 padding: 4px 8px;
+            }
+            
+            .business-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+            
+            .network-header h2 {
+                font-size: 28px;
+            }
+            
+            .network-header p {
+                font-size: 16px;
             }
         }
     </style>
@@ -1094,16 +1299,10 @@
                 
                 <div class="order-card">
                     <h3>Start Your Order</h3>
-                    <p>Choose your preferred ordering method below</p>
+                    <p>Experience premium fresh food delivered to your doorstep</p>
                     <div style="display: grid; gap: 12px;">
-                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-primary" style="width: 100%; justify-content: center;">
-                            🛒 Order Online
-                        </a>
-                        <a href="tel:09674000040" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-                            📞 Call to Order
-                        </a>
-                        <a href="https://www.facebook.com/musthavecorner" target="_blank" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-                            💬 Message on Facebook
+                        <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec" class="btn btn-primary" style="width: 100%; justify-content: center; padding: 18px 32px; font-size: 18px;">
+                            🛒 ORDER NOW
                         </a>
                     </div>
                 </div>
@@ -1111,33 +1310,7 @@
         </div>
     </section>
     
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>About Us</h4>
-                    <a href="#home">Our Story</a>
-                    <a href="#products">Products</a>
-                    <a href="#pricing">Pricing</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Customer Service</h4>
-                    <a href="#contact">Contact Us</a>
-                    <a href="#contact">Delivery Info</a>
-                    <a href="#pricing">Payment Methods</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <a href="https://script.google.com/macros/s/AKfycbzm-UxiY0goUuL7IEBbw7PmswiG5eqepQlbBi_JtH4HrxhhHmVLMVTOOvnk5YMsW7mMOw/exec">Order Online</a>
-                    <a href="tel:09674000040">Call Us</a>
-                    <a href="https://www.facebook.com/musthavecorner" target="_blank">Facebook</a>
-                </div>
-                <div class="footer-section">
-                    <h4>Business Hours</h4>
-                    <a>Monday - Saturday</a>
-                    <a>8:00 AM - 8:00 PM</a>
-                    <a>Sunday</a>
+</a>
                     <a>8:00 AM - 6:00 PM</a>
                 </div>
             </div>
