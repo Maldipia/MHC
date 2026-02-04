@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A Must-Have AirBNB Starter Kit — Free 1-hour in-person workshop for Airbnb & staycation hosts." />
+  <title>A Must-Have AirBNB Starter Kit — Free Workshop</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#0f1733;
+      --text:#e9ecf5;
+      --muted:#aab2d5;
+      --line:rgba(255,255,255,.10);
+      --brand:#7c5cff;
+      --brand2:#2ee6a6;
+      --danger:#ff5c7a;
+      --shadow: 0 12px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --max: 420px;
+    }
+
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 400px at 10% -10%, rgba(124,92,255,.35), transparent 60%),
+        radial-gradient(700px 350px at 90% 10%, rgba(46,230,166,.18), transparent 55%),
+        radial-gradient(900px 450px at 50% 110%, rgba(255,92,122,.10), transparent 60%),
+        var(--bg);
+      line-height:1.35;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    a{color:inherit;}
+
+    .wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 14px 110px;
+    }
+
+    /* Sticky top CTA (mobile-first) */
+    .topbar{
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,16,32,.65);
+      border-bottom: 1px solid var(--line);
+    }
+    .topbar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 10px 14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+    }
+    .badge{
+      font-size:12px;
+      color:var(--muted);
+      border:1px solid var(--line);
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.03);
+      white-space:nowrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      font-weight:700;
+      border-radius:999px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(46,230,166,1));
+      color:#081025;
+      box-shadow: 0 10px 24px rgba(124,92,255,.22);
+      text-decoration:none;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn:active{transform: translateY(1px);}
+
+    .btn.secondary{
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border: 1px solid var(--line);
+      box-shadow:none;
+    }
+
+    /* Sections */
+    section{margin: 14px 0;}
+
+    .card{
+      background: rgba(15,23,51,.75);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero{
+      position: relative;
+      padding: 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    /* Premium landscape hero */
+    .hero-premium{
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.18fr .82fr;
+      min-height: 280px;
+      background:
+        radial-gradient(900px 340px at 15% 10%, rgba(124,92,255,.42), transparent 60%),
+        radial-gradient(700px 300px at 92% 70%, rgba(46,230,166,.18), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+    }
+
+    .hero-premium:before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(420px 180px at 25% 30%, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(520px 220px at 70% 80%, rgba(255,255,255,.05), transparent 65%);
+      pointer-events:none;
+    }
+
+    .hero-left{
+      position: relative;
+      padding: 22px 20px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .hero-right{
+      position: relative;
+      border-left: 1px solid var(--line);
+      background:
+        linear-gradient(160deg, rgba(124,92,255,.20), rgba(46,230,166,.14));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+    }
+
+    .hero-right-inner{
+      width: 100%;
+      max-width: 230px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .hero-mini{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.30);
+      padding: 12px;
+      box-shadow: 0 18px 44px rgba(0,0,0,.25);
+    }
+
+    .mini-title{
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+    }
+
+    .mini-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .mini-list li{margin: 10px 0; display:flex; gap:10px; align-items:flex-start;}
+
+    .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      margin-top: 6px;
+      background: rgba(46,230,166,.95);
+      box-shadow: 0 0 0 4px rgba(46,230,166,.14);
+      flex: 0 0 8px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 4px;
+    }
+
+    .hero-actions .btn{padding: 12px 16px;}
+
+    .subtle-tag{
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      white-space:nowrap;
+    }
+
+    .scrollhint{
+      margin-top: 4px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 420px){
+      .hero-premium{grid-template-columns: 1fr;}
+      .hero-right{display:none;}
+      .hero-left{padding: 22px 18px;}
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      font-size:12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 6px 10px;
+      border-radius: 999px;
+      width: fit-content;
+    }
+
+    h1{
+      margin: 12px 0 8px;
+      font-size: 28px;
+      line-height:1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .sub{
+      margin:0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .stack{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top: 12px;
+    }
+
+    .pill{
+      font-size:12px;
+      padding:8px 10px;
+      border-radius:999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+
+    .pill.free{border-color: rgba(46,230,166,.35);}
+    .pill.limit{border-color: rgba(255,92,122,.35);}
+
+    .lead{
+      margin: 12px 0 0;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .divider{
+      height:1px;
+      background: var(--line);
+      margin: 14px 0;
+    }
+
+    .h2{
+      font-size:16px;
+      margin:0 0 10px;
+      letter-spacing:-0.01em;
+    }
+
+    .p{
+      margin: 0;
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    .p.muted{color:var(--muted);}
+
+    /* Premium section styling */
+    .section-head{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .eyebrow{
+      width: fit-content;
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .section-title{
+      margin: 0;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+
+    .section-sub{
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .feature-grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .feature{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(11,16,32,.22);
+      padding: 12px;
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+    }
+
+    .feature .ficon{
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.12), transparent 60%),
+        rgba(255,255,255,.05);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      color: var(--text);
+      flex: 0 0 36px;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+    }
+
+    .feature .ftext{min-width:0;}
+
+    .feature .ftitle{
+      margin: 0;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .feature .fdesc{
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    .soft-bar{
+      margin-top: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(46,230,166,.20);
+      background: rgba(46,230,166,.08);
+      padding: 12px;
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+    }
+
+    .soft-bar .spark{
+      width: 34px;
+      height: 34px;
+      border-radius: 14px;
+      background: rgba(46,230,166,.14);
+      border: 1px solid rgba(46,230,166,.22);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      flex: 0 0 34px;
+    }
+
+    .soft-bar p{margin:0; font-size: 13px; color: var(--text);}
+
+    @media (min-width: 768px){
+      .feature-grid{grid-template-columns: 1fr 1fr;}
+    }
+
+    ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--text);
+      font-size: 14px;
+    }
+    li{margin: 8px 0;}
+
+    .checklist{
+      list-style: none;
+      padding-left: 0;
+      margin: 10px 0 0;
+    }
+    .checklist li{
+      display:flex;
+      gap:10px;
+      margin: 10px 0;
+      align-items:flex-start;
+    }
+    .icon{
+      flex: 0 0 20px;
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--line);
+      color: var(--text);
+      margin-top: 1px;
+    }
+    .icon.ok{border-color: rgba(46,230,166,.35);}
+    .icon.no{border-color: rgba(255,92,122,.35);}
+
+    .note{
+      border-left: 3px solid rgba(124,92,255,.8);
+      padding: 10px 12px;
+      background: rgba(124,92,255,.10);
+      border-radius: 12px;
+      margin-top: 12px;
+      color: var(--text);
+      font-size: 13px;
+    }
+
+    /* CTA block */
+    .cta{
+      padding: 16px;
+      background:
+        radial-gradient(500px 260px at 30% 20%, rgba(124,92,255,.45), transparent 60%),
+        radial-gradient(500px 260px at 80% 70%, rgba(46,230,166,.20), transparent 55%),
+        rgba(15,23,51,.75);
+    }
+
+    .cta .row{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top: 12px;
+    }
+
+    /* Bottom fixed CTA */
+    .bottombar{
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 60;
+      padding: 10px 12px;
+      background: rgba(11,16,32,.82);
+      border-top: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .bottombar-inner{
+      max-width: var(--max);
+      margin: 0 auto;
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .bottombar small{color:var(--muted);}
+
+    /* Simple form wireframe */
+    form{margin-top: 12px;}
+    .field{display:flex; flex-direction:column; gap:6px; margin-top: 10px;}
+    label{font-size:12px; color: var(--muted);}
+    input, select{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      color: var(--text);
+      outline: none;
+    }
+    input::placeholder{color: rgba(170,178,213,.75);}
+
+    .fineprint{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    footer{
+      margin-top: 18px;
+      padding: 14px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+    }
+
+    @media (min-width: 768px){
+      :root{--max: 720px;}
+      h1{font-size: 34px;}
+      .wrap{padding-bottom: 90px;}
+      .cta .row{flex-direction:row;}
+      .btn{padding: 12px 18px;}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky top bar -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="badge">Free • 1 Hour • In-Person</div>
+      <a class="btn" href="#reserve">Reserve Seat</a>
+    </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- HERO (Premium Landscape) -->
+    <section>
+      <div class="card hero">
+        <div class="hero-premium">
+
+          <!-- Left: Copy -->
+          <div class="hero-left">
+            <div class="kicker">Not sure if it’s for you, but…</div>
+
+            <h1 style="margin: 4px 0 0;">A Must-Have AirBNB Starter Kit</h1>
+
+            <p class="sub" style="margin: 0;">Free 1-hour in-person workshop for Airbnb &amp; staycation hosts who want clarity, not chaos.</p>
+
+            <!-- Date / Time / Venue Strip -->
+            <div style="margin-top:10px; display:flex; flex-wrap:wrap; gap:8px;">
+              <div class="pill">📅 Feb 7, 2026 (Saturday)</div>
+              <div class="pill">⏰ 9:00–10:00 AM</div>
+              <div class="pill">📍 Yani Garden Cafe, Amadeo, Cavite</div>
+            </div>
+
+            <!-- Map + Parking -->
+            <div style="margin-top:12px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background: rgba(11,16,32,.35);">
+              <iframe
+                title="Yani Garden Cafe Map"
+                src="https://www.google.com/maps?q=Yani%20Garden%20Cafe%20Amadeo%20Cavite&output=embed"
+                width="100%"
+                height="160"
+                style="border:0;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div style="padding:10px; font-size:12px; color: var(--muted);">
+                🚗 <strong>Parking:</strong> On-site parking available at Yani Garden Cafe. Arrive 10–15 minutes early for easy parking and seating.
+              </div>
+            </div>
+              <div class="pill">⏰ 9:00–10:00 AM</div>
+              <div class="pill">📍 Yani Garden Cafe, Amadeo</div>
+            </div>
+
+            <p class="lead" style="margin-top: 10px;">If hosting sometimes feels stressful or risky, this might help more than you expect.</p>
+
+            <div class="hero-actions">
+              <a class="btn" href="#reserve">Reserve Free Seat</a>
+              <span class="subtle-tag">₱0 • Limited seats</span>
+            </div>
+
+            <div class="scrollhint">👇 Scroll slowly. This is short for a reason.</div>
+          </div>
+
+          <!-- Right: Visual Panel -->
+          <div class="hero-right" aria-hidden="true">
+            <div class="hero-right-inner">
+
+              <div class="hero-mini">
+                <p class="mini-title">You’ll learn</p>
+                <ul class="mini-list">
+                  <li><span class="dot"></span><span>How to set rules guests respect.</span></li>
+                  <li><span class="dot"></span><span>How to protect your listing without drama.</span></li>
+                  <li><span class="dot"></span><span>How confident hosts think before issues happen.</span></li>
+                </ul>
+              </div>
+
+              <div class="hero-mini" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                <div>
+                  <p class="mini-title" style="margin-bottom:6px;">Outcome</p>
+                  <div style="font-size:13px; color: var(--text); font-weight:700;">Calm, prepared hosting.</div>
+                  <div style="font-size:12px; color: var(--muted); margin-top:4px;">Even if you’re new.</div>
+                </div>
+                <div style="width:46px; height:46px; border-radius:16px; background: rgba(46,230,166,.14); border:1px solid rgba(46,230,166,.24); display:flex; align-items:center; justify-content:center; font-weight:900; color: var(--text);">✓</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Confidence -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">What this is</div>
+          <p class="section-title">Host with confidence—before problems even happen</p>
+          <p class="section-sub">Free, 1-hour, in-person workshop for Airbnb & staycation hosts who want clarity, not chaos.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">Real-world rules + protection</p>
+              <p class="fdesc">We focus on the stuff that actually happens after the booking—rules, guest situations, and protecting your space.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">No hype, no pressure</p>
+              <p class="fdesc">No “guru” vibe, no awkward selling, no fluff—just practical guidance you can use immediately.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">Small group experience</p>
+              <p class="fdesc">We keep it tight so it stays personal, clear, and you can ask the questions you actually want to ask.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">Beginner-friendly</p>
+              <p class="fdesc">Whether you’re already hosting or about to start, you’ll leave with a calmer, more confident way to run stays.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>Quick heads up: this isn’t about getting more bookings. This is about hosting like you’ve already faced the problems—kahit hindi pa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Symptoms -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">Does this sound like you?</div>
+          <p class="section-title">If any of this feels familiar, you’re not alone</p>
+          <p class="section-sub">These are the exact moments that make hosting feel heavier than it needs to be.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">?</div>
+            <div class="ftext">
+              <p class="ftitle">You second-guess yourself</p>
+              <p class="fdesc">You’ve hosted guests before, but there’s still that quiet “tama ba ‘to?” feeling in the back of your mind.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">!</div>
+            <div class="ftext">
+              <p class="ftitle">Rules feel awkward to enforce</p>
+              <p class="fdesc">You don’t want to sound rude or strict, but you also don’t want guests crossing lines.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">⚠</div>
+            <div class="ftext">
+              <p class="ftitle">You worry about problems before they happen</p>
+              <p class="fdesc">Damages, complaints, misunderstandings—minsan mas stressful pa yung anticipation than the stay itself.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">…</div>
+            <div class="ftext">
+              <p class="ftitle">You wish someone showed you the checklist</p>
+              <p class="fdesc">Not theory, not tips—just a clear guide on what to prepare before something goes wrong.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>If you nodded at even one of these, this workshop was built for that exact stage you’re in.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Outcomes -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">What you’ll walk away with</div>
+          <p class="section-title">What you’ll get in 1 hour</p>
+          <p class="section-sub">Not inspiration. Not motivation. Actual clarity you can use the same day.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">Clear thinking around rules & boundaries</p>
+              <p class="fdesc">You’ll finally know what rules matter, how to explain them, and how to enforce them without sounding masungit.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">A calmer way to handle guest issues</p>
+              <p class="fdesc">Instead of reacting emotionally, you’ll have a simple mental checklist for handling situations calmly.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">Confidence responding to real scenarios</p>
+              <p class="fdesc">You’ll know what to say, when to say it, and how firm is firm enough—without overthinking every message.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">A one-page Airbnb Starter Kit</p>
+              <p class="fdesc">You’ll start working on your own checklist during the session, not "someday after."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>You won’t leave with more tabs open. You’ll leave knowing exactly what to fix, what to keep, and what to stop worrying about.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Starter Kit -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">The main tool</div>
+          <p class="section-title">What is the Airbnb Starter Kit?</p>
+          <p class="section-sub">A simple, one-page framework you can actually finish and use.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">📄</div>
+            <div class="ftext">
+              <p class="ftitle">One page only</p>
+              <p class="fdesc">No thick workbooks or complicated systems. Just one page that brings clarity to your entire hosting setup.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">🧠</div>
+            <div class="ftext">
+              <p class="ftitle">Built for real situations</p>
+              <p class="fdesc">It’s designed around actual guest scenarios—rules, boundaries, protection, and responses that make sense.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✍</div>
+            <div class="ftext">
+              <p class="ftitle">Custom to your listing</p>
+              <p class="fdesc">You won’t copy-paste someone else’s rules. You’ll build something that fits your property and comfort level.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">⚡</div>
+            <div class="ftext">
+              <p class="ftitle">Immediately usable</p>
+              <p class="fdesc">You’ll start filling it out during the workshop so you can apply it right away, not weeks later.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>This kit isn’t meant to impress anyone. It’s meant to make hosting feel lighter and more controlled.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Agenda -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">What we’ll cover</div>
+          <p class="section-title">What happens during the session</p>
+          <p class="section-sub">Clear expectations so you know exactly what you’re walking into.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">1</div>
+            <div class="ftext">
+              <p class="ftitle">The problems most hosts don’t expect</p>
+              <p class="fdesc">We start with the real issues that usually catch hosts off guard—so you can recognize them early.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">2</div>
+            <div class="ftext">
+              <p class="ftitle">How confident hosts think ahead</p>
+              <p class="fdesc">You’ll learn the mindset and preparation habits that reduce stress before it shows up.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">3</div>
+            <div class="ftext">
+              <p class="ftitle">Rules without sounding strict</p>
+              <p class="fdesc">We’ll break down how to communicate boundaries clearly without killing the guest experience.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">4</div>
+            <div class="ftext">
+              <p class="ftitle">Building your own checklist</p>
+              <p class="fdesc">You’ll start completing your Airbnb Starter Kit during the session, step by step.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>Simple flow, no overwhelm. Each part builds on the last so everything clicks by the end.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: For / Not For -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">Quick filter</div>
+          <p class="section-title">Is this for you?</p>
+          <p class="section-sub">This helps the right people say yes—and the wrong people say no.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">This IS for you if…</p>
+              <p class="fdesc">You’re already hosting (or about to), and you want fewer surprises and more control over your space.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">You want confidence, not confrontation</p>
+              <p class="fdesc">You want to protect your property without sounding aggressive or awkward with guests.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">You value preparation</p>
+              <p class="fdesc">You’d rather be ready before something goes wrong than fix things under pressure.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✕</div>
+            <div class="ftext">
+              <p class="ftitle">This is NOT for you if…</p>
+              <p class="fdesc">You prefer bahala-na hosting, hate rules, or only want freebies with no intention to apply anything.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>No pressure here. This works best when the people in the room actually want clarity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Price -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">Pricing</div>
+          <p class="section-title">How much is it?</p>
+          <p class="section-sub">Short answer: it’s free—and here’s why that’s intentional.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">₱</div>
+            <div class="ftext">
+              <p class="ftitle">₱0. Completely free</p>
+              <p class="fdesc">The 1-hour in-person workshop costs nothing. No hidden fees, no surprise charges, no bait-and-switch.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✓</div>
+            <div class="ftext">
+              <p class="ftitle">Starter Kit included</p>
+              <p class="fdesc">You’ll receive and start using the Airbnb Starter Kit during the session—no extra cost.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">🧭</div>
+            <div class="ftext">
+              <p class="ftitle">Why we keep it free</p>
+              <p class="fdesc">This session is meant to give clarity first. If you want more support later, that choice is always yours.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">✕</div>
+            <div class="ftext">
+              <p class="ftitle">No forced upsell</p>
+              <p class="fdesc">You’ll be invited—not pressured—to continue only if it feels right for you.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>Free doesn’t mean low-value here. It means we want the right people in the room first.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Optional Support -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">Optional next step</div>
+          <p class="section-title">If you want more support, here’s what that looks like</p>
+          <p class="section-sub">No pressure, no awkward pitch—just options if you want help going further.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">30</div>
+            <div class="ftext">
+              <p class="ftitle">30-Day Coaching Program</p>
+              <p class="fdesc">We help you turn your one-page Starter Kit into a complete, customized hosting checklist—step by step.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">🛠</div>
+            <div class="ftext">
+              <p class="ftitle">Done-for-you services</p>
+              <p class="fdesc">If you’d rather not DIY, we can help implement systems for you based on your property and goals.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">🤝</div>
+            <div class="ftext">
+              <p class="ftitle">You decide</p>
+              <p class="fdesc">You’ll hear about these options only after the workshop—and only if they feel useful to you.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">⏸</div>
+            <div class="ftext">
+              <p class="ftitle">Totally fine to stop at the workshop</p>
+              <p class="fdesc">Many attendees just take the clarity and tools and run with it. That’s a win too.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>This part exists to support you—not to push you. You’re always in control of what happens next.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: Guarantee -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">Reassurance</div>
+          <p class="section-title">A simple, human guarantee</p>
+          <p class="section-sub">This is about clarity, not pressure or performance.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">💬</div>
+            <div class="ftext">
+              <p class="ftitle">We check in if you’re unclear</p>
+              <p class="fdesc">If you attend and still feel unsure, we’ll personally follow up to help clarify things.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">🧘</div>
+            <div class="ftext">
+              <p class="ftitle">No scripts. No selling tricks.</p>
+              <p class="fdesc">You won’t be cornered, pressured, or talked into anything you don’t want.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">🎯</div>
+            <div class="ftext">
+              <p class="ftitle">The goal is simple</p>
+              <p class="fdesc">You leave the session more confident than when you arrived. That’s the win.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>If you don’t feel more prepared after this, we take that seriously.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: FAQ -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">Quick answers</div>
+          <p class="section-title">Frequently asked questions</p>
+          <p class="section-sub">If you’re wondering about it, chances are someone else is too.</p>
+        </div>
+
+        <details class="feature" open>
+          <summary class="ftitle" style="cursor:pointer;">Do I need prior Airbnb experience?</summary>
+          <p class="fdesc">No. This works whether you’re already hosting or still preparing your first listing. We adjust the examples so both beginners and current hosts get value.</p>
+        </details>
+
+        <details class="feature">
+          <summary class="ftitle" style="cursor:pointer;">Is this really free?</summary>
+          <p class="fdesc">Yes. The 1-hour workshop and the Airbnb Starter Kit are completely free. There’s no payment required to attend.</p>
+        </details>
+
+        <details class="feature">
+          <summary class="ftitle" style="cursor:pointer;">Will there be selling during the session?</summary>
+          <p class="fdesc">No hard selling. We’ll mention optional support only at the end, and only for those who ask or want help implementing faster.</p>
+        </details>
+
+        <details class="feature">
+          <summary class="ftitle" style="cursor:pointer;">Can I bring a partner or co-host?</summary>
+          <p class="fdesc">Yes, as long as they register separately. We keep seats limited so everyone gets proper attention.</p>
+        </details>
+
+        <details class="feature">
+          <summary class="ftitle" style="cursor:pointer;">What should I bring?</summary>
+          <p class="fdesc">Just yourself, a pen, and your questions. If you already have a listing, bring notes or screenshots for reference.</p>
+        </details>
+
+        <details class="feature">
+          <summary class="ftitle" style="cursor:pointer;">What if I can’t make it last minute?</summary>
+          <p class="fdesc">Please let us know early so we can give your seat to someone else. Seats are intentionally limited.</p>
+        </details>
+
+        <div class="soft-bar">
+          <div class="spark">✦</div>
+          <p>If you still have questions after this, you can message us directly before registering.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION: Steps -->
+    <section>
+      <div class="card">
+        <div class="section-head">
+          <div class="eyebrow">How it works</div>
+          <p class="section-title">How to join (3 easy steps)</p>
+          <p class="section-sub">Simple, low-friction, no hoops to jump through.</p>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="ficon">1</div>
+            <div class="ftext">
+              <p class="ftitle">Reserve your free seat</p>
+              <p class="fdesc">Fill out the short form below to save your spot. Seats are limited on purpose.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">2</div>
+            <div class="ftext">
+              <p class="ftitle">Attend the 1-hour session</p>
+              <p class="fdesc">Show up in person, listen, ask questions, and start building your checklist.</p>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="ficon">3</div>
+            <div class="ftext">
+              <p class="ftitle">Leave with clarity</p>
+              <p class="fdesc">Walk away knowing exactly what to fix, what to keep, and what to stop worrying about.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA / RESERVATION -->
+    <section id="reserve">
+      <div class="card cta">
+        <div class="section-head">
+          <div class="eyebrow">Limited seats</div>
+          <p class="section-title">Reserve your free seat</p>
+          <p class="section-sub">If hosting confidence matters to you, this is worth one hour.</p>
+        </div>
+
+        <form action="#" method="post">
+          <div class="field">
+            <label for="name">Full Name</label>
+            <input id="name" name="name" placeholder="Your name" />
+          </div>
+
+          <div class="field">
+            <label for="phone">Mobile Number</label>
+            <input id="phone" name="phone" placeholder="09xx xxx xxxx" />
+          </div>
+
+          <div class="field">
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" placeholder="you@email.com" />
+          </div>
+
+          <div class="field">
+            <label for="status">Hosting status</label>
+            <select id="status" name="status">
+              <option>Already hosting</option>
+              <option>Starting soon</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+
+          <div class="hero-actions">
+            <button class="btn" type="submit">Reserve My Seat</button>
+            <span class="subtle-tag">₱0 • Free • In-person</span>
+          </div>
+
+          <div class="fineprint">Once seats are filled, registration closes automatically.</div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> A Must-Have AirBNB Starter Kit</div>
+      <div style="margin-top:6px;">For workshop details (venue/date/time), plug your exact info here.</div>
+    </footer>
+
+  </main>
+
+  <!-- Bottom bar CTA -->
+  <div class="bottombar">
+    <div class="bottombar-inner">
+      <div>
+        <small>Free workshop • limited seats</small>
+      </div>
+      <a class="btn" href="#reserve">Reserve Seat</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
