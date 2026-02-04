@@ -7,31 +7,42 @@
   <title>A Must-Have AirBNB Starter Kit — Free Workshop</title>
   <style>
     :root{
-      --bg:#0b1020;
-      --card:#0f1733;
-      --text:#e9ecf5;
-      --muted:#aab2d5;
-      --line:rgba(255,255,255,.10);
-      --brand:#7c5cff;
-      --brand2:#2ee6a6;
-      --danger:#ff5c7a;
-      --shadow: 0 12px 30px rgba(0,0,0,.35);
-      --radius: 18px;
+      /* Warm premium cafe theme */
+      --bg: #f5f3ef;            /* warm off-white */
+      --card: #ffffff;
+      --text: #101828;          /* premium near-black */
+      --muted: #5b6b63;         /* warm slate */
+      --muted2:#3f4c45;
+      --line: rgba(16,24,40,.10);
+
+      /* Primary brand green */
+      --brand: #286147;
+      --brandDark: #1f4c38;
+      --brandSoft: rgba(40,97,71,.10);
+
+      --danger: #ef4444;
+
+      /* Cafe-style shadows */
+      --shadow: 0 24px 60px rgba(16,24,40,.10);
+      --shadowSoft: 0 12px 34px rgba(16,24,40,.08);
+      --radius: 20px;
       --max: 420px;
     }
 
     *{box-sizing:border-box;}
     html,body{height:100%;}
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       color:var(--text);
       background:
-        radial-gradient(900px 400px at 10% -10%, rgba(124,92,255,.35), transparent 60%),
-        radial-gradient(700px 350px at 90% 10%, rgba(46,230,166,.18), transparent 55%),
-        radial-gradient(900px 450px at 50% 110%, rgba(255,92,122,.10), transparent 60%),
+        radial-gradient(900px 420px at 12% -10%, rgba(40,97,71,.10), transparent 60%),
+        radial-gradient(760px 360px at 88% 0%, rgba(40,97,71,.07), transparent 55%),
+        radial-gradient(900px 460px at 50% 110%, rgba(40,97,71,.05), transparent 60%),
+        linear-gradient(180deg, rgba(243,239,230,.55), rgba(245,243,239,1)),
         var(--bg);
-      line-height:1.35;
+      line-height:1.55;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -50,7 +61,7 @@
       top: 0;
       z-index: 50;
       backdrop-filter: blur(10px);
-      background: rgba(11,16,32,.65);
+      background: rgba(245,243,239,.86);
       border-bottom: 1px solid var(--line);
     }
     .topbar-inner{
@@ -64,11 +75,11 @@
     }
     .badge{
       font-size:12px;
-      color:var(--muted);
+      color: var(--muted2);
       border:1px solid var(--line);
       padding:6px 10px;
       border-radius:999px;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.78);
       white-space:nowrap;
     }
 
@@ -77,13 +88,13 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      font-weight:700;
+      font-weight:800;
       border-radius:999px;
-      padding: 12px 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: linear-gradient(135deg, rgba(124,92,255,1), rgba(46,230,166,1));
-      color:#081025;
-      box-shadow: 0 10px 24px rgba(124,92,255,.22);
+      padding: 12px 16px;
+      border: 1px solid rgba(40,97,71,.28);
+      background: linear-gradient(180deg, var(--brand), var(--brandDark));
+      color:#ffffff;
+      box-shadow: 0 12px 26px rgba(40,97,71,.20);
       text-decoration:none;
       cursor:pointer;
       user-select:none;
@@ -91,21 +102,21 @@
     .btn:active{transform: translateY(1px);}
 
     .btn.secondary{
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.92);
       color: var(--text);
       border: 1px solid var(--line);
-      box-shadow:none;
+      box-shadow: 0 6px 18px rgba(16,24,40,.06);
     }
 
     /* Sections */
     section{margin: 14px 0;}
 
     .card{
-      background: rgba(15,23,51,.75);
+      background: var(--card);
       border: 1px solid var(--line);
       border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
+      padding: 20px;
+      box-shadow: var(--shadowSoft);
       overflow:hidden;
     }
 
@@ -120,12 +131,12 @@
     .hero-premium{
       position: relative;
       display: grid;
-      grid-template-columns: 1.18fr .82fr;
-      min-height: 280px;
+      grid-template-columns: 1.2fr .8fr;
+      min-height: 320px;
       background:
-        radial-gradient(900px 340px at 15% 10%, rgba(124,92,255,.42), transparent 60%),
-        radial-gradient(700px 300px at 92% 70%, rgba(46,230,166,.18), transparent 55%),
-        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+        radial-gradient(900px 360px at 15% 10%, rgba(40,97,71,.12), transparent 60%),
+        radial-gradient(800px 340px at 90% 75%, rgba(40,97,71,.09), transparent 55%),
+        linear-gradient(180deg, #ffffff, #f9faf8);
     }
 
     .hero-premium:before{
@@ -133,8 +144,8 @@
       position:absolute;
       inset:-1px;
       background:
-        radial-gradient(420px 180px at 25% 30%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(520px 220px at 70% 80%, rgba(255,255,255,.05), transparent 65%);
+        radial-gradient(420px 190px at 25% 30%, rgba(40,97,71,.10), transparent 62%),
+        radial-gradient(520px 220px at 70% 80%, rgba(40,97,71,.07), transparent 65%);
       pointer-events:none;
     }
 
@@ -152,7 +163,8 @@
       position: relative;
       border-left: 1px solid var(--line);
       background:
-        linear-gradient(160deg, rgba(124,92,255,.20), rgba(46,230,166,.14));
+        radial-gradient(520px 280px at 40% 30%, rgba(40,97,71,.12), transparent 60%),
+        rgba(40,97,71,.04);
       display:flex;
       align-items:center;
       justify-content:center;
@@ -169,16 +181,16 @@
 
     .hero-mini{
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(11,16,32,.30);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.86);
       padding: 12px;
-      box-shadow: 0 18px 44px rgba(0,0,0,.25);
+      box-shadow: 0 10px 26px rgba(16,24,40,.06);
     }
 
     .mini-title{
       font-size: 12px;
       color: var(--muted);
-      letter-spacing: .02em;
+      letter-spacing: .06em;
       text-transform: uppercase;
       margin: 0 0 8px;
     }
@@ -198,8 +210,8 @@
       height: 8px;
       border-radius: 999px;
       margin-top: 6px;
-      background: rgba(46,230,166,.95);
-      box-shadow: 0 0 0 4px rgba(46,230,166,.14);
+      background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(40,97,71,.12);
       flex: 0 0 8px;
     }
 
@@ -215,11 +227,11 @@
 
     .subtle-tag{
       font-size: 12px;
-      color: var(--muted);
+      color: var(--muted2);
       border: 1px solid var(--line);
       padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.80);
       white-space:nowrap;
     }
 
@@ -240,19 +252,21 @@
       align-items:center;
       gap:8px;
       font-size:12px;
-      color: var(--muted);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      color: var(--brand);
+      border: 1px solid rgba(40,97,71,.22);
+      background: rgba(40,97,71,.06);
       padding: 6px 10px;
       border-radius: 999px;
       width: fit-content;
+      font-weight:650;
     }
 
     h1{
-      margin: 12px 0 8px;
+      margin: 14px 0 10px;
       font-size: 28px;
       line-height:1.15;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
+      font-weight:850;
     }
 
     .sub{
@@ -273,12 +287,12 @@
       padding:8px 10px;
       border-radius:999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.84);
       color: var(--text);
     }
 
-    .pill.free{border-color: rgba(46,230,166,.35);}
-    .pill.limit{border-color: rgba(255,92,122,.35);}
+    .pill.free{border-color: rgba(40,97,71,.24); background: rgba(40,97,71,.08);}
+    .pill.limit{border-color: rgba(239,68,68,.22); background: rgba(239,68,68,.06);}
 
     .lead{
       margin: 12px 0 0;
@@ -292,19 +306,11 @@
       margin: 14px 0;
     }
 
-    .h2{
-      font-size:16px;
-      margin:0 0 10px;
-      letter-spacing:-0.01em;
-    }
-
     .p{
       margin: 0;
       color: var(--text);
       font-size: 14px;
     }
-
-    .p.muted{color:var(--muted);}
 
     /* Premium section styling */
     .section-head{
@@ -317,9 +323,9 @@
     .eyebrow{
       width: fit-content;
       font-size: 12px;
-      color: var(--muted);
+      color: var(--muted2);
       border: 1px solid var(--line);
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.78);
       padding: 6px 10px;
       border-radius: 999px;
     }
@@ -327,7 +333,9 @@
     .section-title{
       margin: 0;
       font-size: 16px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      font-weight: 850;
     }
 
     .section-sub{
@@ -344,30 +352,28 @@
     }
 
     .feature{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(11,16,32,.22);
-      padding: 12px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: #ffffff;
+      padding: 16px;
       display:flex;
-      gap: 10px;
+      gap: 14px;
       align-items:flex-start;
+      box-shadow: 0 8px 24px rgba(16,24,40,.06);
     }
 
     .feature .ficon{
       width: 36px;
       height: 36px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(18px 18px at 30% 30%, rgba(255,255,255,.12), transparent 60%),
-        rgba(255,255,255,.05);
+      border: 1px solid rgba(40,97,71,.22);
+      background: rgba(40,97,71,.08);
       display:flex;
       align-items:center;
       justify-content:center;
-      font-weight: 900;
-      color: var(--text);
+      font-weight:850;
+      color: var(--brand);
       flex: 0 0 36px;
-      box-shadow: 0 10px 24px rgba(0,0,0,.18);
     }
 
     .feature .ftext{min-width:0;}
@@ -375,7 +381,7 @@
     .feature .ftitle{
       margin: 0;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 850;
       letter-spacing: -0.01em;
     }
 
@@ -383,17 +389,17 @@
       margin: 6px 0 0;
       font-size: 13px;
       color: var(--muted);
-      line-height: 1.35;
+      line-height: 1.45;
     }
 
     .soft-bar{
-      margin-top: 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(46,230,166,.20);
-      background: rgba(46,230,166,.08);
-      padding: 12px;
+      margin-top: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(40,97,71,.26);
+      background: rgba(40,97,71,.08);
+      padding: 16px;
       display:flex;
-      gap: 10px;
+      gap: 14px;
       align-items:flex-start;
     }
 
@@ -401,13 +407,14 @@
       width: 34px;
       height: 34px;
       border-radius: 14px;
-      background: rgba(46,230,166,.14);
-      border: 1px solid rgba(46,230,166,.22);
+      background: rgba(40,97,71,.12);
+      border: 1px solid rgba(40,97,71,.18);
       display:flex;
       align-items:center;
       justify-content:center;
       font-weight: 900;
       flex: 0 0 34px;
+      color: var(--brand);
     }
 
     .soft-bar p{margin:0; font-size: 13px; color: var(--text);}
@@ -416,66 +423,37 @@
       .feature-grid{grid-template-columns: 1fr 1fr;}
     }
 
-    ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--text);
-      font-size: 14px;
-    }
-    li{margin: 8px 0;}
-
-    .checklist{
-      list-style: none;
-      padding-left: 0;
-      margin: 10px 0 0;
-    }
-    .checklist li{
-      display:flex;
-      gap:10px;
-      margin: 10px 0;
-      align-items:flex-start;
-    }
-    .icon{
-      flex: 0 0 20px;
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size: 12px;
-      background: rgba(255,255,255,.06);
+    /* Form */
+    form{margin-top: 12px;}
+    .field{display:flex; flex-direction:column; gap:6px; margin-top: 10px;}
+    label{font-size:12px; color: var(--muted2);}
+    input, select{
+      width:100%;
+      padding: 12px 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.96);
       border: 1px solid var(--line);
       color: var(--text);
-      margin-top: 1px;
+      outline: none;
+      box-shadow: 0 8px 18px rgba(16,24,40,.04);
     }
-    .icon.ok{border-color: rgba(46,230,166,.35);}
-    .icon.no{border-color: rgba(255,92,122,.35);}
+    input::placeholder{color: rgba(91,107,99,.75);}
 
-    .note{
-      border-left: 3px solid rgba(124,92,255,.8);
-      padding: 10px 12px;
-      background: rgba(124,92,255,.10);
-      border-radius: 12px;
-      margin-top: 12px;
-      color: var(--text);
-      font-size: 13px;
+    .fineprint{
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 10px;
     }
 
-    /* CTA block */
+    /* CTA block (warm cafe) */
     .cta{
-      padding: 16px;
+      padding: 18px;
       background:
-        radial-gradient(500px 260px at 30% 20%, rgba(124,92,255,.45), transparent 60%),
-        radial-gradient(500px 260px at 80% 70%, rgba(46,230,166,.20), transparent 55%),
-        rgba(15,23,51,.75);
-    }
-
-    .cta .row{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      margin-top: 12px;
+        radial-gradient(520px 260px at 30% 20%, rgba(40,97,71,.14), transparent 60%),
+        radial-gradient(520px 260px at 85% 70%, rgba(40,97,71,.10), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(243,239,230,.72));
+      border: 1px solid rgba(40,97,71,.16);
+      box-shadow: var(--shadow);
     }
 
     /* Bottom fixed CTA */
@@ -486,7 +464,7 @@
       bottom: 0;
       z-index: 60;
       padding: 10px 12px;
-      background: rgba(11,16,32,.82);
+      background: rgba(245,243,239,.90);
       border-top: 1px solid var(--line);
       backdrop-filter: blur(10px);
     }
@@ -500,27 +478,6 @@
     }
     .bottombar small{color:var(--muted);}
 
-    /* Simple form wireframe */
-    form{margin-top: 12px;}
-    .field{display:flex; flex-direction:column; gap:6px; margin-top: 10px;}
-    label{font-size:12px; color: var(--muted);}
-    input, select{
-      width:100%;
-      padding: 12px 12px;
-      border-radius: 12px;
-      background: rgba(255,255,255,.05);
-      border: 1px solid var(--line);
-      color: var(--text);
-      outline: none;
-    }
-    input::placeholder{color: rgba(170,178,213,.75);}
-
-    .fineprint{
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 10px;
-    }
-
     footer{
       margin-top: 18px;
       padding: 14px 2px 0;
@@ -533,7 +490,6 @@
       :root{--max: 720px;}
       h1{font-size: 34px;}
       .wrap{padding-bottom: 90px;}
-      .cta .row{flex-direction:row;}
       .btn{padding: 12px 18px;}
     }
   </style>
@@ -544,7 +500,7 @@
   <div class="topbar">
     <div class="topbar-inner">
       <div class="badge">Free • 1 Hour • In-Person</div>
-      <a class="btn" href="#reserve">Reserve Seat</a>
+      <a class="btn" href="https://forms.gle/XFmFxbvMm7PKvwBc8" target="_blank" rel="noopener noreferrer">Reserve Seat</a>
     </div>
   </div>
 
@@ -571,7 +527,7 @@
             </div>
 
             <!-- Map + Parking -->
-            <div style="margin-top:12px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background: rgba(11,16,32,.35);">
+            <div style="margin-top:12px; border-radius:14px; overflow:hidden; border:1px solid var(--line); background: rgba(255,255,255,.92);">
               <iframe
                 title="Yani Garden Cafe Map"
                 src="https://www.google.com/maps?q=Yani%20Garden%20Cafe%20Amadeo%20Cavite&output=embed"
@@ -584,14 +540,11 @@
                 🚗 <strong>Parking:</strong> On-site parking available at Yani Garden Cafe. Arrive 10–15 minutes early for easy parking and seating.
               </div>
             </div>
-              <div class="pill">⏰ 9:00–10:00 AM</div>
-              <div class="pill">📍 Yani Garden Cafe, Amadeo</div>
-            </div>
 
             <p class="lead" style="margin-top: 10px;">If hosting sometimes feels stressful or risky, this might help more than you expect.</p>
 
             <div class="hero-actions">
-              <a class="btn" href="#reserve">Reserve Free Seat</a>
+              <a class="btn" href="https://forms.gle/XFmFxbvMm7PKvwBc8" target="_blank" rel="noopener noreferrer">Reserve Free Seat</a>
               <span class="subtle-tag">₱0 • Limited seats</span>
             </div>
 
@@ -614,10 +567,10 @@
               <div class="hero-mini" style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
                 <div>
                   <p class="mini-title" style="margin-bottom:6px;">Outcome</p>
-                  <div style="font-size:13px; color: var(--text); font-weight:700;">Calm, prepared hosting.</div>
+                  <div style="font-size:13px; color: var(--text); font-weight:800;">Calm, prepared hosting.</div>
                   <div style="font-size:12px; color: var(--muted); margin-top:4px;">Even if you’re new.</div>
                 </div>
-                <div style="width:46px; height:46px; border-radius:16px; background: rgba(46,230,166,.14); border:1px solid rgba(46,230,166,.24); display:flex; align-items:center; justify-content:center; font-weight:900; color: var(--text);">✓</div>
+                <div style="width:46px; height:46px; border-radius:16px; background: rgba(40,97,71,.12); border:1px solid rgba(40,97,71,.18); display:flex; align-items:center; justify-content:center; font-weight:900; color: var(--brand);">✓</div>
               </div>
 
             </div>
@@ -633,7 +586,7 @@
         <div class="section-head">
           <div class="eyebrow">What this is</div>
           <p class="section-title">Host with confidence—before problems even happen</p>
-          <p class="section-sub">Free, 1-hour, in-person workshop for Airbnb & staycation hosts who want clarity, not chaos.</p>
+          <p class="section-sub">Free, 1-hour, in-person workshop for Airbnb &amp; staycation hosts who want clarity, not chaos.</p>
         </div>
 
         <div class="feature-grid">
@@ -740,7 +693,7 @@
           <div class="feature">
             <div class="ficon">✓</div>
             <div class="ftext">
-              <p class="ftitle">Clear thinking around rules & boundaries</p>
+              <p class="ftitle">Clear thinking around rules &amp; boundaries</p>
               <p class="fdesc">You’ll finally know what rules matter, how to explain them, and how to enforce them without sounding masungit.</p>
             </div>
           </div>
@@ -765,7 +718,7 @@
             <div class="ficon">✓</div>
             <div class="ftext">
               <p class="ftitle">A one-page Airbnb Starter Kit</p>
-              <p class="fdesc">You’ll start working on your own checklist during the session, not "someday after."</p>
+              <p class="fdesc">You’ll start working on your own checklist during the session, not “someday after.”</p>
             </div>
           </div>
         </div>
@@ -1115,7 +1068,6 @@
       </div>
     </section>
 
-
     <!-- SECTION: Steps -->
     <section>
       <div class="card">
@@ -1153,7 +1105,7 @@
       </div>
     </section>
 
-    <!-- CTA / RESERVATION -->
+    <!-- CTA / RESERVATION (Simplified) -->
     <section id="reserve">
       <div class="card cta">
         <div class="section-head">
@@ -1162,38 +1114,12 @@
           <p class="section-sub">If hosting confidence matters to you, this is worth one hour.</p>
         </div>
 
-        <form action="#" method="post">
-          <div class="field">
-            <label for="name">Full Name</label>
-            <input id="name" name="name" placeholder="Your name" />
-          </div>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-top: 10px;">
+          <a class="btn" href="https://forms.gle/XFmFxbvMm7PKvwBc8" target="_blank" rel="noopener noreferrer">Reserve My Seat</a>
+          <span class="subtle-tag">₱0 • Free • In-person</span>
+        </div>
 
-          <div class="field">
-            <label for="phone">Mobile Number</label>
-            <input id="phone" name="phone" placeholder="09xx xxx xxxx" />
-          </div>
-
-          <div class="field">
-            <label for="email">Email (optional)</label>
-            <input id="email" name="email" placeholder="you@email.com" />
-          </div>
-
-          <div class="field">
-            <label for="status">Hosting status</label>
-            <select id="status" name="status">
-              <option>Already hosting</option>
-              <option>Starting soon</option>
-              <option>Just exploring</option>
-            </select>
-          </div>
-
-          <div class="hero-actions">
-            <button class="btn" type="submit">Reserve My Seat</button>
-            <span class="subtle-tag">₱0 • Free • In-person</span>
-          </div>
-
-          <div class="fineprint">Once seats are filled, registration closes automatically.</div>
-        </form>
+        <div class="fineprint">Once seats are filled, registration closes automatically.</div>
       </div>
     </section>
 
@@ -1210,7 +1136,7 @@
       <div>
         <small>Free workshop • limited seats</small>
       </div>
-      <a class="btn" href="#reserve">Reserve Seat</a>
+      <a class="btn" href="https://forms.gle/XFmFxbvMm7PKvwBc8" target="_blank" rel="noopener noreferrer">Reserve Seat</a>
     </div>
   </div>
 
@@ -1219,5 +1145,3 @@
   </script>
 </body>
 </html>
-
-
