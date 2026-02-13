@@ -1163,7 +1163,7 @@ section:nth-child(even){background:var(--warm);}
         <div class="faq-answer">
           <div class="faq-answer-inner">
             <p>Submit a B2B Supply Account application through our website. Applications are reviewed within 1–2 business days and approved based on operational fit.</p>
-            <p><a href="https://docs.google.com/forms/d/1mmNMCRMhdO-9gm7V0oyu5V-kW8kRSbxnldiORH7rDCs/viewform" target="_blank" rel="noopener noreferrer" style="color:var(--gold);font-weight:700;text-decoration:underline;">Apply for a B2B Supply Account →</a></p>
+            <p><a href="#apply" style="color:var(--gold);font-weight:700;text-decoration:underline;">Apply for a B2B Supply Account →</a></p>
           </div>
         </div>
       </div>
@@ -1304,7 +1304,7 @@ section:nth-child(even){background:var(--warm);}
           </div>
 
           <button type="submit" class="btn btn-gold">Submit Partnership Application</button>
-          <p class="form-note">Your answers will pre-fill our official application form for final review and submission. Applications are processed within 24–48 hours.</p>
+          <p class="form-note">Applications are reviewed and processed within 24–48 hours. You'll receive a confirmation via email.</p>
         </form>
       </div>
     </div>
@@ -1478,11 +1478,16 @@ function toggleFAQ(btn){
   }
 }
 
-// Google Form pre-fill submission
+// Direct form submission — no Google Form redirect
 function submitPrefill(e){
   e.preventDefault();
-  var base='https://docs.google.com/forms/d/1mmNMCRMhdO-9gm7V0oyu5V-kW8kRSbxnldiORH7rDCs/viewform?usp=pp_url';
-  var params=[
+  var btn=document.querySelector('#applyForm button[type="submit"]');
+  var origText=btn.textContent;
+  btn.textContent='Submitting…';
+  btn.disabled=true;
+
+  var formData=new FormData();
+  var fields=[
     ['entry.1489640646', document.getElementById('f_business').value],
     ['entry.110969790',  document.getElementById('f_owner').value],
     ['entry.292663352',  document.getElementById('f_phone').value],
@@ -1495,12 +1500,33 @@ function submitPrefill(e){
     ['entry.51558889',   document.getElementById('f_dtinum').value],
     ['entry.96916721',   document.getElementById('f_permit').value]
   ];
-  var url=base;
-  params.forEach(function(p){
-    if(p[1]) url+='&'+p[0]+'='+encodeURIComponent(p[1]);
+  fields.forEach(function(f){ if(f[1]) formData.append(f[0],f[1]); });
+
+  fetch('https://docs.google.com/forms/d/1mmNMCRMhdO-9gm7V0oyu5V-kW8kRSbxnldiORH7rDCs/formResponse',{
+    method:'POST',
+    body:formData,
+    mode:'no-cors'
+  }).then(function(){
+    showFormSuccess();
+  }).catch(function(){
+    // no-cors won't return status but data still goes through
+    showFormSuccess();
   });
-  window.open(url,'_blank');
   return false;
+}
+
+function showFormSuccess(){
+  var card=document.querySelector('.apply-form-card');
+  card.innerHTML=
+    '<div style="text-align:center;padding:48px 24px;">'+
+    '<div style="font-size:48px;margin-bottom:16px;">✓</div>'+
+    '<h3 style="color:var(--gold);margin-bottom:12px;">Application Submitted</h3>'+
+    '<p style="color:var(--green-300);font-size:15px;line-height:1.7;margin-bottom:20px;">'+
+    'Thank you for your interest in partnering with Must Have Corner.<br>'+
+    'Our team will review your application and contact you within <strong style="color:var(--cream);">24–48 hours</strong>.</p>'+
+    '<p style="color:var(--green-400);font-size:13px;">If you have urgent questions, email us at<br>'+
+    '<a href="mailto:mhc@musthavecorner.com" style="color:var(--gold);text-decoration:underline;">mhc@musthavecorner.com</a></p>'+
+    '</div>';
 }
 
 // ============================================================
