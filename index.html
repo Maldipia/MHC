@@ -535,6 +535,7 @@ section:nth-child(even){background:var(--warm);}
   .footer-grid{grid-template-columns:1fr 1fr;}
   .nav-links{display:none;}
   .mobile-toggle{display:flex;}
+  #delivery .container > div:first-of-type{grid-template-columns:1fr 1fr !important;}
 }
 @media(max-width:640px){
   section{padding:56px 0;}
@@ -547,6 +548,7 @@ section:nth-child(even){background:var(--warm);}
   .footer-grid{grid-template-columns:1fr;gap:28px;}
   .footer-bottom{flex-direction:column;text-align:center;}
   .community-inner{padding:32px 24px;}
+  #delivery .container > div:first-of-type{grid-template-columns:1fr !important;}
 }
 
 /* ---- MOBILE NAV ---- */
@@ -580,7 +582,7 @@ section:nth-child(even){background:var(--warm);}
       <li><a href="#about">About</a></li>
       <li><a href="#serve">Who We Serve</a></li>
       <li><a href="#programs">Supply Programs</a></li>
-      <li><a href="#structure">Our Structure</a></li>
+      <li><a href="#systems">How It Works</a></li>
       <li><a href="#faq">FAQ</a></li>
       <li><a href="#apply" class="nav-cta">Request Partnership</a></li>
     </ul>
@@ -713,12 +715,55 @@ section:nth-child(even){background:var(--warm);}
   </div>
 </section>
 
-<!-- ====== OUR STRUCTURE ====== -->
-<section id="structure">
+<!-- ====== DELIVERY & OPERATIONS ====== -->
+<section id="delivery">
+  <div class="container">
+    <div class="section-header center">
+      <div class="section-label">Delivery &amp; operations</div>
+      <h2 class="section-title">Scheduled. Covered. Reliable.</h2>
+      <p class="section-sub">Our logistics are designed around the daily realities of institutional kitchens — not convenience-app thinking.</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:var(--green);font-family:var(--serif);margin-bottom:6px;">10 km</div>
+        <div style="font-size:13px;color:var(--muted);font-weight:500;">Delivery Radius</div>
+        <p style="margin-top:12px;font-size:13px;color:var(--text);line-height:1.55;">Amadeo, Tagaytay, Alfonso, Silang, Indang, Mendez, and surrounding South Cavite municipalities.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:var(--green);font-family:var(--serif);margin-bottom:6px;">8 AM – 5 PM</div>
+        <div style="font-size:13px;color:var(--muted);font-weight:500;">Daily Operations</div>
+        <p style="margin-top:12px;font-size:13px;color:var(--text);line-height:1.55;">Seven days a week, including holidays. Deliveries are dispatched within defined scheduling windows.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:var(--green);font-family:var(--serif);margin-bottom:6px;">Invoiced</div>
+        <div style="font-size:13px;color:var(--muted);font-weight:500;">Every Delivery</div>
+        <p style="margin-top:12px;font-size:13px;color:var(--text);line-height:1.55;">Auto-generated, numbered invoices sent via email. No handwritten receipts, no guesswork.</p>
+      </div>
+
+      <div style="background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;text-align:center;">
+        <div style="font-size:28px;font-weight:800;color:var(--green);font-family:var(--serif);margin-bottom:6px;">Routing</div>
+        <div style="font-size:13px;color:var(--muted);font-weight:500;">Priority Scheduling</div>
+        <p style="margin-top:12px;font-size:13px;color:var(--text);line-height:1.55;">Approved accounts receive priority delivery routing based on order volume and location scheduling.</p>
+      </div>
+
+    </div>
+
+    <div style="margin-top:32px;padding:24px 28px;border-radius:var(--radius);background:var(--green-50);border:1px solid var(--line);">
+      <p style="font-size:14px;color:var(--text);margin:0;line-height:1.65;"><strong style="color:var(--charcoal);">Extended coverage:</strong> Delivery beyond the standard 10km radius may be approved for qualifying high-volume accounts. Contact us to discuss routing options for your location.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== POWERED BY SYSTEMS ====== -->
+<section id="systems">
   <div class="container">
     <div class="section-header">
-      <div class="section-label">Our structure</div>
-      <h2 class="section-title">How we operate — and why it matters</h2>
+      <div class="section-label">Powered by systems</div>
+      <h2 class="section-title">What "Powered by Systems" actually means</h2>
       <p class="section-sub">We don't just deliver goods. We run a documented, account-managed supply system that gives your kitchen operational certainty.</p>
     </div>
 
@@ -1142,7 +1187,7 @@ section:nth-child(even){background:var(--warm);}
         <a href="#about">About Us</a>
         <a href="#serve">Who We Serve</a>
         <a href="#programs">Supply Programs</a>
-        <a href="#structure">Our Structure</a>
+        <a href="#systems">How It Works</a>
         <a href="#faq">FAQ</a>
         <a href="#apply">Request Partnership</a>
       </div>
