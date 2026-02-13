@@ -522,6 +522,76 @@ section:nth-child(even){background:var(--warm);}
 .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;}
 .footer-bottom p{font-size:12px;color:var(--green-300);opacity:.6;}
 
+/* ---- IMAGE ZONES ---- */
+/* Placeholder containers — swap background-image URL when photos are ready */
+.img-zone{
+  position:relative;overflow:hidden;
+  border-radius:var(--radius-lg);
+  background:
+    linear-gradient(145deg, var(--green-50), var(--cream-100));
+  border:1px solid var(--line);
+  min-height:260px;
+  display:flex;align-items:center;justify-content:center;
+}
+.img-zone[data-src]{
+  /* When real photo is set via data-src, JS will apply it */
+  background-size:cover;background-position:center;
+}
+.img-zone .iz-label{
+  text-align:center;padding:32px;
+}
+.img-zone .iz-label .iz-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:var(--gold-soft);border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;margin:0 auto 14px;
+}
+.img-zone .iz-label p{
+  font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--light);line-height:1.5;
+}
+.img-zone .iz-label span{
+  display:block;margin-top:4px;
+  font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;
+  color:var(--light);opacity:.7;
+}
+/* When real image is loaded, hide the label */
+.img-zone.has-image .iz-label{display:none;}
+.img-zone.has-image{
+  box-shadow:var(--shadow-lg);
+}
+
+/* Hero image zone — fits beside stats card */
+.hero-visual{
+  display:flex;flex-direction:column;gap:20px;
+}
+.hero-img-zone{min-height:200px;border-radius:var(--radius);}
+
+/* Section image zone — full width with aspect ratio */
+.section-img-zone{
+  margin-top:40px;
+  min-height:320px;
+  border-radius:var(--radius-lg);
+}
+
+/* Community background image support */
+.community.has-bg{
+  background-size:cover;background-position:center;
+  position:relative;
+}
+.community.has-bg::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg, rgba(31,61,43,.92), rgba(15,31,21,.88));
+}
+.community.has-bg .container{position:relative;z-index:1;}
+
+/* About image zone — side-by-side with narrative */
+.about-img{
+  min-height:300px;
+  border-radius:var(--radius-lg);
+  grid-row:1 / 3;
+}
+
 /* ---- RESPONSIVE ---- */
 @media(max-width:960px){
   .hero-grid{grid-template-columns:1fr;gap:40px;}
@@ -536,6 +606,8 @@ section:nth-child(even){background:var(--warm);}
   .nav-links{display:none;}
   .mobile-toggle{display:flex;}
   #delivery .container > div:first-of-type{grid-template-columns:1fr 1fr !important;}
+  .about-img{grid-row:auto;min-height:240px;}
+  .section-img-zone{min-height:240px;}
 }
 @media(max-width:640px){
   section{padding:56px 0;}
@@ -607,7 +679,17 @@ section:nth-child(even){background:var(--warm);}
         <p class="hero-fine">Structured B2B onboarding for verified volume-based operators.</p>
       </div>
 
-      <div class="hero-stats fade-up delay-2">
+      <div class="hero-visual fade-up delay-2">
+        <!-- IMAGE ZONE 1: Hero — Invoice + clipboard + rice sacks -->
+        <!-- Replace: set data-src="your-image.jpg" and add class "has-image" -->
+        <div class="img-zone hero-img-zone" id="img-hero">
+          <div class="iz-label">
+            <div class="iz-icon">📋</div>
+            <p>Hero Image<span>Invoice clipboard + organized rice sack storage</span></p>
+          </div>
+        </div>
+
+        <div class="hero-stats">
         <p class="stat-label">How we operate</p>
         <div class="stat-grid">
           <div class="stat-item">
@@ -627,7 +709,8 @@ section:nth-child(even){background:var(--warm);}
             <div class="stat-desc">Approved partners only, not open retail</div>
           </div>
         </div>
-      </div>
+        </div>
+      </div><!-- /hero-visual -->
     </div>
   </div>
 </section>
@@ -755,6 +838,15 @@ section:nth-child(even){background:var(--warm);}
     <div style="margin-top:32px;padding:24px 28px;border-radius:var(--radius);background:var(--green-50);border:1px solid var(--line);">
       <p style="font-size:14px;color:var(--text);margin:0;line-height:1.65;"><strong style="color:var(--charcoal);">Extended coverage:</strong> Delivery beyond the standard 10km radius may be approved for qualifying high-volume accounts. Contact us to discuss routing options for your location.</p>
     </div>
+
+    <!-- IMAGE ZONE 2: Delivery — Vehicle loading + receipt clipboard -->
+    <!-- Replace: set data-src="your-image.jpg" and add class "has-image" -->
+    <div class="img-zone section-img-zone" id="img-delivery">
+      <div class="iz-label">
+        <div class="iz-icon">🚚</div>
+        <p>Delivery Operations<span>Vehicle loading + receipt clipboard + organized dispatch</span></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -835,10 +927,23 @@ section:nth-child(even){background:var(--warm);}
         </div>
       </div>
     </div>
+
+    <!-- IMAGE ZONE 3: Systems — Tablet + order spreadsheet -->
+    <!-- Replace: set data-src="your-image.jpg" and add class "has-image" -->
+    <div class="img-zone section-img-zone" id="img-systems">
+      <div class="iz-label">
+        <div class="iz-icon">📊</div>
+        <p>Systems &amp; Documentation<span>Tablet with order management + invoice on clean desk</span></p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ====== COMMUNITY ====== -->
+<!-- IMAGE ZONE 5: Community background — To activate:
+     Add class "has-bg" and style="background-image:url('your-community-photo.jpg')" to the section below.
+     Example: <section id="community" class="community has-bg" style="background-image:url('community.jpg')">
+     Photo: Quiet South Cavite road, greenery, small storage building, golden hour -->
 <section id="community" class="community">
   <div class="container" style="display:flex;justify-content:center;">
     <div class="community-inner">
@@ -858,6 +963,15 @@ section:nth-child(even){background:var(--warm);}
       <div class="section-label">About us</div>
       <h2 class="section-title">Who we are — and how we got here</h2>
       <p class="section-sub">A local business that chose structure over shortcuts. We built the supply system we wished existed when we started.</p>
+    </div>
+
+    <!-- IMAGE ZONE 4: About — Storage organization, symmetrical stacking -->
+    <!-- Replace: set data-src="your-image.jpg" and add class "has-image" -->
+    <div class="img-zone section-img-zone" id="img-about" style="margin-bottom:40px;min-height:280px;">
+      <div class="iz-label">
+        <div class="iz-icon">📦</div>
+        <p>Storage &amp; Organization<span>Symmetrical rice sack stacking, clean floor, natural light</span></p>
+      </div>
     </div>
 
     <div class="about-grid">
@@ -1080,90 +1194,104 @@ section:nth-child(even){background:var(--warm);}
 
       <div class="apply-form-card">
         <h3>Supply Partnership Application</h3>
-        <form id="applyForm" action="https://docs.google.com/forms/d/1mmNMCRMhdO-9gm7V0oyu5V-kW8kRSbxnldiORH7rDCs/viewform" method="GET" target="_blank">
+        <form id="applyForm" onsubmit="return submitPrefill(event)">
+
           <div class="form-row">
             <div class="field">
               <label>Business Name *</label>
-              <input type="text" name="business" placeholder="e.g. Sunrise Rehabilitation Center" required>
+              <input type="text" id="f_business" placeholder="e.g. Sunrise Rehabilitation Center" required>
             </div>
             <div class="field">
-              <label>Location *</label>
-              <input type="text" name="location" placeholder="e.g. Tagaytay, Cavite" required>
+              <label>Owner / Authorized Contact *</label>
+              <input type="text" id="f_owner" placeholder="Full name of authorized person" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label>Type of Operation *</label>
-              <select name="type" required>
-                <option value="" disabled selected>Select type</option>
-                <option>Rehabilitation / Recovery Center</option>
-                <option>Retreat House</option>
-                <option>Private School</option>
-                <option>Restaurant / Café</option>
-                <option>Resort / Airbnb</option>
-                <option>Catering Service</option>
-                <option>Office / Corporate Kitchen</option>
+              <label>Contact Number *</label>
+              <input type="tel" id="f_phone" placeholder="09171234567" pattern="^09\d{9}$" title="Enter a valid PH mobile number (09XXXXXXXXX)" required>
+            </div>
+            <div class="field">
+              <label>Business Email *</label>
+              <input type="email" id="f_email" placeholder="business@email.com" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Complete Business / Delivery Address *</label>
+            <input type="text" id="f_address" placeholder="Full street address where deliveries will be received" required>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label>Municipality / City *</label>
+              <select id="f_city" required>
+                <option value="" disabled selected>Select municipality</option>
+                <option>Tagaytay</option>
+                <option>Amadeo</option>
+                <option>Alfonso</option>
+                <option>Silang</option>
+                <option>Indang</option>
+                <option>Mendez</option>
+                <option>General Aguinaldo</option>
                 <option>Other</option>
               </select>
             </div>
             <div class="field">
-              <label>Estimated Weekly Volume *</label>
-              <select name="volume" required>
-                <option value="" disabled selected>Select range</option>
-                <option>₱5,000 – ₱15,000 / week</option>
-                <option>₱15,000 – ₱30,000 / week</option>
-                <option>₱30,000 – ₱60,000 / week</option>
-                <option>₱60,000+ / week</option>
+              <label>Type of Business *</label>
+              <select id="f_type" required>
+                <option value="" disabled selected>Select type</option>
+                <option>Restaurant</option>
+                <option>Café</option>
+                <option>Carinderia</option>
+                <option>Catering Service</option>
+                <option>Airbnb / Staycation</option>
+                <option>Reseller / Distributor</option>
+                <option>Other</option>
               </select>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label>Preferred Payment Method</label>
-              <select name="payment">
-                <option value="" disabled selected>Select method</option>
-                <option>Bank Transfer (BPI)</option>
-                <option>GCash</option>
-                <option>Cash on Delivery</option>
-                <option>Check</option>
+              <label>Years in Operation *</label>
+              <select id="f_years" required>
+                <option value="" disabled selected>Select range</option>
+                <option>Less than 1 year</option>
+                <option>1–3 years</option>
+                <option>3–5 years</option>
+                <option>5+ years</option>
               </select>
             </div>
             <div class="field">
-              <label>BIR Registered? *</label>
-              <select name="bir" required>
+              <label>DTI / SEC Registered? *</label>
+              <select id="f_dti" required>
                 <option value="" disabled selected>Select</option>
                 <option>Yes</option>
                 <option>No</option>
-                <option>In Process</option>
               </select>
             </div>
           </div>
 
           <div class="form-row">
             <div class="field">
-              <label>Contact Person *</label>
-              <input type="text" name="contact" placeholder="Full name" required>
+              <label>DTI / SEC Registration No.</label>
+              <input type="text" id="f_dtinum" placeholder="Optional — if registered">
             </div>
             <div class="field">
-              <label>Phone / Mobile *</label>
-              <input type="tel" name="phone" placeholder="09XX-XXX-XXXX" required>
+              <label>Business Permit Available? *</label>
+              <select id="f_permit" required>
+                <option value="" disabled selected>Select</option>
+                <option>Yes</option>
+                <option>In process</option>
+                <option>No</option>
+              </select>
             </div>
-          </div>
-
-          <div class="field">
-            <label>Email Address *</label>
-            <input type="email" name="email" placeholder="business@email.com" required>
-          </div>
-
-          <div class="field">
-            <label>Anything else we should know?</label>
-            <textarea name="notes" placeholder="Special requirements, delivery schedule preferences, product priorities..."></textarea>
           </div>
 
           <button type="submit" class="btn btn-gold">Submit Partnership Application</button>
-          <p class="form-note">Applications are reviewed within 24–48 hours. We'll contact you to confirm operational fit and assign your supply terms.</p>
+          <p class="form-note">Your answers will pre-fill our official application form for final review and submission. Applications are processed within 24–48 hours.</p>
         </form>
       </div>
     </div>
@@ -1270,6 +1398,58 @@ function toggleFAQ(btn){
     answer.style.maxHeight=answer.scrollHeight+'px';
   }
 }
+
+// Google Form pre-fill submission
+function submitPrefill(e){
+  e.preventDefault();
+  var base='https://docs.google.com/forms/d/1mmNMCRMhdO-9gm7V0oyu5V-kW8kRSbxnldiORH7rDCs/viewform?usp=pp_url';
+  var params=[
+    ['entry.1489640646', document.getElementById('f_business').value],
+    ['entry.110969790',  document.getElementById('f_owner').value],
+    ['entry.292663352',  document.getElementById('f_phone').value],
+    ['entry.1200504157', document.getElementById('f_email').value],
+    ['entry.1000778974', document.getElementById('f_address').value],
+    ['entry.1694007162', document.getElementById('f_city').value],
+    ['entry.132432774',  document.getElementById('f_type').value],
+    ['entry.1958413821', document.getElementById('f_years').value],
+    ['entry.801442634',  document.getElementById('f_dti').value],
+    ['entry.51558889',   document.getElementById('f_dtinum').value],
+    ['entry.96916721',   document.getElementById('f_permit').value]
+  ];
+  var url=base;
+  params.forEach(function(p){
+    if(p[1]) url+='&'+p[0]+'='+encodeURIComponent(p[1]);
+  });
+  window.open(url,'_blank');
+  return false;
+}
+
+// ============================================================
+// IMAGE ZONE ACTIVATION
+// ============================================================
+// To add a real photo, call: activateImage('img-hero', 'path/to/photo.jpg')
+//
+// IMAGE MAP:
+//   img-hero     → Hero: Invoice clipboard + rice sack storage
+//   img-delivery → Delivery: Vehicle loading + receipt clipboard
+//   img-systems  → Systems: Tablet + order spreadsheet
+//   img-about    → About: Symmetrical storage organization
+//   community    → Add class "has-bg" + background-image to <section>
+//
+function activateImage(zoneId, imageUrl) {
+  var zone = document.getElementById(zoneId);
+  if (!zone) return;
+  zone.style.backgroundImage = 'url(' + imageUrl + ')';
+  zone.style.backgroundSize = 'cover';
+  zone.style.backgroundPosition = 'center';
+  zone.classList.add('has-image');
+}
+
+// Uncomment when photos are ready:
+// activateImage('img-hero', 'hero-photo.jpg');
+// activateImage('img-delivery', 'delivery-photo.jpg');
+// activateImage('img-systems', 'systems-photo.jpg');
+// activateImage('img-about', 'storage-photo.jpg');
 </script>
 </body>
 </html>
