@@ -110,12 +110,23 @@ a{color:inherit;text-decoration:none;}
   display:flex;align-items:center;gap:10px;
 }
 .nav-brand .mark{
-  width:36px;height:36px;border-radius:8px;
+  width:36px;height:36px;border-radius:10px;
   overflow:hidden;
   display:flex;align-items:center;justify-content:center;
+  background:var(--green);
+  color:var(--cream);
+  font-weight:800;
+  font-size:13px;
+  letter-spacing:.03em;
+  flex-shrink:0;
+  position:relative;
 }
 .nav-brand .mark img{
   width:100%;height:100%;object-fit:cover;
+  position:relative;z-index:1;
+}
+.nav-brand .mark img.logo-hidden{
+  display:none;
 }
 .nav-links{display:flex;align-items:center;gap:28px;list-style:none;}
 .nav-links a{font-size:13px;font-weight:500;color:var(--muted);transition:color .2s;}
@@ -647,7 +658,7 @@ section:nth-child(even){background:var(--warm);}
 <nav class="nav-bar">
   <div class="nav-inner">
     <a href="#" class="nav-brand">
-      <span class="mark"><img src="MHC2.0 logo.png" alt="MHC Logo"></span>
+      <span class="mark">MHC<img src="MH2.0LOGO.png" alt="MHC Logo" onerror="this.classList.add('logo-hidden')"></span>
       Must Have Corner
     </a>
     <ul class="nav-links" id="navLinks">
@@ -944,7 +955,7 @@ section:nth-child(even){background:var(--warm);}
      Add class "has-bg" and style="background-image:url('your-community-photo.jpg')" to the section below.
      Example: <section id="community" class="community has-bg" style="background-image:url('community.jpg')">
      Photo: Quiet South Cavite road, greenery, small storage building, golden hour -->
-<section id="community" class="community">
+<section id="community" class="community has-bg" style="background-image:url('has-bg.png')">
   <div class="container" style="display:flex;justify-content:center;">
     <div class="community-inner">
       <div class="section-label">Community</div>
@@ -1304,7 +1315,7 @@ section:nth-child(even){background:var(--warm);}
     <div class="footer-grid">
       <div>
         <div class="nav-brand" style="color:var(--cream);">
-          <span class="mark"><img src="MHC2.0 logo.png" alt="MHC Logo"></span>
+          <span class="mark">MHC<img src="MH2.0LOGO.png" alt="MHC Logo" onerror="this.classList.add('logo-hidden')"></span>
           Must Have Corner
         </div>
         <p class="footer-brand-text">Institutional kitchen supply rooted in Amadeo, Cavite. Serving rehabilitation centers, retreat houses, schools, restaurants, and volume-based kitchens across South Cavite.</p>
@@ -1332,7 +1343,7 @@ section:nth-child(even){background:var(--warm);}
       <div class="footer-col">
         <h4>Contact</h4>
         <a href="tel:09674000040">0967-400-0040</a>
-        <a href="mailto:mhc@musthavecorner.com">mhc@musthavecorner.com</a>
+        <a href="/cdn-cgi/l/email-protection#a9c4c1cae9c4dcdaddc1c8dfcccac6dbc7ccdb87cac6c4"><span class="__cf_email__" data-cfemail="ddb0b5be9db0a8aea9b5bcabb8beb2afb3b8aff3beb2b0">[email&#160;protected]</span></a>
         <a>Daang Luma, Brgy. Loma</a>
         <a>Amadeo, Cavite 4119</a>
         <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.06);">
@@ -1356,7 +1367,7 @@ section:nth-child(even){background:var(--warm);}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 document.getElementById('yr').textContent=new Date().getFullYear();
 
 // Mobile menu
@@ -1445,11 +1456,8 @@ function activateImage(zoneId, imageUrl) {
   zone.classList.add('has-image');
 }
 
-// Uncomment when photos are ready:
-// activateImage('img-hero', 'hero-photo.jpg');
-// activateImage('img-delivery', 'delivery-photo.jpg');
-// activateImage('img-systems', 'systems-photo.jpg');
-// activateImage('img-about', 'storage-photo.jpg');
-</script>
-</body>
-</html>
+// Image zones activated
+activateImage('img-hero', 'img-hero.png');
+activateImage('img-delivery', 'img-delivery.png');
+activateImage('img-systems', 'img-systems.png');
+activateImage('img-about', 'img-about.png');
