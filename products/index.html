@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffee & Cafe Supply — Must Have Corner</title>
+<meta name="description" content="B2B wholesale coffee beans and cafe supplies for restaurants, hotels, offices, and cafes across South Cavite. Account-based bulk pricing from Must Have Corner.">
+<meta property="og:title" content="Coffee & Cafe Supply — Must Have Corner">
+<meta property="og:description" content="Wholesale coffee beans and cafe essentials. Account-based pricing for volume buyers.">
+<meta property="og:url" content="https://www.musthavecorner.com/products/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;0,8..60,800;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green-950:#0F1F15;--green-900:#1A2E21;--green:#1F3D2B;--green-700:#2A5238;
+  --green-600:#356845;--green-500:#437E55;--green-400:#5A9A6E;--green-300:#7DB590;
+  --green-200:#A8D1B5;--green-100:#D4E8DA;--green-50:#EDF5EF;
+  --cream:#F5F0E8;--cream-100:#EDE7DB;--cream-200:#E0D7C8;
+  --charcoal:#2A2A2A;--text:#3A3A3A;--muted:#6B6B6B;--light:#999;
+  --gold:#B8944F;--gold-soft:rgba(184,148,79,.12);--gold-line:rgba(184,148,79,.25);
+  --line:rgba(0,0,0,.08);
+  --serif:'Source Serif 4',Georgia,serif;
+  --sans:'Sora',system-ui,-apple-system,sans-serif;
+  --radius:14px;--radius-lg:20px;
+  --shadow:0 8px 30px rgba(0,0,0,.08);
+  --shadow-lg:0 16px 48px rgba(0,0,0,.10);
+  --max:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--sans);color:var(--text);
+  background:var(--cream);line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* Layout */
+.container{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+/* Nav */
+.site-nav{
+  background:var(--green-950);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  position:sticky;top:0;z-index:100;
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 0;max-width:var(--max);margin:0 auto;padding-left:24px;padding-right:24px;
+}
+.nav-brand{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--serif);font-size:18px;font-weight:700;color:var(--cream);
+}
+.nav-brand img{height:36px;width:auto;border-radius:8px;}
+.nav-links{display:flex;gap:28px;align-items:center;}
+.nav-links a{
+  font-size:13px;font-weight:500;color:rgba(255,255,255,.7);
+  letter-spacing:.02em;transition:color .2s;
+}
+.nav-links a:hover{color:#fff;}
+.nav-links .btn-nav{
+  background:var(--gold);color:var(--green-950);
+  padding:8px 18px;border-radius:8px;font-weight:700;font-size:13px;
+}
+
+/* Hero */
+.hero{
+  padding:80px 0 60px;
+  background:
+    radial-gradient(ellipse at 20% 0%,rgba(31,61,43,.06),transparent 60%),
+    radial-gradient(ellipse at 80% 100%,rgba(184,148,79,.06),transparent 50%),
+    var(--cream);
+}
+.hero-inner{max-width:680px;}
+.hero-label{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:16px;
+}
+.hero-label::before{content:"";width:28px;height:2px;background:var(--gold);border-radius:2px;}
+.hero h1{
+  font-family:var(--serif);font-size:42px;font-weight:800;
+  color:var(--charcoal);line-height:1.15;letter-spacing:-.02em;
+  margin-bottom:16px;
+}
+.hero h1 span{color:var(--gold);}
+.hero p{font-size:16px;color:var(--muted);max-width:520px;line-height:1.65;margin-bottom:28px;}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:12px 24px;border-radius:10px;font-weight:700;font-size:14px;
+  transition:all .2s;cursor:pointer;border:none;
+}
+.btn-primary{background:var(--green);color:#fff;}
+.btn-primary:hover{background:var(--green-700);transform:translateY(-1px);box-shadow:var(--shadow);}
+.btn-outline{background:transparent;color:var(--green);border:2px solid var(--green-200);}
+.btn-outline:hover{background:var(--green-50);}
+
+/* Section headers */
+.section{padding:72px 0;}
+.section-label{
+  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:10px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-label::before{content:"";width:24px;height:2px;background:var(--gold);border-radius:2px;}
+.section-title{
+  font-family:var(--serif);font-size:30px;font-weight:800;
+  color:var(--charcoal);line-height:1.2;margin-bottom:8px;
+}
+.section-sub{font-size:15px;color:var(--muted);max-width:540px;margin-bottom:32px;}
+
+/* Product Grid */
+.product-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+}
+.product-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius-lg);
+  overflow:hidden;transition:all .3s;
+}
+.product-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--green-200);}
+
+.product-img{
+  height:260px;background:var(--cream-100);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.product-img img{width:100%;height:100%;object-fit:cover;}
+.product-img .placeholder{
+  text-align:center;padding:24px;
+}
+.product-img .placeholder .ph-icon{
+  width:56px;height:56px;border-radius:16px;
+  background:var(--gold-soft);border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;margin:0 auto 12px;
+}
+.product-img .placeholder p{
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--light);
+}
+.product-img .placeholder span{
+  display:block;font-size:10px;font-weight:400;color:var(--light);opacity:.7;margin-top:4px;
+  letter-spacing:0;text-transform:none;
+}
+.product-tag{
+  position:absolute;top:14px;left:14px;
+  font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 10px;border-radius:6px;
+  background:var(--green);color:#fff;
+}
+
+.product-body{padding:22px;}
+.product-cat{
+  font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:6px;
+}
+.product-name{
+  font-family:var(--serif);font-size:18px;font-weight:700;
+  color:var(--charcoal);margin-bottom:8px;line-height:1.3;
+}
+.product-desc{font-size:13px;color:var(--muted);line-height:1.55;margin-bottom:16px;}
+.product-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:14px;border-top:1px solid var(--line);
+}
+.product-price{font-family:var(--serif);font-size:20px;font-weight:800;color:var(--green);}
+.product-unit{font-size:12px;color:var(--muted);font-weight:500;}
+.product-badge{
+  font-size:11px;font-weight:600;padding:5px 10px;border-radius:6px;
+  background:var(--green-50);color:var(--green-600);
+}
+
+/* Why section */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.why-card{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;
+}
+.why-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:var(--gold-soft);border:1px solid var(--gold-line);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;margin-bottom:14px;
+}
+.why-card h3{font-size:15px;font-weight:700;color:var(--charcoal);margin-bottom:6px;}
+.why-card p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* CTA */
+.cta-section{
+  background:var(--green-950);padding:60px 0;text-align:center;
+}
+.cta-section h2{font-family:var(--serif);font-size:28px;color:var(--cream);margin-bottom:12px;}
+.cta-section p{color:rgba(255,255,255,.7);font-size:15px;margin-bottom:28px;}
+.cta-section .btn-primary{background:var(--gold);color:var(--green-950);}
+.cta-section .btn-primary:hover{background:#c9a560;}
+
+/* Footer */
+.site-footer{
+  background:var(--green-950);border-top:1px solid rgba(255,255,255,.06);
+  padding:32px 0;text-align:center;
+}
+.site-footer p{font-size:12px;color:rgba(255,255,255,.4);}
+.site-footer a{color:var(--gold);font-weight:600;}
+
+/* Responsive */
+@media(max-width:768px){
+  .product-grid{grid-template-columns:1fr 1fr;gap:16px;}
+  .why-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:30px;}
+  .nav-links{display:none;}
+}
+@media(max-width:480px){
+  .product-grid{grid-template-columns:1fr;}
+  .product-img{height:220px;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="../MHClogo.png" alt="MHC Logo" onerror="this.style.display='none'">
+      Must Have Corner
+    </a>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/#programs">Supply Programs</a>
+      <a href="/#serve">Who We Serve</a>
+      <a href="#products">Products</a>
+      <a href="/#apply" class="btn-nav">Request Account</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-label">Cafe & Coffee Supply</div>
+      <h1>Wholesale Coffee & Cafe Essentials for <span>Serious Operations</span></h1>
+      <p>Bulk coffee beans, cafe supplies, and beverage essentials — sourced for restaurants, hotels, offices, and cafes across South Cavite. Account-based pricing. Scheduled delivery.</p>
+      <div class="hero-actions">
+        <a href="/#apply" class="btn btn-primary">Request Supply Account</a>
+        <a href="#products" class="btn btn-outline">Browse Products ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section" id="products" style="background:#fff;">
+  <div class="container">
+    <div class="section-label">Product catalog</div>
+    <h2 class="section-title">Coffee Beans & Cafe Supply</h2>
+    <p class="section-sub">Wholesale pricing for approved accounts. All items available for scheduled bulk delivery.</p>
+
+    <div class="product-grid">
+
+      <!-- Product 1 -->
+      <div class="product-card" id="prod-1">
+        <div class="product-img">
+          <div class="placeholder">
+            <div class="ph-icon">☕</div>
+            <p>Product Photo<span>Upload to replace</span></p>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Coffee Beans</div>
+          <h3 class="product-name">Arabica Blend — Whole Bean</h3>
+          <p class="product-desc">Premium arabica blend sourced for consistent flavor profiles. Ideal for espresso-based menus and drip service.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">Bulk Pricing</div>
+              <div class="product-unit">Per kilo · Account-based</div>
+            </div>
+            <span class="product-badge">Wholesale</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card" id="prod-2">
+        <div class="product-img">
+          <div class="placeholder">
+            <div class="ph-icon">☕</div>
+            <p>Product Photo<span>Upload to replace</span></p>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Coffee Beans</div>
+          <h3 class="product-name">Robusta — Whole Bean</h3>
+          <p class="product-desc">Strong, full-bodied robusta beans for high-volume brewed coffee service. Cost-efficient for institutional use.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">Bulk Pricing</div>
+              <div class="product-unit">Per kilo · Account-based</div>
+            </div>
+            <span class="product-badge">Wholesale</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card" id="prod-3">
+        <div class="product-img">
+          <div class="placeholder">
+            <div class="ph-icon">☕</div>
+            <p>Product Photo<span>Upload to replace</span></p>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Coffee Beans</div>
+          <h3 class="product-name">House Blend — Ground</h3>
+          <p class="product-desc">Pre-ground house blend for drip machines and pour-over. Convenient for hotels and offices with high daily throughput.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">Bulk Pricing</div>
+              <div class="product-unit">Per kilo · Account-based</div>
+            </div>
+            <span class="product-badge">Wholesale</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card" id="prod-4">
+        <div class="product-img">
+          <div class="placeholder">
+            <div class="ph-icon">🥛</div>
+            <p>Product Photo<span>Upload to replace</span></p>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Cafe Essentials</div>
+          <h3 class="product-name">Powdered Creamer & Milk</h3>
+          <p class="product-desc">Commercial-grade creamer and milk powder for coffee service. Bulk packs sized for institutional consumption.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">Bulk Pricing</div>
+              <div class="product-unit">Per case · Account-based</div>
+            </div>
+            <span class="product-badge">Wholesale</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="product-card" id="prod-5">
+        <div class="product-img">
+          <div class="placeholder">
+            <div class="ph-icon">🧊</div>
+            <p>Product Photo<span>Upload to replace</span></p>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Cafe Essentials</div>
+          <h3 class="product-name">Syrups & Sweeteners</h3>
+          <p class="product-desc">Flavored syrups, sugar, and sweetener packets in bulk. For cafes and beverage stations serving multiple drink options.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">Bulk Pricing</div>
+              <div class="product-unit">Per case · Account-based</div>
+            </div>
+            <span class="product-badge">Wholesale</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="product-card" id="prod-6">
+        <div class="product-img">
+          <div class="placeholder">
+            <div class="ph-icon">📦</div>
+            <p>Product Photo<span>Upload to replace</span></p>
+          </div>
+        </div>
+        <div class="product-body">
+          <div class="product-cat">Cafe Essentials</div>
+          <h3 class="product-name">Cups, Lids & Packaging</h3>
+          <p class="product-desc">Disposable cups, lids, stirrers, and takeout packaging in bulk. For dine-in and grab-and-go operations.</p>
+          <div class="product-footer">
+            <div>
+              <div class="product-price">Bulk Pricing</div>
+              <div class="product-unit">Per case · Account-based</div>
+            </div>
+            <span class="product-badge">Wholesale</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Note -->
+    <div style="margin-top:32px;padding:22px 28px;border-radius:var(--radius);background:var(--green-50);border:1px solid var(--line);">
+      <p style="font-size:14px;color:var(--text);margin:0;line-height:1.65;">
+        <strong style="color:var(--charcoal);">Pricing note:</strong> All items are priced at wholesale rates for approved B2B accounts. Exact pricing depends on volume, frequency, and account terms. <a href="/#apply" style="color:var(--gold);font-weight:700;">Request an account →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY MHC FOR CAFE -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div class="section-label">Why MHC</div>
+    <h2 class="section-title">Why source cafe supply through Must Have Corner?</h2>
+    <p class="section-sub">Same structured, account-based system — now covering your coffee and beverage operation too.</p>
+
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">📋</div>
+        <h3>Documented Orders</h3>
+        <p>Every delivery invoiced and tracked. No handwritten receipts. Full paper trail for your accounting.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📅</div>
+        <h3>Scheduled Delivery</h3>
+        <p>Set your weekly or bi-weekly delivery schedule. Your cafe never runs out mid-service.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💰</div>
+        <h3>Volume Pricing</h3>
+        <p>Wholesale rates locked to your account. The more consistent your orders, the better your terms.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🔄</div>
+        <h3>One Supplier</h3>
+        <p>Bundle coffee supply with your kitchen, linen, and housekeeping orders. One account, one delivery.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">📊</div>
+        <h3>NET 14 Credit</h3>
+        <p>Approved accounts get 14-day credit terms. No upfront cash needed for every restock.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🚚</div>
+        <h3>South Cavite Coverage</h3>
+        <p>Amadeo, Tagaytay, Mendez, Indang, Alfonso, Silang, and surrounding areas. 7 days a week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to set up cafe supply?</h2>
+    <p>Request a B2B account and get wholesale pricing for your coffee and cafe operation.</p>
+    <a href="/#apply" class="btn btn-primary">Request Supply Account →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <p style="margin-bottom:8px;">&copy; <span id="yr"></span> Must Have Corner — Institutional & Hospitality Supply, Amadeo, Cavite</p>
+    <p>
+      <a href="/">Back to Main Site</a> · 
+      <a href="/#programs">Supply Programs</a> · 
+      <a href="/#apply">Request Account</a>
+    </p>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+</body>
+</html>
