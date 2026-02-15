@@ -1478,38 +1478,37 @@ function toggleFAQ(btn){
   }
 }
 
-// Direct form submission — no Google Form redirect
+// B2B Application — posts directly to B2B_CLIENTS sheet via Apps Script
+var B2B_WEBAPP_URL = 'https://script.google.com/macros/s/AKfycby_mGF1bFVkSE2PuMPoyn05RSM0n4zC0cq8opyjYhx36sf_fifRwz_SKo0zhCExV9Cbog/exec?action=apply';
+
 function submitPrefill(e){
   e.preventDefault();
   var btn=document.querySelector('#applyForm button[type="submit"]');
-  var origText=btn.textContent;
   btn.textContent='Submitting…';
   btn.disabled=true;
 
-  var formData=new FormData();
-  var fields=[
-    ['entry.1489640646', document.getElementById('f_business').value],
-    ['entry.110969790',  document.getElementById('f_owner').value],
-    ['entry.292663352',  document.getElementById('f_phone').value],
-    ['entry.1200504157', document.getElementById('f_email').value],
-    ['entry.1000778974', document.getElementById('f_address').value],
-    ['entry.1694007162', document.getElementById('f_city').value],
-    ['entry.132432774',  document.getElementById('f_type').value],
-    ['entry.1958413821', document.getElementById('f_years').value],
-    ['entry.801442634',  document.getElementById('f_dti').value],
-    ['entry.51558889',   document.getElementById('f_dtinum').value],
-    ['entry.96916721',   document.getElementById('f_permit').value]
-  ];
-  fields.forEach(function(f){ if(f[1]) formData.append(f[0],f[1]); });
+  var payload = {
+    businessName:   document.getElementById('f_business').value,
+    ownerContact:   document.getElementById('f_owner').value,
+    phone:          document.getElementById('f_phone').value,
+    email:          document.getElementById('f_email').value,
+    address:        document.getElementById('f_address').value,
+    city:           document.getElementById('f_city').value,
+    businessType:   document.getElementById('f_type').value,
+    yearsOperation: document.getElementById('f_years').value,
+    dtiRegistered:  document.getElementById('f_dti').value,
+    dtiSecNumber:   document.getElementById('f_dtinum').value,
+    businessPermit: document.getElementById('f_permit').value
+  };
 
-  fetch('https://docs.google.com/forms/d/1mmNMCRMhdO-9gm7V0oyu5V-kW8kRSbxnldiORH7rDCs/formResponse',{
-    method:'POST',
-    body:formData,
-    mode:'no-cors'
+  fetch(B2B_WEBAPP_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload),
+    mode: 'no-cors'
   }).then(function(){
     showFormSuccess();
   }).catch(function(){
-    // no-cors won't return status but data still goes through
     showFormSuccess();
   });
   return false;
