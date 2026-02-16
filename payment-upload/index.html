@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Submit Payment - Must Have Corner</title>
-    <meta name="description" content="Upload your payment proof for Must Have Corner orders.">
+    <title>Payment - Must Have Corner</title>
+    <meta name="description" content="Must Have Corner payment methods and payment proof upload.">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -25,25 +25,64 @@
         .top-bar a{color:var(--emerald-300);text-decoration:none;font-weight:600}
         .top-bar a:hover{color:var(--white)}
         .header{background:var(--white);box-shadow:var(--shadow-sm);position:sticky;top:0;z-index:100}
-        .header-inner{max-width:720px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+        .header-inner{max-width:900px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
         .logo{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:700;color:var(--emerald-700);text-decoration:none}
         .logo-icon{background:var(--emerald-50);padding:6px 10px;border-radius:8px}
         .back-link{color:var(--emerald-600);text-decoration:none;font-size:14px;font-weight:600}
         .back-link:hover{color:var(--emerald-700)}
-        .main{max-width:620px;margin:0 auto;padding:32px 20px 80px}
+        .main{max-width:900px;margin:0 auto;padding:32px 20px 80px}
         .hero-card{background:linear-gradient(135deg,var(--emerald-700),var(--emerald-900));color:var(--white);border-radius:16px;padding:32px;margin-bottom:28px;position:relative;overflow:hidden}
         .hero-card::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;background:rgba(255,255,255,.06);border-radius:50%}
-        .hero-card h1{font-size:26px;font-weight:800;margin-bottom:8px;line-height:1.2}
-        .hero-card p{font-size:15px;opacity:.92;line-height:1.6}
-        .steps{display:flex;gap:8px;margin-bottom:28px}
-        .step{flex:1;text-align:center;padding:12px 8px;border-radius:10px;background:var(--white);border:1px solid var(--gray-200);font-size:13px;color:var(--text-light);transition:all .2s}
-        .step.active{background:var(--emerald-50);border-color:var(--emerald-300);color:var(--emerald-700);font-weight:600}
-        .step.done{background:var(--emerald-600);border-color:var(--emerald-600);color:var(--white);font-weight:600}
-        .step-num{font-size:18px;font-weight:800;display:block;margin-bottom:2px}
+        .hero-card h1{font-size:26px;font-weight:800;margin-bottom:8px;line-height:1.2;position:relative;z-index:1}
+        .hero-card p{font-size:15px;opacity:.92;line-height:1.6;position:relative;z-index:1}
+        .tabs{display:flex;gap:4px;margin-bottom:24px;background:var(--white);border-radius:14px;padding:4px;border:1px solid var(--gray-200);box-shadow:var(--shadow-sm)}
+        .tab{flex:1;text-align:center;padding:12px 16px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;color:var(--text-light);background:transparent;border:none}
+        .tab.active{background:var(--emerald-600);color:var(--white);box-shadow:0 4px 12px rgba(5,150,105,.25)}
+        .tab:hover:not(.active){background:var(--emerald-50);color:var(--emerald-700)}
+        .tab-content{display:none}
+        .tab-content.active{display:block}
+        .pm-card{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:28px;box-shadow:var(--shadow-md);margin-bottom:20px}
+        .pm-card h2{font-size:18px;font-weight:800;margin-bottom:4px}
+        .pm-subtitle{font-size:14px;color:var(--text-light);margin-bottom:20px}
+        .section-label{text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text-light);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--gray-200)}
+        .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+        .pay-card{border:2px solid var(--gray-200);border-radius:14px;overflow:hidden;background:var(--white)}
+        .pay-card-header{padding:12px 14px;display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px}
+        .gcash-hdr{background:#007dfe;color:#fff}
+        .bpi-hdr{background:#c8102e;color:#fff}
+        .bdo-hdr{background:#003da5;color:#fff}
+        .ub-hdr{background:#d32f2f;color:#fff}
+        .pay-card-body{padding:14px;text-align:center}
+        .acct-row{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--gray-50);border-radius:8px;margin-bottom:6px;font-size:12px}
+        .acct-row:last-of-type{margin-bottom:0}
+        .acct-name{font-weight:700;color:var(--text-primary);flex:1;text-align:left}
+        .acct-num{font-weight:600;color:var(--emerald-700);font-family:'SF Mono',Consolas,monospace;font-size:12px}
+        .qr-img{width:130px;height:130px;border-radius:10px;border:1px solid var(--gray-200);object-fit:cover;margin:10px auto 6px;display:block}
+        .qr-note{font-size:10px;color:#94a3b8;margin-top:2px}
+        .bank-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px}
+        .bank-card{border:2px solid var(--gray-200);border-radius:14px;overflow:hidden;background:var(--white)}
+        .bank-card-body{padding:14px;text-align:center}
+        .bank-label{font-size:10px;color:#94a3b8;text-transform:uppercase;letter-spacing:.06em;margin-bottom:1px}
+        .bank-name{font-size:12px;font-weight:700;color:var(--text-primary)}
+        .bank-num{font-size:12px;font-weight:600;color:var(--emerald-700);font-family:'SF Mono',Consolas,monospace;margin-top:2px}
+        .cod-card{border:2px solid var(--emerald-100);border-radius:14px;padding:20px;background:var(--emerald-50);text-align:center;margin-bottom:20px}
+        .cod-card h3{font-size:16px;color:var(--emerald-700);margin-bottom:4px}
+        .cod-card p{font-size:12px;color:var(--text-light)}
+        .pm-footer{text-align:center;padding-top:16px;border-top:1px solid var(--gray-200)}
+        .pm-footer p{font-size:12px;color:var(--emerald-700);font-weight:600}
+        .pm-footer .note{font-size:11px;color:#94a3b8;font-weight:400;margin-top:3px}
+        .upload-cta{margin-top:20px;padding:20px;border-radius:14px;background:linear-gradient(135deg,var(--emerald-600),var(--emerald-700));text-align:center;cursor:pointer}
+        .upload-cta h3{color:#fff;font-size:16px;margin-bottom:4px}
+        .upload-cta p{color:rgba(255,255,255,.85);font-size:13px}
         .form-card{background:var(--white);border:1px solid var(--gray-200);border-radius:16px;padding:28px;box-shadow:var(--shadow-md)}
         .form-card h2{font-size:18px;font-weight:700;margin-bottom:4px}
         .form-card .subtitle{font-size:14px;color:var(--text-light);margin-bottom:20px}
-        .field{margin-bottom:18px}
+        .steps{display:flex;gap:8px;margin-bottom:20px}
+        .step{flex:1;text-align:center;padding:10px 8px;border-radius:10px;background:var(--white);border:1px solid var(--gray-200);font-size:12px;color:var(--text-light);transition:all .2s}
+        .step.active{background:var(--emerald-50);border-color:var(--emerald-300);color:var(--emerald-700);font-weight:600}
+        .step.done{background:var(--emerald-600);border-color:var(--emerald-600);color:var(--white);font-weight:600}
+        .step-num{font-size:16px;font-weight:800;display:block;margin-bottom:2px}
+        .field{margin-bottom:16px}
         .field label{display:block;font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:6px}
         .field label .req{color:var(--red-500);margin-left:2px}
         .field input,.field select,.field textarea{width:100%;padding:11px 14px;border-radius:10px;border:1px solid var(--gray-200);font-size:15px;color:var(--text-primary);background:var(--white);outline:none;transition:border .2s}
@@ -51,21 +90,21 @@
         .field input::placeholder,.field textarea::placeholder{color:#94a3b8}
         .field textarea{resize:vertical;min-height:70px}
         .field .hint{font-size:12px;color:var(--text-light);margin-top:4px}
-        .pay-types{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:18px}
-        .pay-type{text-align:center;padding:14px 8px;border-radius:10px;border:2px solid var(--gray-200);background:var(--white);cursor:pointer;transition:all .15s;font-size:13px;font-weight:600;color:var(--text-secondary)}
+        .pay-types{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px}
+        .pay-type{text-align:center;padding:12px 6px;border-radius:10px;border:2px solid var(--gray-200);background:var(--white);cursor:pointer;transition:all .15s;font-size:12px;font-weight:600;color:var(--text-secondary)}
         .pay-type:hover{border-color:var(--emerald-300);background:var(--emerald-50)}
         .pay-type.selected{border-color:var(--emerald-500);background:var(--emerald-50);color:var(--emerald-700)}
-        .pay-type .pay-icon{font-size:24px;display:block;margin-bottom:4px}
+        .pay-type .pay-icon{font-size:22px;display:block;margin-bottom:3px}
         .pay-type input{display:none}
-        .upload-area{border:2px dashed var(--gray-200);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--gray-50);position:relative}
+        .upload-area{border:2px dashed var(--gray-200);border-radius:14px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s;background:var(--gray-50);position:relative}
         .upload-area:hover,.upload-area.dragover{border-color:var(--emerald-400);background:var(--emerald-50)}
-        .upload-area .upload-icon{font-size:40px;margin-bottom:8px}
+        .upload-area .upload-icon{font-size:36px;margin-bottom:6px}
         .upload-area p{font-size:14px;color:var(--text-secondary)}
         .upload-area .browse{color:var(--emerald-600);font-weight:600;text-decoration:underline;cursor:pointer}
         .upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer}
-        .preview{display:none;margin-top:14px;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--gray-200)}
-        .preview img{width:100%;max-height:300px;object-fit:contain;background:#f8f8f8}
-        .preview .remove-btn{position:absolute;top:8px;right:8px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;border:none;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+        .preview{display:none;margin-top:12px;position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--gray-200)}
+        .preview img{width:100%;max-height:280px;object-fit:contain;background:#f8f8f8}
+        .preview .remove-btn{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;border:none;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
         .file-info{font-size:12px;color:var(--text-light);padding:8px 12px;background:var(--gray-50);text-align:center}
         .submit-btn{width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,var(--emerald-600),var(--emerald-700));color:var(--white);font-size:16px;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 8px 20px rgba(5,150,105,.25);display:flex;align-items:center;justify-content:center;gap:8px}
         .submit-btn:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(5,150,105,.3)}
@@ -89,7 +128,8 @@
         .field.error input,.field.error select{border-color:var(--red-500)}
         .field .error-msg{display:none;font-size:12px;color:var(--red-500);margin-top:4px}
         .field.error .error-msg{display:block}
-        @media(max-width:480px){.main{padding:20px 14px 80px}.hero-card{padding:24px 20px}.hero-card h1{font-size:22px}.form-card{padding:20px 16px}.pay-types{grid-template-columns:repeat(2,1fr)}.steps{flex-wrap:wrap}.step{flex:1 1 45%}}
+        @media(max-width:640px){.main{padding:20px 14px 80px}.hero-card{padding:24px 20px}.hero-card h1{font-size:22px}.pm-card,.form-card{padding:20px 16px}.pay-grid{grid-template-columns:1fr}.bank-grid{grid-template-columns:1fr}.pay-types{grid-template-columns:repeat(3,1fr)}.steps{flex-wrap:wrap}.step{flex:1 1 30%}.tabs{flex-direction:column}}
+        @media(min-width:641px) and (max-width:768px){.bank-grid{grid-template-columns:1fr 1fr}}
     </style>
 </head>
 <body>
@@ -104,115 +144,188 @@
 </div>
 
 <div class="main">
+
     <div class="hero-card">
-        <h1>💳 Submit Your Payment</h1>
-        <p>Upload your payment screenshot so we can verify and process your order quickly. Secure, fast, and easy.</p>
+        <h1>💳 Payment Center</h1>
+        <p>View our payment accounts, then upload your payment proof for fast order verification.</p>
     </div>
 
-    <div class="steps">
-        <div class="step active" id="step1"><span class="step-num">1</span>Fill Details</div>
-        <div class="step" id="step2"><span class="step-num">2</span>Upload Proof</div>
-        <div class="step" id="step3"><span class="step-num">3</span>Submit</div>
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('methods')">💰 Payment Methods</button>
+        <button class="tab" onclick="switchTab('upload')">📤 Upload Payment Proof</button>
     </div>
 
-    <div class="form-card" id="formCard">
-        <h2>Payment Details</h2>
-        <p class="subtitle">All fields marked with * are required</p>
+    <!-- TAB 1: PAYMENT METHODS -->
+    <div class="tab-content active" id="tab-methods">
+        <div class="pm-card">
+            <h2>Where to Send Payment</h2>
+            <p class="pm-subtitle">Choose your preferred payment method below</p>
 
-        <form id="paymentForm" onsubmit="return false;">
-            <div class="field" id="nameField">
-                <label>Your Name / Business Name <span class="req">*</span></label>
-                <input type="text" id="customerName" placeholder="e.g. Maria Cruz or ABC Restaurant" required>
-                <p class="error-msg">Please enter your name</p>
-            </div>
-
-            <div class="field" id="orderField">
-                <label>Order ID / Reference <span class="req">*</span></label>
-                <input type="text" id="orderId" placeholder="e.g. MHC-2026-0001">
-                <p class="hint">Found in your order confirmation email or invoice</p>
-                <p class="error-msg">Please enter your Order ID</p>
-            </div>
-
-            <div class="field"><label>Payment Method <span class="req">*</span></label></div>
-            <div class="pay-types" id="payTypes">
-                <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="GCash"><span class="pay-icon">📱</span>GCash</label>
-                <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="BPI"><span class="pay-icon">🏦</span>BPI</label>
-                <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="PayMaya"><span class="pay-icon">💳</span>PayMaya</label>
-                <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="Cash"><span class="pay-icon">💵</span>Cash</label>
-            </div>
-
-            <div class="field" id="refField">
-                <label>Payment Reference Number <span class="req">*</span></label>
-                <input type="text" id="payRef" placeholder="e.g. GCash ref# 1234567890">
-                <p class="hint">The transaction number from your payment app</p>
-                <p class="error-msg">Please enter the reference number</p>
-            </div>
-
-            <div class="field" id="amountField">
-                <label>Amount Paid (₱) <span class="req">*</span></label>
-                <input type="number" id="amount" placeholder="e.g. 1500" min="1" step="0.01">
-                <p class="error-msg">Please enter the amount paid</p>
-            </div>
-
-            <div class="field">
-                <label>Payment Screenshot <span class="req">*</span></label>
-                <div class="upload-area" id="uploadArea">
-                    <input type="file" id="fileInput" accept="image/*,.pdf" onchange="handleFile(this)">
-                    <div class="upload-icon">📸</div>
-                    <p>Drag &amp; drop your screenshot here<br>or <span class="browse">click to browse</span></p>
-                    <p style="font-size:12px;color:var(--text-light);margin-top:8px">JPG, PNG, or PDF — Max 10MB</p>
+            <div class="section-label">GCash Accounts</div>
+            <div class="pay-grid">
+                <div class="pay-card">
+                    <div class="pay-card-header gcash-hdr"><span style="font-size:18px;font-weight:900">G</span> GCash</div>
+                    <div class="pay-card-body">
+                        <div class="acct-row"><span class="acct-name">LEGERYN PIA</span><span class="acct-num">0966 960 6060</span></div>
+                        <img src="/payment-upload/gcash-legeryn.png" alt="GCash QR - Legeryn" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-note">Scan QR to pay via InstaPay</div>
+                    </div>
                 </div>
-                <div class="preview" id="preview">
-                    <button type="button" class="remove-btn" onclick="removeFile()">✕</button>
-                    <img id="previewImg" src="" alt="Payment preview">
-                    <div class="file-info" id="fileInfo"></div>
+                <div class="pay-card">
+                    <div class="pay-card-header gcash-hdr"><span style="font-size:18px;font-weight:900">G</span> GCash</div>
+                    <div class="pay-card-body">
+                        <div class="acct-row"><span class="acct-name">MICHAEL TALLA</span><span class="acct-num">0935 763 7498</span></div>
+                        <img src="/payment-upload/gcash-michael.png" alt="GCash QR - Michael" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-note">Scan QR to pay via InstaPay</div>
+                    </div>
                 </div>
             </div>
 
-            <div class="field">
-                <label>Notes (Optional)</label>
-                <textarea id="notes" placeholder="Any additional info about your payment..."></textarea>
+            <div class="section-label">Bank Transfer Accounts</div>
+            <div class="bank-grid">
+                <div class="bank-card">
+                    <div class="pay-card-header bdo-hdr"><span style="font-weight:900">BDO</span></div>
+                    <div class="bank-card-body">
+                        <div class="bank-label">Account Name</div><div class="bank-name">LEGERYN PIA</div>
+                        <div style="margin-top:6px"><div class="bank-label">Account Number</div><div class="bank-num">0126-000-62617</div></div>
+                        <img src="/payment-upload/bdo-qr.png" alt="BDO QR" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-note">Scan QR to pay via InstaPay</div>
+                    </div>
+                </div>
+                <div class="bank-card">
+                    <div class="pay-card-header bpi-hdr"><span style="font-weight:900">BPI</span></div>
+                    <div class="bank-card-body">
+                        <div class="bank-label">Account Name</div><div class="bank-name">LEGERYN PIA</div>
+                        <div style="margin-top:6px"><div class="bank-label">Account Number</div><div class="bank-num">1539-235-628</div></div>
+                        <img src="/payment-upload/bpi-qr.png" alt="BPI QR" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-note">Scan QR to pay via InstaPay</div>
+                    </div>
+                </div>
+                <div class="bank-card">
+                    <div class="pay-card-header ub-hdr"><span style="font-weight:900">UnionBank</span></div>
+                    <div class="bank-card-body">
+                        <div class="bank-label">Account Name</div><div class="bank-name">LEGERYN PIA</div>
+                        <div style="margin-top:6px"><div class="bank-label">Account Number</div><div class="bank-num">1093-2100-0528</div></div>
+                        <div style="height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px">QR not available</div>
+                    </div>
+                </div>
             </div>
 
-            <button type="button" class="submit-btn" id="submitBtn" onclick="submitPayment()">✅ Submit Payment Proof</button>
-            <div class="status" id="statusMsg"></div>
-        </form>
+            <div class="cod-card">
+                <h3>💵 Cash on Delivery</h3>
+                <p>Pay in cash when your order arrives at your doorstep. Available for all delivery areas.</p>
+            </div>
 
-        <div class="info-bar">
-            <span class="info-icon">🔒</span>
-            <span>Your payment details are sent directly to Must Have Corner's secure system. We'll verify and confirm via email or SMS.</span>
+            <div class="upload-cta" onclick="switchTab('upload')">
+                <h3>📤 Already Paid? Upload Your Proof →</h3>
+                <p>Click here to submit your payment screenshot for fast verification</p>
+            </div>
+
+            <div class="pm-footer" style="margin-top:20px">
+                <p>Payment details will be confirmed in your order invoice</p>
+                <p class="note">Must Have Corner | 0967-400-0040 | musthavecornerofficial@gmail.com</p>
+            </div>
         </div>
     </div>
 
-    <div class="success-card" id="successCard">
-        <div class="check">✅</div>
-        <h2>Payment Submitted!</h2>
-        <p>Your payment proof has been received. We'll verify it and update your order status shortly.</p>
-        <div class="ref" id="successRef">REF: ---</div>
-        <p style="font-size:13px;color:var(--text-light)">You'll receive confirmation via email or SMS once verified.</p>
-        <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px">
-            <button class="new-btn" onclick="resetForm()">📤 Submit Another</button>
-            <a href="/" class="new-btn" style="background:var(--white);color:var(--emerald-700);border:1px solid var(--gray-200)">🏠 Home</a>
+    <!-- TAB 2: UPLOAD PAYMENT PROOF -->
+    <div class="tab-content" id="tab-upload">
+        <div class="steps">
+            <div class="step active" id="step1"><span class="step-num">1</span>Fill Details</div>
+            <div class="step" id="step2"><span class="step-num">2</span>Upload Proof</div>
+            <div class="step" id="step3"><span class="step-num">3</span>Submit</div>
+        </div>
+
+        <div class="form-card" id="formCard">
+            <h2>Upload Payment Proof</h2>
+            <p class="subtitle">All fields marked with * are required</p>
+            <form id="paymentForm" onsubmit="return false;">
+                <div class="field" id="nameField">
+                    <label>Your Name / Business Name <span class="req">*</span></label>
+                    <input type="text" id="customerName" placeholder="e.g. Maria Cruz or ABC Restaurant" required>
+                    <p class="error-msg">Please enter your name</p>
+                </div>
+                <div class="field" id="orderField">
+                    <label>Order ID / Reference <span class="req">*</span></label>
+                    <input type="text" id="orderId" placeholder="e.g. MHC-2026-0001">
+                    <p class="hint">Found in your order confirmation email or invoice</p>
+                    <p class="error-msg">Please enter your Order ID</p>
+                </div>
+                <div class="field"><label>Payment Method <span class="req">*</span></label></div>
+                <div class="pay-types" id="payTypes">
+                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="GCash"><span class="pay-icon">📱</span>GCash</label>
+                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="BPI"><span class="pay-icon">🏦</span>BPI</label>
+                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="BDO"><span class="pay-icon">🏦</span>BDO</label>
+                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="UnionBank"><span class="pay-icon">🏦</span>UB</label>
+                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="Cash"><span class="pay-icon">💵</span>Cash</label>
+                </div>
+                <div class="field" id="refField">
+                    <label>Payment Reference Number <span class="req">*</span></label>
+                    <input type="text" id="payRef" placeholder="e.g. GCash ref# 1234567890">
+                    <p class="hint">The transaction number from your payment app or bank</p>
+                    <p class="error-msg">Please enter the reference number</p>
+                </div>
+                <div class="field" id="amountField">
+                    <label>Amount Paid (₱) <span class="req">*</span></label>
+                    <input type="number" id="amount" placeholder="e.g. 1500" min="1" step="0.01">
+                    <p class="error-msg">Please enter the amount paid</p>
+                </div>
+                <div class="field">
+                    <label>Payment Screenshot <span class="req">*</span></label>
+                    <div class="upload-area" id="uploadArea">
+                        <input type="file" id="fileInput" accept="image/*,.pdf" onchange="handleFile(this)">
+                        <div class="upload-icon">📸</div>
+                        <p>Drag &amp; drop your screenshot here<br>or <span class="browse">click to browse</span></p>
+                        <p style="font-size:12px;color:var(--text-light);margin-top:8px">JPG, PNG, or PDF — Max 10MB</p>
+                    </div>
+                    <div class="preview" id="preview">
+                        <button type="button" class="remove-btn" onclick="removeFile()">✕</button>
+                        <img id="previewImg" src="" alt="Payment preview">
+                        <div class="file-info" id="fileInfo"></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <label>Notes (Optional)</label>
+                    <textarea id="notes" placeholder="Any additional info about your payment..."></textarea>
+                </div>
+                <button type="button" class="submit-btn" id="submitBtn" onclick="submitPayment()">✅ Submit Payment Proof</button>
+                <div class="status" id="statusMsg"></div>
+            </form>
+            <div class="info-bar">
+                <span class="info-icon">🔒</span>
+                <span>Your payment details are sent directly to Must Have Corner's secure system. We'll verify and confirm via email or SMS.</span>
+            </div>
+        </div>
+
+        <div class="success-card" id="successCard">
+            <div class="check">✅</div>
+            <h2>Payment Submitted!</h2>
+            <p>Your payment proof has been received. We'll verify it and update your order status shortly.</p>
+            <div class="ref" id="successRef">REF: ---</div>
+            <p style="font-size:13px;color:var(--text-light)">You'll receive confirmation via email or SMS once verified.</p>
+            <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:8px">
+                <button class="new-btn" onclick="resetForm()">📤 Submit Another</button>
+                <a href="/" class="new-btn" style="background:var(--white);color:var(--emerald-700);border:1px solid var(--gray-200)">🏠 Home</a>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-// =======================================================================
-// CONFIG: Replace with your deployed Apps Script Web App URL after deploy
-// =======================================================================
-const APPS_SCRIPT_URL = 'YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
-// =======================================================================
+const APPS_SCRIPT_URL='YOUR_APPS_SCRIPT_WEB_APP_URL_HERE';
 
-let selectedFile = null, selectedPayType = '';
-
-function selectPayType(el){
-    document.querySelectorAll('.pay-type').forEach(p=>p.classList.remove('selected'));
-    el.classList.add('selected');
-    selectedPayType = el.querySelector('input').value;
+function switchTab(tab){
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active'));
+    if(tab==='methods'){document.querySelectorAll('.tab')[0].classList.add('active');document.getElementById('tab-methods').classList.add('active')}
+    else{document.querySelectorAll('.tab')[1].classList.add('active');document.getElementById('tab-upload').classList.add('active')}
+    window.scrollTo({top:0,behavior:'smooth'});
 }
+if(window.location.hash==='#upload') switchTab('upload');
 
-const uploadArea = document.getElementById('uploadArea');
+let selectedFile=null,selectedPayType='';
+function selectPayType(el){document.querySelectorAll('.pay-type').forEach(p=>p.classList.remove('selected'));el.classList.add('selected');selectedPayType=el.querySelector('input').value}
+const uploadArea=document.getElementById('uploadArea');
 ['dragenter','dragover'].forEach(e=>uploadArea.addEventListener(e,ev=>{ev.preventDefault();uploadArea.classList.add('dragover')}));
 ['dragleave','drop'].forEach(e=>uploadArea.addEventListener(e,ev=>{ev.preventDefault();uploadArea.classList.remove('dragover')}));
 uploadArea.addEventListener('drop',ev=>{if(ev.dataTransfer.files.length){document.getElementById('fileInput').files=ev.dataTransfer.files;handleFile(document.getElementById('fileInput'))}});
@@ -228,9 +341,7 @@ function handleFile(input){
     document.getElementById('preview').style.display='block';uploadArea.style.display='none';hideStatus();
     document.getElementById('step2').classList.add('active');
 }
-
 function removeFile(){selectedFile=null;document.getElementById('fileInput').value='';document.getElementById('preview').style.display='none';uploadArea.style.display='';document.getElementById('step2').classList.remove('active')}
-
 function validate(){
     let v=true;
     [{id:'nameField',input:'customerName'},{id:'orderField',input:'orderId'},{id:'refField',input:'payRef'},{id:'amountField',input:'amount'}].forEach(f=>{
@@ -241,9 +352,7 @@ function validate(){
     if(!selectedFile){showStatus('error','❌ Please upload your payment screenshot.');v=false}
     return v;
 }
-
 function fileToBase64(file){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>res(r.result.split(',')[1]);r.onerror=rej;r.readAsDataURL(file)})}
-
 async function submitPayment(){
     if(!validate())return;
     const btn=document.getElementById('submitBtn');btn.disabled=true;btn.innerHTML='<span class="spinner"></span> Submitting...';
@@ -252,7 +361,6 @@ async function submitPayment(){
     try{
         const base64=await fileToBase64(selectedFile);
         const payload={customerName:document.getElementById('customerName').value.trim(),orderId:document.getElementById('orderId').value.trim(),appType:selectedPayType,payRef:document.getElementById('payRef').value.trim(),amount:document.getElementById('amount').value.trim(),notes:document.getElementById('notes').value.trim(),fileName:selectedFile.name,fileType:selectedFile.type,fileData:base64};
-        // Submit via hidden form to Apps Script
         const form=document.createElement('form');form.method='POST';form.action=APPS_SCRIPT_URL;form.target='sf';
         const inp=document.createElement('input');inp.type='hidden';inp.name='payload';inp.value=JSON.stringify(payload);form.appendChild(inp);
         let iframe=document.getElementById('sf');
@@ -261,9 +369,7 @@ async function submitPayment(){
         setTimeout(()=>showSuccessState(payload.orderId),3000);
     }catch(err){showStatus('error','❌ Error. Try again or call 0967-400-0040.');btn.disabled=false;btn.innerHTML='✅ Submit Payment Proof';console.error(err)}
 }
-
 function showSuccessState(oid){document.getElementById('formCard').style.display='none';document.querySelector('.steps').style.display='none';document.getElementById('successCard').style.display='block';document.getElementById('successRef').textContent='Order: '+oid;window.scrollTo({top:0,behavior:'smooth'})}
-
 function resetForm(){
     document.getElementById('formCard').style.display='';document.querySelector('.steps').style.display='';document.getElementById('successCard').style.display='none';
     document.getElementById('paymentForm').reset();removeFile();selectedPayType='';
@@ -271,10 +377,8 @@ function resetForm(){
     document.querySelectorAll('.step').forEach(s=>s.className='step');document.getElementById('step1').classList.add('active');
     document.getElementById('submitBtn').disabled=false;document.getElementById('submitBtn').innerHTML='✅ Submit Payment Proof';hideStatus();
 }
-
 function showStatus(t,m){const el=document.getElementById('statusMsg');el.className='status '+t;el.innerHTML=m}
 function hideStatus(){const el=document.getElementById('statusMsg');el.className='status';el.innerHTML=''}
-
 ['customerName','orderId','payRef','amount'].forEach(id=>{document.getElementById(id).addEventListener('input',function(){this.closest('.field').classList.remove('error');hideStatus()})});
 </script>
 </body>
