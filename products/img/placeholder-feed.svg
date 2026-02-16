@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none">
+  <rect width="400" height="400" fill="#EDF5EF"/>
+  <rect x="100" y="80" width="200" height="240" rx="12" fill="#fff" stroke="#A8D1B5" stroke-width="2"/>
+  <text x="200" y="180" text-anchor="middle" font-family="system-ui,sans-serif" font-size="36" fill="#437E55">🐔</text>
+  <text x="200" y="220" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="700" fill="#2A5238">Chicken Layer 1</text>
+  <text x="200" y="240" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" fill="#6B6B6B">Pellet · 50 kg</text>
+  <text x="200" y="280" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#999">Image coming soon</text>
+</svg>
