@@ -57,7 +57,9 @@
         .acct-row:last-of-type{margin-bottom:0}
         .acct-name{font-weight:700;color:var(--text-primary);flex:1;text-align:left}
         .acct-num{font-weight:600;color:var(--emerald-700);font-family:'SF Mono',Consolas,monospace;font-size:12px}
-        .qr-img{width:130px;height:130px;border-radius:10px;border:1px solid var(--gray-200);object-fit:cover;margin:10px auto 6px;display:block}
+        .qr-wrap{width:100%;max-width:160px;aspect-ratio:1;margin:12px auto 6px;border-radius:12px;border:1px solid var(--gray-200);background:#fff;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:6px}
+        .qr-wrap img{width:100%;height:100%;object-fit:contain;display:block}
+        .qr-placeholder{width:100%;max-width:160px;aspect-ratio:1;margin:12px auto 6px;border-radius:12px;border:1px dashed var(--gray-200);display:flex;align-items:center;justify-content:center;color:#cbd5e1;font-size:11px}
         .qr-note{font-size:10px;color:#94a3b8;margin-top:2px}
         .bank-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-bottom:24px}
         .bank-card{border:2px solid var(--gray-200);border-radius:14px;overflow:hidden;background:var(--white)}
@@ -167,7 +169,7 @@
                     <div class="pay-card-header gcash-hdr"><span style="font-size:18px;font-weight:900">G</span> GCash</div>
                     <div class="pay-card-body">
                         <div class="acct-row"><span class="acct-name">LEGERYN PIA</span><span class="acct-num">0966 960 6060</span></div>
-                        <img src="/payment-upload/gcash-legeryn.png" alt="GCash QR - Legeryn" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-wrap"><img src="/payment-upload/gcash-legeryn.png" alt="GCash QR - Legeryn" onerror="this.parentElement.outerHTML='<div class=qr-placeholder>QR Coming Soon</div>'"></div>
                         <div class="qr-note">Scan QR to pay via InstaPay</div>
                     </div>
                 </div>
@@ -175,7 +177,7 @@
                     <div class="pay-card-header gcash-hdr"><span style="font-size:18px;font-weight:900">G</span> GCash</div>
                     <div class="pay-card-body">
                         <div class="acct-row"><span class="acct-name">MICHAEL TALLA</span><span class="acct-num">0935 763 7498</span></div>
-                        <img src="/payment-upload/gcash-michael.png" alt="GCash QR - Michael" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-wrap"><img src="/payment-upload/gcash-michael.png" alt="GCash QR - Michael" onerror="this.parentElement.outerHTML='<div class=qr-placeholder>QR Coming Soon</div>'"></div>
                         <div class="qr-note">Scan QR to pay via InstaPay</div>
                     </div>
                 </div>
@@ -188,7 +190,7 @@
                     <div class="bank-card-body">
                         <div class="bank-label">Account Name</div><div class="bank-name">LEGERYN PIA</div>
                         <div style="margin-top:6px"><div class="bank-label">Account Number</div><div class="bank-num">0126-000-62617</div></div>
-                        <img src="/payment-upload/bdo-qr.png" alt="BDO QR" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-wrap"><img src="/payment-upload/bdo-qr.png" alt="BDO QR" onerror="this.parentElement.outerHTML='<div class=qr-placeholder>QR Coming Soon</div>'"></div>
                         <div class="qr-note">Scan QR to pay via InstaPay</div>
                     </div>
                 </div>
@@ -197,7 +199,7 @@
                     <div class="bank-card-body">
                         <div class="bank-label">Account Name</div><div class="bank-name">LEGERYN PIA</div>
                         <div style="margin-top:6px"><div class="bank-label">Account Number</div><div class="bank-num">1539-235-628</div></div>
-                        <img src="/payment-upload/bpi-qr.png" alt="BPI QR" class="qr-img" onerror="this.outerHTML='<div style=\'height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px\'>QR Coming Soon</div>'">
+                        <div class="qr-wrap"><img src="/payment-upload/bpi-qr.png" alt="BPI QR" onerror="this.parentElement.outerHTML='<div class=qr-placeholder>QR Coming Soon</div>'"></div>
                         <div class="qr-note">Scan QR to pay via InstaPay</div>
                     </div>
                 </div>
@@ -206,7 +208,7 @@
                     <div class="bank-card-body">
                         <div class="bank-label">Account Name</div><div class="bank-name">LEGERYN PIA</div>
                         <div style="margin-top:6px"><div class="bank-label">Account Number</div><div class="bank-num">1093-2100-0528</div></div>
-                        <div style="height:130px;display:flex;align-items:center;justify-content:center;margin:10px auto 6px;color:#cbd5e1;font-size:11px;border:1px dashed #e2e8f0;border-radius:10px;width:130px">QR not available</div>
+                        <div class="qr-placeholder">QR not available</div>
                     </div>
                 </div>
             </div>
