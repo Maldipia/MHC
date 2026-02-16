@@ -251,20 +251,7 @@
                     <p class="hint">Found in your order confirmation email or invoice</p>
                     <p class="error-msg">Please enter your Order ID</p>
                 </div>
-                <div class="field"><label>Payment Method <span class="req">*</span></label></div>
-                <div class="pay-types" id="payTypes">
-                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="GCash"><span class="pay-icon">📱</span>GCash</label>
-                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="BPI"><span class="pay-icon">🏦</span>BPI</label>
-                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="BDO"><span class="pay-icon">🏦</span>BDO</label>
-                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="UnionBank"><span class="pay-icon">🏦</span>UB</label>
-                    <label class="pay-type" onclick="selectPayType(this)"><input type="radio" name="appType" value="Cash"><span class="pay-icon">💵</span>Cash</label>
-                </div>
-                <div class="field" id="refField">
-                    <label>Payment Reference Number <span class="req">*</span></label>
-                    <input type="text" id="payRef" placeholder="e.g. GCash ref# 1234567890">
-                    <p class="hint">The transaction number from your payment app or bank</p>
-                    <p class="error-msg">Please enter the reference number</p>
-                </div>
+
                 <div class="field" id="amountField">
                     <label>Amount Paid (₱) <span class="req">*</span></label>
                     <input type="number" id="amount" placeholder="e.g. 1500" min="1" step="0.01">
@@ -344,11 +331,10 @@ function handleFile(input){
 function removeFile(){selectedFile=null;document.getElementById('fileInput').value='';document.getElementById('preview').style.display='none';uploadArea.style.display='';document.getElementById('step2').classList.remove('active')}
 function validate(){
     let v=true;
-    [{id:'nameField',input:'customerName'},{id:'orderField',input:'orderId'},{id:'refField',input:'payRef'},{id:'amountField',input:'amount'}].forEach(f=>{
+    [{id:'nameField',input:'customerName'},{id:'orderField',input:'orderId'},{id:'amountField',input:'amount'}].forEach(f=>{
         const el=document.getElementById(f.id),val=document.getElementById(f.input).value.trim();
         if(!val){el.classList.add('error');v=false}else{el.classList.remove('error')}
     });
-    if(!selectedPayType){showStatus('error','❌ Please select a payment method.');v=false}
     if(!selectedFile){showStatus('error','❌ Please upload your payment screenshot.');v=false}
     return v;
 }
@@ -360,7 +346,7 @@ async function submitPayment(){
     showStatus('loading','⏳ Uploading payment proof... Please wait.');
     try{
         const base64=await fileToBase64(selectedFile);
-        const payload={customerName:document.getElementById('customerName').value.trim(),orderId:document.getElementById('orderId').value.trim(),appType:selectedPayType,payRef:document.getElementById('payRef').value.trim(),amount:document.getElementById('amount').value.trim(),notes:document.getElementById('notes').value.trim(),fileName:selectedFile.name,fileType:selectedFile.type,fileData:base64};
+        const payload={customerName:document.getElementById('customerName').value.trim(),orderId:document.getElementById('orderId').value.trim(),amount:document.getElementById('amount').value.trim(),notes:document.getElementById('notes').value.trim(),fileName:selectedFile.name,fileType:selectedFile.type,fileData:base64};
         const form=document.createElement('form');form.method='POST';form.action=APPS_SCRIPT_URL;form.target='sf';
         const inp=document.createElement('input');inp.type='hidden';inp.name='payload';inp.value=JSON.stringify(payload);form.appendChild(inp);
         let iframe=document.getElementById('sf');
@@ -379,7 +365,7 @@ function resetForm(){
 }
 function showStatus(t,m){const el=document.getElementById('statusMsg');el.className='status '+t;el.innerHTML=m}
 function hideStatus(){const el=document.getElementById('statusMsg');el.className='status';el.innerHTML=''}
-['customerName','orderId','payRef','amount'].forEach(id=>{document.getElementById(id).addEventListener('input',function(){this.closest('.field').classList.remove('error');hideStatus()})});
+['customerName','orderId','amount'].forEach(id=>{document.getElementById(id).addEventListener('input',function(){this.closest('.field').classList.remove('error');hideStatus()})});
 </script>
 </body>
 </html>
