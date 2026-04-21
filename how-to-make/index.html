@@ -1,0 +1,868 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How To Make — Must Have Corner Powder Mix</title>
+  <meta name="description" content="Official preparation guide for Must Have Corner powder mixes. Search for your flavor and see the recipe for Hot, Iced, or Ice Blended." />
+
+  <meta property="og:title" content="How To Make — MHC Powder Mix" />
+  <meta property="og:description" content="Easy & simple recipe guide for MHC powder mix. Hot, Iced, Ice Blended." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.musthavecorner.com/how-to-make/" />
+  <link rel="canonical" href="https://www.musthavecorner.com/how-to-make/" />
+
+  <!--
+    ────────────────────────────────────────────────────────────────────
+    MHC HOW-TO-MAKE LANDING PAGE  (B2B wholesale — NO prices shown)
+    ────────────────────────────────────────────────────────────────────
+    FEATURES:
+      • Sticky search bar (filters the Flavors grid live)
+      • URL deep-linking:
+          ?code=1606  →  highlights a specific product & scrolls to it
+          ?q=matcha   →  pre-fills the search bar
+      • Products fetched live from MHC Ops — category "Powder"
+      • Recipe driven by /api/public/recipes with fallback to reference default
+
+    DATA SOURCES:
+      1. PRODUCTS  →  https://mhc-ops.vercel.app/api/public/products
+                      (already live; 7 powder products as of Apr 2026)
+      2. RECIPES   →  https://mhc-ops.vercel.app/api/public/recipes
+                      (NEW ENDPOINT to add — page gracefully falls back)
+
+    DEEP-LINK PATTERN (for use in MHC Ops product rows):
+      https://www.musthavecorner.com/how-to-make/?code=<PRODUCT_CODE>
+
+      Examples:
+        https://www.musthavecorner.com/how-to-make/?code=1606   (Matcha Green Tea)
+        https://www.musthavecorner.com/how-to-make/?code=1598   (Vanilla)
+        https://www.musthavecorner.com/how-to-make/?code=1626   (Java Chip)
+
+    NOTE: The canonical domain is www.musthavecorner.com (with www).
+    Apex musthavecorner.com currently returns 503 — always include www.
+    ────────────────────────────────────────────────────────────────────
+  -->
+
+  <style>
+    :root{
+      --forest-900:#06381f;
+      --forest-800:#0a4a2a;
+      --forest-700:#0e5c3a;
+      --forest-600:#147a4c;
+      --forest-100:#e3f1e8;
+      --forest-50:#f2f9f5;
+
+      --gold-500:#f4c430;
+      --gold-600:#e0b020;
+
+      --ink:#0f172a;
+      --ink-2:#334155;
+      --muted:#64748b;
+
+      --cream:#faf8f3;
+      --paper:#ffffff;
+      --line:rgba(14,92,58,.12);
+
+      --radius:22px;
+      --radius-sm:14px;
+      --shadow-card: 0 24px 60px rgba(6,56,31,.08), 0 4px 12px rgba(6,56,31,.04);
+      --shadow-soft: 0 10px 30px rgba(6,56,31,.06);
+
+      --max: 1140px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;scroll-padding-top:130px;}
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color:var(--ink);background:var(--cream);line-height:1.6;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+    }
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;display:block;}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px;}
+
+    /* Top bar */
+    .topbar{background:var(--forest-900);color:#fff;font-size:13px;padding:8px 0;}
+    .topbar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+    .topbar a{color:var(--gold-500);font-weight:600;}
+
+    /* Header */
+    header{
+      background:rgba(255,255,255,.94);
+      border-bottom:1px solid var(--line);
+      position:sticky;top:0;z-index:60;
+      backdrop-filter:blur(10px);
+    }
+    nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0;}
+    .logo{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px;color:var(--forest-800);letter-spacing:-.01em;}
+    .logo-mark{
+      width:40px;height:40px;border-radius:10px;
+      background:linear-gradient(135deg,var(--forest-700),var(--forest-800));
+      color:#fff;display:flex;align-items:center;justify-content:center;
+      font-weight:900;font-size:18px;
+      border:2px solid var(--gold-500);
+      box-shadow:0 6px 16px rgba(14,92,58,.22);
+    }
+    .logo small{display:block;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;font-weight:600;}
+    .nav-cta{
+      background:var(--forest-700);color:#fff;
+      padding:10px 20px;border-radius:999px;
+      font-weight:700;font-size:14px;
+      border:1px solid var(--forest-800);
+      transition:transform .15s ease, box-shadow .15s ease;
+    }
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(14,92,58,.25);}
+
+    /* ─── Sticky Search Bar ─── */
+    .searchbar{
+      position:sticky;top:69px;z-index:55;
+      background:rgba(250,248,243,.96);
+      border-bottom:1px solid var(--line);
+      backdrop-filter:blur(10px);
+      padding:12px 0;
+    }
+    .search-inner{
+      display:flex;align-items:center;gap:10px;
+      max-width:640px;margin:0 auto;
+    }
+    .search-field{
+      position:relative;flex:1;
+    }
+    .search-field svg{
+      position:absolute;left:16px;top:50%;transform:translateY(-50%);
+      width:18px;height:18px;color:var(--forest-700);pointer-events:none;
+    }
+    #product-search{
+      width:100%;
+      padding:13px 44px 13px 44px;
+      border-radius:999px;
+      border:1.5px solid var(--line);
+      background:var(--paper);
+      font-size:15px;color:var(--ink);
+      font-family:inherit;
+      box-shadow:var(--shadow-soft);
+      transition:border-color .15s ease, box-shadow .15s ease;
+      outline:none;
+    }
+    #product-search::placeholder{color:var(--muted);}
+    #product-search:focus{
+      border-color:var(--forest-600);
+      box-shadow:0 0 0 4px rgba(20,122,76,.14);
+    }
+    .search-clear{
+      position:absolute;right:8px;top:50%;transform:translateY(-50%);
+      width:30px;height:30px;border-radius:999px;border:none;
+      background:transparent;color:var(--muted);cursor:pointer;
+      font-size:18px;font-weight:700;
+      display:none;align-items:center;justify-content:center;
+    }
+    .search-clear:hover{background:var(--forest-100);color:var(--forest-700);}
+    .search-clear.show{display:flex;}
+    .search-count{
+      font-size:13px;color:var(--muted);font-weight:600;
+      white-space:nowrap;
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;padding:60px 0 70px;overflow:hidden;
+      background:
+        radial-gradient(900px 420px at 12% -10%, rgba(14,92,58,.10), transparent 60%),
+        radial-gradient(760px 360px at 92% 0%, rgba(244,196,48,.18), transparent 55%),
+        linear-gradient(180deg, var(--forest-50), var(--cream));
+    }
+    .hero::before{
+      content:"";position:absolute;top:0;left:0;right:0;height:6px;
+      background:linear-gradient(90deg,var(--forest-700) 0%, var(--forest-700) 62%, var(--gold-500) 62%, var(--gold-500) 100%);
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+      color:var(--forest-700);
+      background:var(--forest-100);
+      border:1px solid rgba(14,92,58,.18);
+      padding:8px 14px;border-radius:999px;
+    }
+    .eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--gold-500);}
+    h1{
+      margin:18px 0 14px;
+      font-size:clamp(40px, 6vw, 68px);
+      line-height:.98;letter-spacing:-.035em;font-weight:900;
+      color:var(--forest-800);
+    }
+    h1 .accent{position:relative;display:inline-block;color:var(--forest-900);}
+    h1 .accent::after{
+      content:"";position:absolute;left:0;right:0;bottom:4px;height:14px;
+      background:var(--gold-500);opacity:.55;z-index:-1;border-radius:2px;
+    }
+    .hero-sub{font-size:18px;color:var(--ink-2);max-width:620px;margin-bottom:26px;}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+    .chip{
+      background:var(--paper);border:1px solid var(--line);
+      padding:10px 14px;border-radius:999px;
+      font-size:13px;font-weight:600;color:var(--ink-2);
+      display:inline-flex;align-items:center;gap:8px;
+      box-shadow:var(--shadow-soft);
+    }
+    .chip svg{width:16px;height:16px;color:var(--forest-700);}
+
+    /* Section base */
+    section.block{padding:80px 0;}
+    .section-head{text-align:center;max-width:680px;margin:0 auto 48px;}
+    .section-head h2{
+      font-size:clamp(28px,3.6vw,42px);
+      letter-spacing:-.025em;font-weight:900;
+      color:var(--forest-800);margin:14px 0 10px;
+    }
+    .section-head p{color:var(--muted);font-size:17px;}
+
+    /* Flavors */
+    .flavors{background:var(--cream);}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;}
+    .product-card{
+      background:var(--paper);
+      border:1.5px solid var(--line);
+      border-radius:var(--radius-sm);
+      overflow:hidden;
+      transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      display:flex;flex-direction:column;position:relative;
+      scroll-margin-top:140px;
+    }
+    .product-card:hover{
+      transform:translateY(-3px);
+      box-shadow:var(--shadow-card);
+      border-color:rgba(14,92,58,.28);
+    }
+    /* Highlighted state for deep-linked products (?code=) */
+    .product-card.highlighted{
+      border-color:var(--gold-500);
+      box-shadow:0 0 0 4px rgba(244,196,48,.20), var(--shadow-card);
+      animation:pulse 2.2s ease-out 1;
+    }
+    @keyframes pulse{
+      0%  { box-shadow:0 0 0 0 rgba(244,196,48,.70); }
+      70% { box-shadow:0 0 0 16px rgba(244,196,48,0); }
+      100%{ box-shadow:0 0 0 4px rgba(244,196,48,.20), var(--shadow-card); }
+    }
+    .product-card.hidden-by-search{display:none;}
+
+    .product-tile{
+      aspect-ratio:1/1;
+      display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;
+      background:linear-gradient(135deg,var(--forest-700),var(--forest-900));
+    }
+    .product-tile::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(244,196,48,.22), transparent 50%),
+        radial-gradient(circle at 70% 80%, rgba(20,122,76,.40), transparent 50%);
+    }
+    .product-tile img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;}
+    .product-tile .initials{
+      position:relative;z-index:1;
+      font-size:48px;font-weight:900;color:#fff;
+      letter-spacing:-.03em;
+      text-shadow:0 4px 20px rgba(0,0,0,.25);
+      font-family:Georgia,'Times New Roman',serif;
+      font-style:italic;
+    }
+    .product-code-badge{
+      position:absolute;top:10px;right:10px;z-index:2;
+      background:var(--gold-500);color:var(--forest-900);
+      font-size:11px;font-weight:800;letter-spacing:.08em;
+      padding:4px 10px;border-radius:999px;text-transform:uppercase;
+    }
+    .product-info{padding:16px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1;}
+    .product-category{font-size:11px;font-weight:700;color:var(--forest-700);letter-spacing:.1em;text-transform:uppercase;}
+    .product-name{font-size:16px;font-weight:800;color:var(--ink);line-height:1.25;letter-spacing:-.01em;}
+    .product-meta{
+      margin-top:6px;padding-top:10px;border-top:1px solid var(--line);
+      display:flex;justify-content:space-between;align-items:center;
+      font-size:12px;color:var(--muted);
+    }
+    .stock-dot{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--forest-600);}
+    .stock-dot::before{
+      content:"";width:7px;height:7px;border-radius:999px;
+      background:var(--forest-600);box-shadow:0 0 0 3px rgba(20,122,76,.18);
+    }
+    .stock-dot.low::before{background:var(--gold-600);box-shadow:0 0 0 3px rgba(224,176,32,.22);}
+    .stock-dot.low{color:var(--gold-600);}
+    .stock-dot.out::before{background:#b91c1c;box-shadow:0 0 0 3px rgba(185,28,28,.18);}
+    .stock-dot.out{color:#b91c1c;}
+
+    .products-state{
+      grid-column:1/-1;padding:50px 24px;text-align:center;
+      color:var(--muted);font-size:15px;
+      border:1.5px dashed var(--line);border-radius:var(--radius-sm);
+      background:var(--paper);
+    }
+
+    .skel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;}
+    .skel-tile{aspect-ratio:1/1;background:linear-gradient(90deg,#eef2f0,#f6faf7,#eef2f0);background-size:200% 100%;animation:shimmer 1.4s infinite;}
+    .skel-line{height:12px;margin:14px 16px;border-radius:6px;background:linear-gradient(90deg,#eef2f0,#f6faf7,#eef2f0);background-size:200% 100%;animation:shimmer 1.4s infinite;}
+    .skel-line.short{width:50%;margin-bottom:18px;}
+    @keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
+
+    /* Methods */
+    .methods{background:var(--paper);position:relative;}
+    .methods::before{
+      content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:60px;height:4px;background:var(--gold-500);border-radius:0 0 4px 4px;
+    }
+    .methods-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+    .method{
+      position:relative;background:var(--paper);
+      border:1px solid var(--line);border-radius:var(--radius);
+      padding:36px 28px 32px;box-shadow:var(--shadow-card);
+      transition:transform .25s ease, box-shadow .25s ease;
+      display:flex;flex-direction:column;
+    }
+    .method:hover{transform:translateY(-4px);box-shadow:0 30px 60px rgba(6,56,31,.12);}
+    .method::before{
+      content:"";position:absolute;top:0;left:28px;right:28px;height:4px;
+      background:var(--forest-700);border-radius:0 0 4px 4px;
+    }
+    .method.iced::before{background:linear-gradient(90deg, var(--forest-700), var(--forest-600));}
+    .method.blended::before{background:linear-gradient(90deg, var(--forest-700), var(--gold-500));}
+    .method-tag{
+      align-self:flex-start;background:var(--forest-800);color:#fff;
+      padding:8px 18px;border-radius:999px;
+      font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+    }
+    .method-icon{
+      margin:20px auto 8px;width:92px;height:92px;
+      display:flex;align-items:center;justify-content:center;color:var(--forest-700);
+    }
+    .method-icon svg{width:78px;height:78px;}
+    .recipe{
+      text-align:center;margin:8px 0 22px;padding:20px 12px;
+      background:var(--forest-50);border-radius:var(--radius-sm);
+      border:1px dashed rgba(14,92,58,.22);
+    }
+    .recipe .line{font-size:17px;color:var(--ink);line-height:1.4;font-weight:500;}
+    .recipe .plus{display:block;color:var(--forest-700);font-size:18px;font-weight:900;margin:6px 0;}
+    .recipe .amt{color:var(--forest-800);font-weight:800;}
+    .steps{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;}
+    .steps li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--ink-2);}
+    .step-num{
+      flex-shrink:0;width:26px;height:26px;border-radius:999px;
+      background:var(--forest-700);color:#fff;
+      font-size:13px;font-weight:800;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .method.blended .step-num{background:var(--forest-800);}
+
+    /* Tips */
+    .tips{background:var(--forest-900);color:#fff;position:relative;overflow:hidden;}
+    .tips::before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(600px 300px at 15% 30%, rgba(244,196,48,.14), transparent 60%),
+        radial-gradient(500px 260px at 85% 70%, rgba(20,122,76,.28), transparent 55%);
+      pointer-events:none;
+    }
+    .tips .section-head h2{color:#fff;}
+    .tips .section-head p{color:rgba(255,255,255,.75);}
+    .tips-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;}
+    .tip{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      padding:28px 24px;border-radius:var(--radius);
+      backdrop-filter:blur(4px);
+      transition:background .2s ease;
+    }
+    .tip:hover{background:rgba(255,255,255,.10);}
+    .tip-icon{
+      width:52px;height:52px;border-radius:14px;
+      background:var(--gold-500);color:var(--forest-900);
+      display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    }
+    .tip-icon svg{width:28px;height:28px;}
+    .tip h3{
+      font-size:17px;font-weight:800;color:var(--gold-500);
+      letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px;
+    }
+    .tip p{color:rgba(255,255,255,.82);font-size:15px;line-height:1.55;}
+
+    /* CTA */
+    .cta{
+      background:
+        radial-gradient(520px 260px at 30% 20%, rgba(244,196,48,.18), transparent 60%),
+        linear-gradient(135deg, var(--forest-700), var(--forest-900));
+      color:#fff;text-align:center;padding:80px 0;
+    }
+    .cta h2{font-size:clamp(30px,4vw,46px);font-weight:900;letter-spacing:-.025em;margin-bottom:14px;}
+    .cta h2 span{color:var(--gold-500);}
+    .cta p{color:rgba(255,255,255,.85);font-size:17px;max-width:600px;margin:0 auto 32px;}
+    .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      padding:15px 28px;border-radius:999px;
+      font-weight:800;font-size:15px;border:2px solid transparent;
+      transition:transform .15s ease, box-shadow .15s ease;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px);}
+    .btn-gold{background:var(--gold-500);color:var(--forest-900);box-shadow:0 12px 24px rgba(244,196,48,.28);}
+    .btn-gold:hover{box-shadow:0 16px 30px rgba(244,196,48,.40);background:var(--gold-600);}
+    .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45);}
+    .btn-ghost:hover{background:rgba(255,255,255,.08);border-color:#fff;}
+
+    /* Footer */
+    footer{
+      background:var(--forest-900);color:rgba(255,255,255,.75);
+      padding:40px 0 28px;font-size:14px;
+      border-top:4px solid var(--gold-500);
+    }
+    .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;}
+    .foot a{color:var(--gold-500);font-weight:600;}
+
+    .data-source{text-align:center;font-size:12px;color:var(--muted);margin-top:32px;opacity:.75;}
+    .data-source code{
+      background:var(--forest-100);color:var(--forest-800);
+      padding:2px 8px;border-radius:4px;font-size:11px;
+    }
+
+    @media (max-width: 900px){
+      .methods-grid{grid-template-columns:1fr;}
+      .tips-grid{grid-template-columns:1fr;}
+      section.block{padding:60px 0;}
+      .hero{padding:48px 0 56px;}
+    }
+    @media (max-width: 520px){
+      .topbar-inner{justify-content:center;text-align:center;}
+      nav{flex-wrap:wrap;gap:12px;}
+      .products-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+      .product-tile .initials{font-size:36px;}
+      .search-inner{flex-direction:column;gap:8px;}
+      .search-count{width:100%;text-align:center;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="wrap topbar-inner">
+      <span>🏠 <strong>Must Have Corner</strong> — B2B Wholesale · Amadeo, Cavite</span>
+      <span>Wholesale inquiries: <a href="mailto:mhc@musthavecorner.com">mhc@musthavecorner.com</a></span>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrap">
+      <nav>
+        <a href="/" class="logo">
+          <div class="logo-mark">H</div>
+          <div>
+            Must Have Corner
+            <small>Powder Mix Guide</small>
+          </div>
+        </a>
+        <a href="#cta" class="nav-cta">B2B Inquiry</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── STICKY SEARCH BAR ── -->
+  <div class="searchbar">
+    <div class="wrap">
+      <div class="search-inner">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="m20 20-3.5-3.5"/>
+          </svg>
+          <input type="search" id="product-search" placeholder="Search flavors… e.g. matcha, vanilla, java chip" autocomplete="off" />
+          <button type="button" class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+        </div>
+        <span class="search-count" id="search-count">Loading…</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span> Official Recipe Guide</span>
+      <h1>How&nbsp;To&nbsp;Make<br><span class="accent">MHC Powder Mix</span></h1>
+      <p class="hero-sub">Search for your flavor below and see the official preparation guide — Hot, Iced, or Ice Blended. Consistent measurements, consistent taste, every cup.</p>
+      <div class="hero-meta">
+        <span class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          <span id="flavor-count">Multiple</span> Flavors Available
+        </span>
+        <span class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          3 Preparation Methods
+        </span>
+        <span class="chip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M5 12h14"/></svg>
+          Precise gram measurements
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="block flavors" id="flavors">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span> Our Flavors</span>
+        <h2>Available powder mix varieties</h2>
+        <p>Each flavor uses the same 3 preparation methods below. Live inventory from our warehouse.</p>
+      </div>
+
+      <div class="products-grid" id="products-grid">
+        <div class="skel"><div class="skel-tile"></div><div class="skel-line short"></div><div class="skel-line"></div></div>
+        <div class="skel"><div class="skel-tile"></div><div class="skel-line short"></div><div class="skel-line"></div></div>
+        <div class="skel"><div class="skel-tile"></div><div class="skel-line short"></div><div class="skel-line"></div></div>
+        <div class="skel"><div class="skel-tile"></div><div class="skel-line short"></div><div class="skel-line"></div></div>
+      </div>
+
+      <p class="data-source">Live from MHC Ops · <code>/api/public/products</code> · category <code>Powder</code></p>
+    </div>
+  </section>
+
+  <section class="block methods" id="methods">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span> The Three Ways</span>
+        <h2>Choose your serving style</h2>
+        <p>Same premium MHC powder, three simple preparations. Pick your mood.</p>
+      </div>
+      <div class="methods-grid" id="methods-grid"></div>
+      <p class="data-source">Recipe editable in MHC Ops · <code>/api/public/recipes</code></p>
+    </div>
+  </section>
+
+  <section class="block tips">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="background:rgba(244,196,48,.14);color:var(--gold-500);border-color:rgba(244,196,48,.28);">
+          <span class="dot" style="background:var(--gold-500);"></span> Pro Tips
+        </span>
+        <h2>Three habits that guarantee quality</h2>
+        <p>Consistent recipe. Same taste. Happy customers — every shift, every cup.</p>
+      </div>
+      <div class="tips-grid">
+        <div class="tip">
+          <div class="tip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M12 7v5l3 2"/><path d="M9 3h6"/>
+            </svg>
+          </div>
+          <h3>Always Use a Scale</h3>
+          <p>Accurate measurement in grams is the single biggest factor in consistency. Guesswork is the enemy of a repeatable recipe.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2 4 6v6c0 5 3.5 9.5 8 10 4.5-.5 8-5 8-10V6l-8-4z"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Use Quality Ingredients</h3>
+          <p>Fresh milk, clean water, and properly stored powder produce the best results. Never compromise your inputs.</p>
+        </div>
+        <div class="tip">
+          <div class="tip-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 7h16"/><path d="M6 7v11a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7"/>
+              <path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="m10 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <h3>Consistent Recipe</h3>
+          <p>Same taste every time means happy repeat customers. Follow the grams and steps — resist the urge to "eyeball it."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="cta">
+    <div class="wrap">
+      <h2>Ready to stock <span>MHC Powder Mix</span>?</h2>
+      <p>B2B wholesale accounts only. Contact us for available flavors, packaging options, and approved-account pricing.</p>
+      <div class="cta-row">
+        <a href="mailto:mhc@musthavecorner.com?subject=MHC%20Powder%20Mix%20Wholesale%20Inquiry" class="btn btn-gold">
+          ✉️ Wholesale Inquiry
+        </a>
+        <a href="/" class="btn btn-ghost">
+          ← Back to Must Have Corner
+        </a>
+      </div>
+      <p style="margin-top:28px;font-size:13px;color:rgba(255,255,255,.6);">
+        Pricing is disclosed only to approved B2B accounts.
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap foot">
+      <div>© <span id="y"></span> Must Have Corner · Amadeo, Cavite · B2B Wholesale</div>
+      <div><a href="https://www.musthavecorner.com">musthavecorner.com</a></div>
+    </div>
+  </footer>
+
+  <script>
+  // ─── CONFIG ───
+  const API_BASE = 'https://mhc-ops.vercel.app/api/public';
+  const POWDER_CATEGORY_MATCH = /powder/i;
+
+  // ─── DEFAULT RECIPE (fallback) ───
+  const DEFAULT_RECIPE_METHODS = [
+    { method:'hot', label:'Hot', emoji:'☕',
+      powder_g:45, liquid_ml:200, liquid_type:'Hot Milk or Water', ice_g:null,
+      steps:['Add powder to cup.','Pour in hot milk or water and stir well until fully dissolved.'] },
+    { method:'iced', label:'Iced', emoji:'🧊',
+      powder_g:45, liquid_ml:200, liquid_type:'Milk or Water', ice_g:200,
+      steps:['Add milk or water to shaker.','Add powder.','Mix or shake until smooth.','Add ice.','Shake again and serve.'] },
+    { method:'blended', label:'Ice Blended', emoji:'❄️',
+      powder_g:75, liquid_ml:150, liquid_type:'Milk or Water', ice_g:200,
+      steps:['Add all ingredients to the blender.','Blend for 20–30 seconds.','Adjust thickness to preference and serve.'] }
+  ];
+
+  const METHOD_ICONS = {
+    hot: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20 42h50v30a16 16 0 0 1-16 16H36a16 16 0 0 1-16-16V42z"/>
+      <path d="M70 50h8a10 10 0 0 1 0 20h-8"/>
+      <path d="M34 28c0-4 4-4 4-8s-4-4-4-8"/>
+      <path d="M46 28c0-4 4-4 4-8s-4-4-4-8"/>
+      <path d="M58 28c0-4 4-4 4-8s-4-4-4-8"/>
+    </svg>`,
+    iced: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M26 22h48l-5 64a6 6 0 0 1-6 5.6H37a6 6 0 0 1-6-5.6L26 22z"/>
+      <path d="M62 14v18"/>
+      <rect x="38" y="40" width="10" height="10" rx="1.5"/>
+      <rect x="54" y="56" width="10" height="10" rx="1.5"/>
+      <rect x="40" y="68" width="10" height="10" rx="1.5"/>
+    </svg>`,
+    blended: `<svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M28 38h44l-4 50a6 6 0 0 1-6 5.5H38a6 6 0 0 1-6-5.5L28 38z"/>
+      <path d="M24 38c0-8 12-14 26-14s26 6 26 14"/>
+      <path d="M58 18c4-4 10-3 10 3"/>
+      <path d="M62 22v16"/>
+    </svg>`
+  };
+
+  // ─── STATE ───
+  let ALL_PRODUCTS = [];
+
+  // ─── UTIL ───
+  function escapeHTML(s){
+    return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function escapeAttr(s){ return escapeHTML(s); }
+
+  // ─── RENDER: Methods ───
+  function renderMethods(methods){
+    const grid = document.getElementById('methods-grid');
+    const labels = { hot:'Hot', iced:'Iced', blended:'Ice Blended' };
+    const emojis = { hot:'☕', iced:'🧊', blended:'❄️' };
+    grid.innerHTML = methods.map(m => {
+      const key = (m.method || '').toLowerCase();
+      const label = m.label || labels[key] || key;
+      const emoji = m.emoji || emojis[key] || '✦';
+      const icon  = METHOD_ICONS[key] || METHOD_ICONS.hot;
+      const lines = [
+        `<div class="line"><span class="amt">Powder ${m.powder_g}g</span></div>`,
+        `<span class="plus">+</span>`,
+        `<div class="line"><span class="amt">${escapeHTML(m.liquid_type)} ${m.liquid_ml}ml</span></div>`
+      ];
+      if (m.ice_g){
+        lines.push(`<span class="plus">+</span>`);
+        lines.push(`<div class="line"><span class="amt">Ice ${m.ice_g}g</span></div>`);
+      }
+      const stepsHTML = (m.steps || []).map((s,i) =>
+        `<li><span class="step-num">${i+1}</span><span>${escapeHTML(s)}</span></li>`
+      ).join('');
+      return `
+        <article class="method ${key}">
+          <span class="method-tag">${emoji} ${escapeHTML(label)}</span>
+          <div class="method-icon">${icon}</div>
+          <div class="recipe">${lines.join('')}</div>
+          <ol class="steps">${stepsHTML}</ol>
+        </article>`;
+    }).join('');
+  }
+
+  // ─── RENDER: Products ───
+  function renderProducts(items){
+    const grid = document.getElementById('products-grid');
+    const countEl = document.getElementById('flavor-count');
+    if (!items || !items.length){
+      grid.innerHTML = `
+        <div class="products-state">
+          <strong>No powder-mix flavors currently listed.</strong><br>
+          Contact us at <a href="mailto:mhc@musthavecorner.com" style="color:var(--forest-700);font-weight:700;">mhc@musthavecorner.com</a> for availability.
+        </div>`;
+      countEl.textContent = 'Contact us for';
+      updateSearchCount();
+      return;
+    }
+    countEl.textContent = items.length;
+    grid.innerHTML = items.map(p => {
+      const name = p.name || 'Unnamed';
+      const code = p.code ? String(p.code) : '';
+      const cat  = p.category || 'Powder Mix';
+      const pack = p.units_per_pack && p.unit
+        ? `${p.units_per_pack} ${p.unit}${p.units_per_pack>1?'s':''}/pack`
+        : (p.unit ? `per ${p.unit}` : '');
+      let stockClass = '', stockText = 'Available';
+      const rem = Number(p.remaining);
+      if (Number.isFinite(rem)){
+        if (rem <= 0)       { stockClass = 'out'; stockText = 'Out of Stock'; }
+        else if (rem <= 10) { stockClass = 'low'; stockText = 'Limited Stock'; }
+        else                { stockClass = '';    stockText = 'In Stock'; }
+      }
+      const initials = name.split(/\s+/).filter(Boolean).slice(0,2)
+        .map(w => w[0]).join('').toUpperCase() || '·';
+      // Use real product image only if API explicitly provides one (future field).
+      // Otherwise render the branded gradient + initials tile — no broken 404 requests.
+      const imgUrl = p.image_url || p.image || '';
+      const tileContent = imgUrl
+        ? `<img src="${escapeAttr(imgUrl)}" alt="${escapeAttr(name)}" loading="lazy"
+             onerror="this.remove(); this.parentElement.insertAdjacentHTML('beforeend','<span class=\\'initials\\'>${escapeAttr(initials)}</span>');">`
+        : `<span class="initials">${escapeHTML(initials)}</span>`;
+      const searchBlob = `${name} ${code} ${cat}`.toLowerCase();
+      return `
+        <article class="product-card" id="code-${escapeAttr(code)}"
+                 data-code="${escapeAttr(code)}"
+                 data-search="${escapeAttr(searchBlob)}">
+          <div class="product-tile">
+            ${code ? `<span class="product-code-badge">#${escapeHTML(code)}</span>` : ''}
+            ${tileContent}
+          </div>
+          <div class="product-info">
+            <span class="product-category">${escapeHTML(cat)}</span>
+            <span class="product-name">${escapeHTML(name)}</span>
+            <div class="product-meta">
+              <span class="stock-dot ${stockClass}">${stockText}</span>
+              <span>${escapeHTML(pack)}</span>
+            </div>
+          </div>
+        </article>`;
+    }).join('');
+    updateSearchCount();
+  }
+
+  // ─── SEARCH ───
+  function applySearch(query){
+    const q = (query || '').trim().toLowerCase();
+    const cards = document.querySelectorAll('.product-card');
+    let shown = 0;
+    cards.forEach(card => {
+      const hay = card.getAttribute('data-search') || '';
+      const match = !q || hay.includes(q);
+      card.classList.toggle('hidden-by-search', !match);
+      if (match) shown++;
+    });
+    updateSearchCount(shown);
+    // Update URL (without reload) so a copied URL preserves the search
+    const url = new URL(window.location.href);
+    if (q) url.searchParams.set('q', q); else url.searchParams.delete('q');
+    // Preserve ?code= only if it's still visible
+    window.history.replaceState({}, '', url.toString());
+  }
+
+  function updateSearchCount(explicitCount){
+    const countEl = document.getElementById('search-count');
+    const total = document.querySelectorAll('.product-card').length;
+    if (!total){ countEl.textContent = 'Loading…'; return; }
+    const shown = typeof explicitCount === 'number'
+      ? explicitCount
+      : document.querySelectorAll('.product-card:not(.hidden-by-search)').length;
+    countEl.textContent = shown === total ? `${total} flavor${total===1?'':'s'}` : `${shown} of ${total}`;
+  }
+
+  // ─── DEEP-LINK (?code=XXXX) ───
+  function highlightDeepLinked(code){
+    if (!code) return;
+    const card = document.getElementById(`code-${code}`);
+    if (!card){
+      console.info(`[MHC] Deep-link code "${code}" not found in current flavors.`);
+      return;
+    }
+    // Clear any previous highlights
+    document.querySelectorAll('.product-card.highlighted').forEach(c => c.classList.remove('highlighted'));
+    card.classList.add('highlighted');
+    // Smooth-scroll to it (respects scroll-padding-top for sticky header)
+    setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 120);
+  }
+
+  // ─── FETCH ───
+  async function loadProducts(){
+    try {
+      const res = await fetch(`${API_BASE}/products`, { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const all = Array.isArray(data) ? data : (data.products || data.items || []);
+      ALL_PRODUCTS = all.filter(p => POWDER_CATEGORY_MATCH.test(p.category || ''));
+      renderProducts(ALL_PRODUCTS);
+
+      // Apply initial URL params (after products are in the DOM)
+      const params = new URLSearchParams(window.location.search);
+      const qParam = params.get('q');
+      const codeParam = params.get('code');
+      if (qParam){
+        const input = document.getElementById('product-search');
+        input.value = qParam;
+        document.getElementById('search-clear').classList.add('show');
+        applySearch(qParam);
+      }
+      if (codeParam){
+        highlightDeepLinked(String(codeParam).trim());
+      }
+    } catch (err) {
+      console.error('[MHC] Product fetch failed:', err);
+      document.getElementById('products-grid').innerHTML = `
+        <div class="products-state">
+          Unable to load live inventory right now.<br>
+          Please check back shortly or email <a href="mailto:mhc@musthavecorner.com" style="color:var(--forest-700);font-weight:700;">mhc@musthavecorner.com</a>.
+        </div>`;
+      document.getElementById('flavor-count').textContent = 'Contact us for';
+      document.getElementById('search-count').textContent = '—';
+    }
+  }
+
+  async function loadRecipe(){
+    renderMethods(DEFAULT_RECIPE_METHODS);
+    try {
+      const res = await fetch(`${API_BASE}/recipes`, { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = await res.json();
+      const recipes = Array.isArray(data) ? data : (data.recipes || []);
+      if (!recipes.length) return;
+      const universal = recipes.filter(r => r.product_code == null);
+      const methods = universal.length ? universal : recipes;
+      const order = { hot: 0, iced: 1, blended: 2 };
+      methods.sort((a,b) =>
+        (order[(a.method||'').toLowerCase()] ?? 99) -
+        (order[(b.method||'').toLowerCase()] ?? 99)
+      );
+      if (methods.length) renderMethods(methods);
+    } catch (err) {
+      console.info('[MHC] Recipes endpoint not available; using default recipe.');
+    }
+  }
+
+  // ─── INIT ───
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // Search input wiring
+  const searchInput = document.getElementById('product-search');
+  const searchClear = document.getElementById('search-clear');
+  searchInput.addEventListener('input', e => {
+    const v = e.target.value;
+    searchClear.classList.toggle('show', !!v);
+    applySearch(v);
+  });
+  searchClear.addEventListener('click', () => {
+    searchInput.value = '';
+    searchClear.classList.remove('show');
+    applySearch('');
+    searchInput.focus();
+  });
+
+  loadRecipe();
+  loadProducts();
+  </script>
+</body>
+</html>
